@@ -1,0 +1,36 @@
+#messageInput {
+  position: absolute;
+  top: 90%;
+  height: 10%;
+  width: 100%;
+  border-top: 2px solid #f0f0f0;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: stretch;
+}
+
+#inputTextBox {
+  position: relative;
+  font-size: x-large;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  width: 90%;
+  resize: none;
+  display: inline-block;
+}
+
+#inputTextBox,
+#inputTextBox:focus {
+  border: none;
+  overflow: auto;
+  outline: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+#submitButtonContainer {
+  position: relative;
+  width: 200px;
+  display: inline-block;
+  flex-shrink: 0;
+}

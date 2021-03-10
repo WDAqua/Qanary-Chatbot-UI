@@ -1,0 +1,16 @@
+.vertical-center {
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.right-side {
+    position: absolute;
+    right: 0%;
+}
+
+.left-side {
+    position: absolute;
+    left: 0%;
+}
