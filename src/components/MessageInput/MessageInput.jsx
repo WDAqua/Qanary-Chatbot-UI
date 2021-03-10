@@ -14,14 +14,22 @@ export default class MessageInput extends Component {
 
     this.onSendMessage = this.onSendMessage.bind(this);
     this.inputTextChange = this.inputTextChange.bind(this);
+    this.inputKeyPress = this.inputKeyPress.bind(this);
   }
 
   onSendMessage() {
-    this.setState({ isSending: true });
+    this.props.sendMessage(this.state.query);
+    this.setState({ isSending: true, query: "" });
   }
 
   inputTextChange(changeEvent) {
     this.setState({ query: changeEvent.target.value });
+  }
+
+  inputKeyPress(keyPressEvent) {
+    if (keyPressEvent.key === "Enter") {
+      this.onSendMessage();
+    }
   }
 
   render() {
@@ -37,6 +45,7 @@ export default class MessageInput extends Component {
             placeholder={texts["message-input"]["placeholder-text"]}
             value={this.state.query}
             onChange={this.inputTextChange}
+            onKeyPress={this.inputKeyPress}
           />
           <div id="submitButtonContainer">
             <Button

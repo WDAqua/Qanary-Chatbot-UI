@@ -2,4 +2,17 @@
     position: relative;
     height: 100%;
     width: 100%;
+    overflow-y: auto;
+}
+
+#messagePanel::before {
+    content: 'Covid-19 Chatbot';
+    text-align: center;
+    display: inline-block;
+    font-size: large;
+    height: 3vh;
+    width: 100%;
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+    color: #aa2941;
 }

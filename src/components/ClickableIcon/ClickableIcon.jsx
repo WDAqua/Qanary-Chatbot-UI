@@ -14,7 +14,7 @@ export default function ClickableIcon(props) {
     <div
       className={"clickableIcon " + (props.className ?? "")}
       onClick={props.onClick ?? undefined}
-      style={props.style}
+      style={props.style ?? {}}
     >
       <img
         src={props.icon ?? `https://plchldr.co/i/50x50?&bg=8f8e8e&fc=000&text=${texts["clickable-icon"]["fallback-text"]}`}
