@@ -51,9 +51,9 @@ export default class MessageInput extends Component {
               text={texts["message-input"]["submit-button"]}
               onClick={this.onSendMessage}
               style={{
-                width: "150px",
-                height: "50px",
-                marginRight: "30px",
+                width: "100px",
+                height: "40px",
+                marginRight: "10px",
               }}
               className={"light-pink vertical-center right-side"}
             />

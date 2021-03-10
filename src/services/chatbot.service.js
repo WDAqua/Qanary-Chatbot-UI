@@ -7,12 +7,15 @@ let graphId = undefined;
 function postQuery(question) {
   const requestBody = {
     question,
+    graphid: graphId ?? ""
   };
-  // This is to prevent the requestBody object from having a graphid field, if there is no graphId yet.
-  if (!!graphId) requestBody.graphid = graphId;
+  console.log(requestBody);
   return fetch(config["chatbot-backend-url"], {
     method: "POST",
     body: JSON.stringify(requestBody),
+    headers: {
+        'Content-Type': "application/json"
+    }
   })
     .then((response) => {
       if (!!response?.ok) {
