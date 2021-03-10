@@ -1,6 +1,6 @@
 // This will make it available project-wide
-import './share/colors.css'
-import './share/positions.css'
+import './share/stylesheets/colors.css'
+import './share/stylesheets/positions.css'
 
 // This is a centralized import. It exports all components in a destructured way
 // to allow easy and concise imports from one place, instead of import every single
@@ -10,5 +10,6 @@ import MessageInput from './MessageInput/MessageInput'
 import MessagePanel from './MessagePanel/MessagePanel'
 import PageHeader from './PageHeader/PageHeader'
 import Button from './Button/Button'
+import ClickableIcon from './ClickableIcon/ClickableIcon'
 
-export { MessageInput, MessagePanel, PageHeader, Button }
+export { MessageInput, MessagePanel, PageHeader, Button, ClickableIcon }

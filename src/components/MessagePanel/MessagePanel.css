@@ -1,6 +1,5 @@
 #messagePanel {
-    position: absolute;
-    top: 5%;
-    height: 75%;
+    position: relative;
+    height: 100%;
     width: 100%;
 }

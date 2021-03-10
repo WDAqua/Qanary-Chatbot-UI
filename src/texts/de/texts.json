@@ -2,5 +2,8 @@
   "message-input": {
     "submit-button": "Senden",
     "placeholder-text": "Ihre Frage an mich..."
+  },
+  "clickable-icon": {
+      "fallback-text": "Kein Icon gefunden"
   }
 }

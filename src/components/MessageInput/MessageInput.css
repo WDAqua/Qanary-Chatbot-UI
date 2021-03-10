@@ -1,7 +1,6 @@
 #messageInput {
-  position: absolute;
-  top: 90%;
-  height: 10%;
+  position: relative;
+  height: 150px;
   width: 100%;
   border-top: 2px solid #f0f0f0;
   display: flex;
