@@ -6,6 +6,10 @@
   flex-direction: row-reverse;
 }
 
+.messageContainer.reply {
+    flex-direction: row;
+}
+
 .messageDataContainer {
   min-width: 150px;
   height: fit-content;

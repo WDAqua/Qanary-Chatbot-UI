@@ -8,7 +8,6 @@ export default class MessageInput extends Component {
     super(props);
 
     this.state = {
-      isSending: false,
       query: "",
     };
 
@@ -19,7 +18,7 @@ export default class MessageInput extends Component {
 
   onSendMessage() {
     this.props.sendMessage(this.state.query);
-    this.setState({ isSending: true, query: "" });
+    this.setState({ query: "" });
   }
 
   inputTextChange(changeEvent) {
@@ -37,7 +36,7 @@ export default class MessageInput extends Component {
       <>
         <div
           id="loadingBar"
-          className={this.state.isSending ? "visible" : ""}
+          className={this.props.isSending ? "visible" : ""}
         />
         <div id="messageInput">
           <textarea

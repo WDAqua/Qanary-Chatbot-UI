@@ -1,6 +1,8 @@
 import { Component } from "react";
 import "./App.css";
 import { MessageInput, MessagePanel, PageHeader } from "./components";
+import chatBotService from "./services/chatbot.service";
+import robot_icon_black from "./components/share/imgs/robot_icon_black.svg";
 
 class App extends Component {
   constructor(props) {
@@ -8,20 +10,32 @@ class App extends Component {
 
     this.state = {
       messages: [],
+      isSending: false,
     };
 
     this.sendMessage = this.sendMessage.bind(this);
   }
 
-  sendMessage(messageText = "") {
+  async sendMessage(messageText = "") {
+    this.setState({isSending: true});
     let messagesCopy = this.state.messages;
-    const now = new Date();
+    let now = new Date();
     messagesCopy.push({
       text: messageText,
       time: now.getHours() + ":" + ("0" + now.getMinutes()).slice(-2),
+      isReply: false,
+    });
+    const reply = await chatBotService.postQuery(messageText);
+    now = new Date();
+    messagesCopy.push({
+      text: reply.answer,
+      time: now.getHours() + ":" + ("0" + now.getMinutes()).slice(-2),
+      isReply: true,
+      icon: robot_icon_black,
     });
     this.setState({
       messages: messagesCopy,
+      isSending: false,
     });
   }
 
@@ -30,7 +44,7 @@ class App extends Component {
       <>
         <PageHeader />
         <MessagePanel messages={this.state.messages} />
-        <MessageInput sendMessage={this.sendMessage} />
+        <MessageInput sendMessage={this.sendMessage} isSending={this.state.isSending} />
       </>
     );
   }
