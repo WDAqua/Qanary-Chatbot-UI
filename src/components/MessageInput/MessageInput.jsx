@@ -17,8 +17,10 @@ export default class MessageInput extends Component {
   }
 
   onSendMessage() {
-    this.props.sendMessage(this.state.query);
-    this.setState({ query: "" });
+    if (this.state.query.length > 0) {
+      this.props.sendMessage(this.state.query);
+      this.setState({ query: "" });
+    }
   }
 
   inputTextChange(changeEvent) {
@@ -55,7 +57,7 @@ export default class MessageInput extends Component {
                 height: "40px",
                 marginRight: "10px",
               }}
-              className={"light-pink vertical-center right-side"}
+              className={"light-gray vertical-center right-side"}
             />
           </div>
         </div>
