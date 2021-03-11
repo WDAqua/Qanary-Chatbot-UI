@@ -14,7 +14,7 @@ import more_icon_white from "../share/imgs/more_icon_white.svg";
  */
 export default function PageHeader() {
   return (
-    <div id="header" className="burgundy">
+    <div tabIndex="-1" id="header" className="burgundy">
       <ClickableIcon
         onClick={() => console.log("Hi")}
         icon={info_icon_white}

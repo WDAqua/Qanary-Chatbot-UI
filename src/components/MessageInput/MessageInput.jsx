@@ -38,9 +38,10 @@ export default class MessageInput extends Component {
       <>
         <div
           id="loadingBar"
+          tabIndex="-1"
           className={this.props.isSending ? "visible" : ""}
         />
-        <div id="messageInput">
+        <div tabIndex="-1" id="messageInput">
           <textarea
             id="inputTextBox"
             placeholder={texts["message-input"]["placeholder-text"]}
@@ -49,7 +50,7 @@ export default class MessageInput extends Component {
             onChange={this.inputTextChange}
             onKeyPress={this.inputKeyPress}
           />
-          <div id="submitButtonContainer">
+          <div id="submitButtonContainer" tabIndex="-1">
             <Button
               text={texts["message-input"]["submit-button"]}
               onClick={this.onSendMessage}

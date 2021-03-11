@@ -4,7 +4,7 @@ import "./MessagePanel.css";
 
 export default function MessagePanel(props) {
   return (
-    <div id="messagePanel">
+    <div tabIndex="-1" id="messagePanel">
       {props.messages.map((message) =>
         !!message.visualization ? (
           <RichMessage

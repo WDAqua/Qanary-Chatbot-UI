@@ -5,10 +5,11 @@ import account_icon_black from "../share/imgs/account_icon_black.svg";
 
 export default function Message(props) {
   return (
-    <div className={"messageContainer" + (!!props.messageObject?.isReply ? " reply" : "")}>
+    <div tabIndex="-1" className={"messageContainer" + (!!props.messageObject?.isReply ? " reply" : "")}>
       <ClickableIcon
         alt="Avatar"
         icon={props.messageObject?.icon ?? account_icon_black}
+        tabIndex={"-1"}
         style={{
           width: "100px",
           height: "100px",

@@ -4,12 +4,12 @@ import "./RichMessage.css";
 
 export default function RichMessage(props) {
   return (
-    <div>
+    <div tabIndex="-1">
       <Message messageObject={props.messageObject} />
-      <div className="richContentContainer">
-        {!!props.messageObject?.visualization?.buttons
-          ? props.messageObject.visualization.buttons.map((button) => (
-              <div className="buttonsContainer">
+      <div tabIndex="-1" className="richContentContainer">
+        <div tabIndex="-1" className="buttonsContainer">
+          {!!props.messageObject?.visualization?.buttons
+            ? props.messageObject.visualization.buttons.map((button) => (
                 <Button
                   text={button.title ?? ""}
                   key={button.title + button.payload}
@@ -20,20 +20,21 @@ export default function RichMessage(props) {
                   }}
                   onClick={button.onClick ?? undefined}
                 />
-              </div>
-            ))
-          : null}
-        {!!props.messageObject?.visualization?.diagram
-          ? props.messageObject.visualization.diagram.map((diagram) => (
-              <div className="diagramContainer">
+              ))
+            : null}
+        </div>
+
+        <div tabIndex="-1" className="diagramContainer">
+          {!!props.messageObject?.visualization?.diagram
+            ? props.messageObject.visualization.diagram.map((diagram) => (
                 <Diagram
                   key={diagram.title}
                   diagramData={diagram}
                   id={diagram.title}
                 />
-              </div>
-            ))
-          : null}
+              ))
+            : null}
+        </div>
       </div>
     </div>
   );
