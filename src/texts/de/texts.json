@@ -8,5 +8,8 @@
   },
   "error-messages": {
       "no-answer-found": "Es konnte keine Antwort geladen werden. Nochmal versuchen?"
+  },
+  "default-responses": {
+    "try-again": "Ja"
   }
 }

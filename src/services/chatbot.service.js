@@ -38,7 +38,7 @@ function postQuery(question) {
             visualization: {
               buttons: [
                 {
-                  text: "Ja",
+                  text: texts["default-responses"]["try-again"],
                   value: question,
                 },
               ],
