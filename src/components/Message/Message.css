@@ -19,6 +19,18 @@
   flex-direction: column;
 }
 
+.messageDataContainer:focus {
+  outline: none;
+}
+
+.messageDataContainer.burgundy:focus {
+  background-color: #d43653;;
+}
+
+.messageDataContainer:not(.burgundy):focus {
+  background-color: rgb(230, 230, 230);
+}
+
 .messageText {
   margin-left: 1vw;
   margin-right: 1vw;

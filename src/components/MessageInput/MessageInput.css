@@ -18,6 +18,10 @@
   display: inline-block;
 }
 
+#inputTextBox::placeholder {
+  color: rgb(100, 100, 100);
+}
+
 #inputTextBox,
 #inputTextBox:focus {
   border: none;
@@ -26,6 +30,10 @@
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
+}
+
+#inputTextBox:focus::placeholder {
+  color: black;
 }
 
 #submitButtonContainer {

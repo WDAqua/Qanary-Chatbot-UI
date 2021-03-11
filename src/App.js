@@ -17,7 +17,7 @@ class App extends Component {
   }
 
   async sendMessage(messageText = "") {
-    this.setState({isSending: true});
+    this.setState({ isSending: true });
     let messagesCopy = this.state.messages;
     let now = new Date();
     messagesCopy.push({
@@ -27,12 +27,17 @@ class App extends Component {
       loadedSuccessfully: true,
     });
     let reply = await chatBotService.postQuery(messageText);
-    if (!!reply.visualization?.buttons) {
-      reply.visualization.buttons = reply.visualization.buttons.map((button) => ({
-        onClick: () => this.sendMessage(button.value), 
-        ...button
-      }));
-    }
+    if (!!reply.visualization?.buttons)
+      reply.visualization.buttons = reply.visualization.buttons.map(
+        (button) => ({
+          onClick: () => this.sendMessage(button.payload),
+          ...button,
+        })
+      );
+    if (!!reply.visualization?.diagram)
+      reply.visualization.diagram[1].onClick = () =>
+        this.sendMessage(reply.visualization.diagram[1].payload);
+
     now = new Date();
     messagesCopy.push({
       text: reply.answer,
@@ -54,7 +59,10 @@ class App extends Component {
       <>
         <PageHeader />
         <MessagePanel messages={this.state.messages} />
-        <MessageInput sendMessage={this.sendMessage} isSending={this.state.isSending} />
+        <MessageInput
+          sendMessage={this.sendMessage}
+          isSending={this.state.isSending}
+        />
       </>
     );
   }

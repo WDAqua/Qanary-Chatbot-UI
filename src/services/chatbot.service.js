@@ -7,15 +7,15 @@ let graphId = undefined;
 function postQuery(question) {
   const requestBody = {
     question,
-    graphid: graphId ?? ""
+    graph_id: graphId ?? "",
   };
   console.log(requestBody);
   return fetch(config["chatbot-backend-url"], {
     method: "POST",
     body: JSON.stringify(requestBody),
     headers: {
-        'Content-Type': "application/json"
-    }
+      "Content-Type": "application/json",
+    },
   })
     .then((response) => {
       if (!!response?.ok) {
@@ -23,30 +23,44 @@ function postQuery(question) {
       }
     })
     .then((data) => {
-      graphId = data?.graphid;
+      graphId = data?.graph_id;
       return {
         question: data.question,
         answer: data.answer ?? texts["error-messages"]["no-answer-found"],
-        followUpNeeded: data['follow-up-needed'] ?? false,
+        followUpNeeded: data["follow-up-needed"] ?? false,
         visualization: data.visualization,
         loadedSuccessfully: true,
       };
-    }).catch((err) => {
-        return {
-            question,
-            answer: texts["error-messages"]["no-answer-found"],
-            visualization: {
-              buttons: [
-                {
-                  text: texts["default-responses"]["try-again"],
-                  value: question,
-                },
-              ],
-            },
-            followUpNeeded: true,
-            loadedSuccessfully: false,
-        }
     })
+    .catch((err) => {
+      return {
+        question,
+        answer: texts["error-messages"]["no-answer-found"],
+        visualization: {
+          buttons: [
+            {
+              title: texts["default-responses"]["try-again"],
+              payload: question,
+            },
+          ],
+          diagram: [
+            {
+              title: "Very serious diagram",
+              "x-axis": "[1,2,3,4,5]",
+              "y-axis": "[10,20,30,40,50,60]",
+              data_points: ["(1,10)", "(2,17)", "(3,42)", "(4,28)"],
+            },
+            {
+              color: "green",
+              title: "Frankfurt (Oder)",
+              payload: "Frankfurt (Oder)",
+            },
+          ],
+        },
+        followUpNeeded: true,
+        loadedSuccessfully: false,
+      };
+    });
 }
 
 export default chatBotService;
