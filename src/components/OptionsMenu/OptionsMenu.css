@@ -28,7 +28,7 @@
 #optionsMenu .option:focus {
     outline: none;
     background-color: lightgray;
-    text-decoration: 1px #000 solid;
+    text-decoration: underline 1px #000 solid;
 }
 
 #optionsMenu.hidden {

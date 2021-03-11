@@ -28,7 +28,7 @@ export default function OptionsMenu() {
           height: "60px",
         }}
       />
-      <div className="option">Beispielfragen</div>
+      <div className="option" tabIndex="0">Beispielfragen</div>
     </div>
   );
 }
