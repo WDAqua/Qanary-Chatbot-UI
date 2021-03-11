@@ -34,9 +34,6 @@ class App extends Component {
           ...button,
         })
       );
-    if (!!reply.visualization?.diagram)
-      reply.visualization.diagram[1].onClick = () =>
-        this.sendMessage(reply.visualization.diagram[1].payload);
 
     now = new Date();
     messagesCopy.push({

@@ -50,11 +50,6 @@ function postQuery(question) {
               "y-axis": "[10,20,30,40,50,60]",
               data_points: ["(1,10)", "(2,17)", "(3,42)", "(4,28)"],
             },
-            {
-              color: "green",
-              title: "Frankfurt (Oder)",
-              payload: "Frankfurt (Oder)",
-            },
           ],
         },
         followUpNeeded: true,

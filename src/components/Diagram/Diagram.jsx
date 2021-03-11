@@ -37,7 +37,7 @@ export default class Diagram extends Component {
 
   render() {
     const width =
-      parseInt(document.querySelector(".richContentContainer")?.clientWidth) ?? 300;
+      parseInt(document.querySelector(".richContentContainer")?.clientWidth) * 0.6 ?? 300;
     // pick height at 2/5th the width to create a nice landscape ratio
     const height = (width * 2) / 5;
     return (
