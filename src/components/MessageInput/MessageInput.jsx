@@ -20,7 +20,6 @@ export default class MessageInput extends Component {
 
   componentDidMount() {
     textsHelper.addListener("message-input", () => {
-      console.log("Message input");
       this.texts = textsHelper.getTexts();
       this.forceUpdate();
     })

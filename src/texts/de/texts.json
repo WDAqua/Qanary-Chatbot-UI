@@ -11,5 +11,12 @@
   },
   "default-responses": {
     "try-again": "Ja"
+  },
+  "message-info": {
+    "source-of-data": "Datenquelle: ",
+    "robert-koch-institute": "Robert-Koch-Institut"
+  },
+  "options-menu": {
+    "exemplary-questions": "Beispielfragen"
   }
 }

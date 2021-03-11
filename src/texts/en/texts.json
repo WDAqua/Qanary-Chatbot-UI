@@ -11,5 +11,12 @@
   },
   "default-responses": {
     "try-again": "Yes"
+  },
+  "message-info": {
+    "source-of-data": "Source of data: ",
+    "robert-koch-institute": "Robert Koch Institute"
+  },
+  "options-menu": {
+    "exemplary-questions": "Exemplary Questions"
   }
 }
