@@ -14,5 +14,6 @@ import ClickableIcon from './ClickableIcon/ClickableIcon'
 import Message from './Message/Message'
 import RichMessage from './RichMessage/RichMessage'
 import Diagram from './Diagram/Diagram'
+import OptionsMenu from './OptionsMenu/OptionsMenu'
 
-export { MessageInput, MessagePanel, PageHeader, Button, ClickableIcon, Message, RichMessage, Diagram }
+export { MessageInput, MessagePanel, PageHeader, Button, ClickableIcon, Message, RichMessage, Diagram, OptionsMenu }

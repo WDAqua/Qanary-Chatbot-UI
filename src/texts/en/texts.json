@@ -1,0 +1,15 @@
+{
+  "message-input": {
+    "submit-button": "Send",
+    "placeholder-text": "Your question to me..."
+  },
+  "clickable-icon": {
+      "fallback-text": "No icon was found"
+  },
+  "error-messages": {
+      "no-answer-found": "No answer could be loaded. Try again?"
+  },
+  "default-responses": {
+    "try-again": "Yes"
+  }
+}

@@ -12,7 +12,7 @@ export default function MessagePanel(props) {
             messageObject={message}
           />
         ) : (
-          <Message key={message.text + message.time} messageObject={message} />
+          <Message key={message.text + message.time + document.querySelectorAll(".messageContainer").length} messageObject={message} />
         )
       )}
     </div>

@@ -1,5 +1,5 @@
 import config from "../config.json";
-import texts from "../texts/de/texts.json";
+import { textsHelper } from "../helpers";
 
 const chatBotService = { postQuery };
 let graphId = undefined;
@@ -9,7 +9,7 @@ function postQuery(question) {
     question,
     graph_id: graphId ?? "",
   };
-  console.log(requestBody);
+  const texts = textsHelper.getTexts()
   return fetch(config["chatbot-backend-url"], {
     method: "POST",
     body: JSON.stringify(requestBody),
@@ -33,6 +33,7 @@ function postQuery(question) {
       };
     })
     .catch((err) => {
+      console.error(err);
       return {
         question,
         answer: texts["error-messages"]["no-answer-found"],
@@ -43,14 +44,14 @@ function postQuery(question) {
               payload: question,
             },
           ],
-          diagram: [
+          /*diagram: [
             {
               title: "Very serious diagram",
               "x-axis": "[1,2,3,4,5]",
               "y-axis": "[10,20,30,40,50,60]",
               data_points: ["(1,10)", "(2,17)", "(3,42)", "(4,28)"],
             },
-          ],
+          ],*/
         },
         followUpNeeded: true,
         loadedSuccessfully: false,

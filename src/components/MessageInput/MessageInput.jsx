@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Button } from "..";
 import "./MessageInput.css";
-import texts from "../../texts/de/texts.json";
+import { textsHelper } from "../../helpers";
 
 export default class MessageInput extends Component {
   constructor(props) {
@@ -11,9 +11,23 @@ export default class MessageInput extends Component {
       query: "",
     };
 
+    this.texts = textsHelper.getTexts();
+
     this.onSendMessage = this.onSendMessage.bind(this);
     this.inputTextChange = this.inputTextChange.bind(this);
     this.inputKeyPress = this.inputKeyPress.bind(this);
+  }
+
+  componentDidMount() {
+    textsHelper.addListener("message-input", () => {
+      console.log("Message input");
+      this.texts = textsHelper.getTexts();
+      this.forceUpdate();
+    })
+  }
+
+  componentWillUnmount() {
+    textsHelper.removeListener("message-input");
   }
 
   onSendMessage() {
@@ -24,7 +38,7 @@ export default class MessageInput extends Component {
   }
 
   inputTextChange(changeEvent) {
-    this.setState({ query: changeEvent.target.value });
+    if (changeEvent.target.value !== "\n") this.setState({ query: changeEvent.target.value });
   }
 
   inputKeyPress(keyPressEvent) {
@@ -44,7 +58,7 @@ export default class MessageInput extends Component {
         <div tabIndex="-1" id="messageInput">
           <textarea
             id="inputTextBox"
-            placeholder={texts["message-input"]["placeholder-text"]}
+            placeholder={this.texts["message-input"]["placeholder-text"]}
             className="black-text"
             value={this.state.query}
             onChange={this.inputTextChange}
@@ -52,7 +66,7 @@ export default class MessageInput extends Component {
           />
           <div id="submitButtonContainer" tabIndex="-1">
             <Button
-              text={texts["message-input"]["submit-button"]}
+              text={this.texts["message-input"]["submit-button"]}
               onClick={this.onSendMessage}
               style={{
                 width: "100px",
