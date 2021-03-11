@@ -36,6 +36,18 @@ export default class Diagram extends Component {
   }
 
   render() {
-    return <svg tabIndex="0" className="diagram" id={this.props.id} />;
+    const width =
+      parseInt(document.querySelector(".richContentContainer")?.clientWidth) ?? 300;
+    // pick height at 2/5th the width to create a nice landscape ratio
+    const height = (width * 2) / 5;
+    return (
+      <svg
+        tabIndex="0"
+        className="diagram"
+        id={this.props.id}
+        width={`${width}`}
+        height={`${height}`}
+      />
+    );
   }
 }
