@@ -1,0 +1,18 @@
+.richContentContainer {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.richContentContainer .button {
+    min-width: 100px;
+    min-height: 2.1rem;
+    padding: 0 1.1em;
+    margin: 16px;
+}
+
+.richContentContainer .button:hover {
+    transition: background 0.2s;
+    background-color: #bd818d;;
+}

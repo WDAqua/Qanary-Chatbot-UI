@@ -24,11 +24,21 @@ class App extends Component {
       text: messageText,
       time: now.getHours() + ":" + ("0" + now.getMinutes()).slice(-2),
       isReply: false,
+      loadedSuccessfully: true,
     });
-    const reply = await chatBotService.postQuery(messageText);
+    let reply = await chatBotService.postQuery(messageText);
+    if (!!reply.visualization?.buttons) {
+      reply.visualization.buttons = reply.visualization.buttons.map((button) => ({
+        onClick: () => this.sendMessage(button.value), 
+        ...button
+      }));
+    }
     now = new Date();
     messagesCopy.push({
       text: reply.answer,
+      followUpNeeded: reply.followUpNeeded,
+      loadedSuccessfully: reply.loadedSuccessfully,
+      visualization: reply.visualization,
       time: now.getHours() + ":" + ("0" + now.getMinutes()).slice(-2),
       isReply: true,
       icon: robot_icon_black,

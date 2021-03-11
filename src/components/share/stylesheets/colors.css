@@ -11,13 +11,25 @@
 }
 
 .light-pink {
-    background-color: #ec8e9f;
+    background-color: #e09ba9;
 }
 
 .white-text {
     color: white;
 }
 
+.black-text {
+    color: rgb(58, 58, 58);
+}
+
+.black-text > a {
+    color: rgb(0, 0, 0);
+}
+
+.white-text > a {
+    color: rgb(197, 197, 197);
+}
+
 .light-pink-text {
-    color: #ec8e9f;
+    color: #e09ba9;;
 }

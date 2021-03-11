@@ -44,6 +44,7 @@ export default class MessageInput extends Component {
           <textarea
             id="inputTextBox"
             placeholder={texts["message-input"]["placeholder-text"]}
+            className="black-text"
             value={this.state.query}
             onChange={this.inputTextChange}
             onKeyPress={this.inputKeyPress}
@@ -57,7 +58,7 @@ export default class MessageInput extends Component {
                 height: "40px",
                 marginRight: "10px",
               }}
-              className={"light-gray vertical-center right-side"}
+              className={"light-gray black-text vertical-center right-side"}
             />
           </div>
         </div>

@@ -4,7 +4,6 @@
   float: right;
   display: flex;
   flex-direction: row-reverse;
-  margin-bottom: 3vh;
 }
 
 .messageContainer.reply {
@@ -26,6 +25,7 @@
   margin-bottom: 1vh;
   margin-top: 1vh;
   word-wrap: break-word;
+  min-width: 80px;
   max-width: 40vw;
 }
 

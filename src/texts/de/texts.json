@@ -7,6 +7,6 @@
       "fallback-text": "Kein Icon gefunden"
   },
   "error-messages": {
-      "no-answer-found": "Es konnte keine Antwort geladen werden."
+      "no-answer-found": "Es konnte keine Antwort geladen werden. Nochmal versuchen?"
   }
 }

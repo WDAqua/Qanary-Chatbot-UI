@@ -12,5 +12,6 @@ import PageHeader from './PageHeader/PageHeader'
 import Button from './Button/Button'
 import ClickableIcon from './ClickableIcon/ClickableIcon'
 import Message from './Message/Message'
+import RichMessage from './RichMessage/RichMessage'
 
-export { MessageInput, MessagePanel, PageHeader, Button, ClickableIcon, Message }
+export { MessageInput, MessagePanel, PageHeader, Button, ClickableIcon, Message, RichMessage }

@@ -27,11 +27,24 @@ function postQuery(question) {
       return {
         question: data.question,
         answer: data.answer ?? texts["error-messages"]["no-answer-found"],
+        followUpNeeded: data['follow-up-needed'] ?? false,
+        visualization: data.visualization,
+        loadedSuccessfully: true,
       };
     }).catch((err) => {
         return {
             question,
             answer: texts["error-messages"]["no-answer-found"],
+            visualization: {
+              buttons: [
+                {
+                  text: "Ja",
+                  value: question,
+                },
+              ],
+            },
+            followUpNeeded: true,
+            loadedSuccessfully: false,
         }
     })
 }
