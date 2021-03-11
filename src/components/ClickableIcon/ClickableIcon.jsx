@@ -17,7 +17,6 @@ export default class ClickableIcon extends Component {
       .length;
     this.listenerId = `clickable-icon-${numberOfClickableIcons}`;
     textsHelper.addListener(this.listenerId, () => {
-      console.log("Message input");
       this.texts = textsHelper.getTexts();
       this.forceUpdate();
     });
