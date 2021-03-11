@@ -1,0 +1,16 @@
+version: '3.5'
+services:
+  frontend:
+    image: corona-chatbot-frontend:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: on-failure:1
+    ports:
+      - "41387:443"
+    networks:
+      - coronachatbotnetwork
+
+networks:
+  coronachatbotnetwork:
+    driver: bridge
