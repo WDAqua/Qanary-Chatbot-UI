@@ -10,6 +10,13 @@ export default function loadDiagram(dataPoints, svgId) {
     };
   });
 
+  const margin = {
+      left: 10,
+      right: 10,
+      bottom: 10,
+      top: 10,
+  };
+
   // Get svg, its height and width
   const svg = d3.select(`#${svgId}`),
     width = svg.attr("width"),
@@ -26,7 +33,7 @@ export default function loadDiagram(dataPoints, svgId) {
         return +d.x;
       }),
     ])
-    .range([0, width]);
+    .range([margin.left, width - margin.right]);
 
   // Add Y axis
   const yAxis = d3
@@ -39,11 +46,11 @@ export default function loadDiagram(dataPoints, svgId) {
         return +d.y;
       }),
     ])
-    .range([0, height]);
+    .range([height - margin.bottom, margin.top]);
 
   // Set axes
-  svg.append("g").call(d3.axisBottom(xAxis));
-  svg.append("g").call(d3.axisRight(yAxis));
+  svg.append("g").attr("transform", `translate(0,${height - margin.bottom})`).call(d3.axisTop(xAxis));
+  svg.append("g").attr("transform", `translate(${margin.left},0)`).call(d3.axisRight(yAxis));
 
   // Add the line
   svg

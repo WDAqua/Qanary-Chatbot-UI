@@ -41,6 +41,7 @@ export default class Diagram extends Component {
     // pick height at 2/5th the width to create a nice landscape ratio
     const height = (width * 2) / 5;
     return (
+      <div>
       <svg
         tabIndex="0"
         className="diagram"
@@ -48,6 +49,8 @@ export default class Diagram extends Component {
         width={`${width}`}
         height={`${height}`}
       />
+      <div className="diagramTitle">{this.props.diagramData.title}</div>
+      </div>
     );
   }
 }

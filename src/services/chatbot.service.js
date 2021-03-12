@@ -44,6 +44,12 @@ function postQuery(question) {
               payload: question,
             },
           ],
+          diagram: [
+            {
+              title: "Very serious diagram",
+              data_points: ["(1,10)", "(2,17)", "(3,42)", "(4,28)"],
+            },
+          ],
         },
         followUpNeeded: true,
         loadedSuccessfully: false,

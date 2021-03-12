@@ -15,7 +15,11 @@ import more_icon_white from "../share/imgs/more_icon_white.svg";
 export default function PageHeader() {
   return (
     <>
-      <div tabIndex="-1" id="header" className="burgundy">
+      <div
+        tabIndex="-1"
+        id="header"
+        className="burgundy"
+      >
         <ClickableIcon
           onClick={() => console.log("Hi")}
           icon={info_icon_white}
@@ -27,9 +31,9 @@ export default function PageHeader() {
           }}
         />
         <ClickableIcon
-          onClick={() =>
-            document.getElementById("optionsMenu").classList.toggle("hidden")
-          }
+          onClick={() => {
+            document.getElementById("optionsMenu").classList.toggle("hidden");
+          }}
           icon={more_icon_white}
           alt={"Info"}
           style={{

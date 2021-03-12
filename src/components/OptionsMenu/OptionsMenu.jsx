@@ -21,7 +21,11 @@ export default class OptionsMenu extends Component {
 
   render() {
     return (
-      <div id="optionsMenu" className="right-side hidden">
+      <div
+        id="optionsMenu"
+        className="right-side hidden"
+        tabIndex="-1"
+      >
         <ClickableIcon
           onClick={() => textsHelper.changeLanguage("de")}
           className="option"
