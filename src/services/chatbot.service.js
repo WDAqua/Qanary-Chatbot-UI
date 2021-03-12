@@ -45,12 +45,6 @@ function postQuery(question) {
               payload: question,
             },
           ],
-          diagram: [
-            {
-              title: "Very serious diagram",
-              data_points: ["(2021-01-01,1)", "(2021-02-01,2)", "(2021-03-01,3)", "(2021-04-01,4)"],
-            },
-          ],
         },
         followUpNeeded: true,
         loadedSuccessfully: false,
