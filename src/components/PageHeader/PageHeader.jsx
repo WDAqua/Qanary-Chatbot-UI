@@ -83,8 +83,9 @@ export default class PageHeader extends Component {
         </div>
         <ContentContainer id="imprint">This is an imprint</ContentContainer>
         <ContentContainer id="exemplaryQuestions">
-          {this.texts["exemplary-questions"].map((questionText) => (
-            <div key={questionText} className="exampleQuestion">
+          {this.texts["exemplary-questions"].map((questionText, i) => (
+            // i is the shortest unique identifier in this case and the content will not be updated
+            <div key={i} className="exampleQuestion">
               {questionText}
               <Button
                 onClick={() => this.props.sendMessage(questionText)}

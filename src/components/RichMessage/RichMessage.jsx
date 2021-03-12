@@ -9,10 +9,11 @@ export default function RichMessage(props) {
       <div tabIndex="-1" className="richContentContainer">
         <div tabIndex="-1" className="buttonsContainer">
           {!!props.messageObject?.visualization?.buttons
-            ? props.messageObject.visualization.buttons.map((button) => (
+            ? props.messageObject.visualization.buttons.map((button, i) => (
+                // i is the shortest unique identifier in this case and the content will not be updated
                 <Button
                   text={button.title ?? ""}
-                  key={button.title + button.payload}
+                  key={i}
                   className="light-pink"
                   style={{
                     minWidth: `${100}px`,
@@ -24,17 +25,14 @@ export default function RichMessage(props) {
             : null}
         </div>
 
-        <div tabIndex="-1" className="diagramContainer">
-          {!!props.messageObject?.visualization?.diagram
-            ? props.messageObject.visualization.diagram.map((diagram) => (
-                <Diagram
-                  key={diagram.title}
-                  diagramData={diagram}
-                  id={`diagram-${document.querySelectorAll(".diagram").length}`}
-                />
-              ))
-            : null}
-        </div>
+        {!!props.messageObject?.visualization?.diagram && props.messageObject.followUpNeeded != null && !props.messageObject.followUpNeeded ? (
+          <div tabIndex="-1" className="diagramContainer">
+            <Diagram
+              diagramData={props.messageObject.visualization.diagram}
+              id={`diagram-${document.querySelectorAll(".diagram").length}`}
+            />
+          </div>
+        ) : null}
       </div>
     </div>
   );

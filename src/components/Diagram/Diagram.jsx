@@ -32,7 +32,7 @@ export default class Diagram extends Component {
     while (svgElement?.lastChild) {
       svgElement.removeChild(svgElement.lastChild);
     }
-    loadDiagram(this.props.diagramData.data_points, this.props.id);
+    loadDiagram(this.props.diagramData, this.props.id);
   }
 
   render() {

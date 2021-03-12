@@ -21,15 +21,17 @@ function postQuery(question) {
     .then((response) => {
       if (!!response?.ok) {
         return response.json();
+      } else {
+        throw new Error("Response was not ok")
       }
     })
     .then((data) => {
       graphId = data?.graph_id;
       return {
-        question: data.question,
+        question: data.question ?? question,
         answer: data.answer ?? texts["error-messages"]["no-answer-found"],
-        followUpNeeded: data["follow-up-needed"] ?? false,
-        visualization: data.visualization,
+        followUpNeeded: data["follow_up_needed"] ?? false,
+        visualization: data.visualization ?? {},
         loadedSuccessfully: true,
       };
     })

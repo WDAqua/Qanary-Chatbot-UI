@@ -1,20 +1,21 @@
 const d3 = window.d3;
 
-export default function loadDiagram(dataPoints, svgId) {
+export default function loadDiagram(data, svgId) {
+  const dataPoints = data.data_points;
   // Convert data points from strings to objects
   const transformedDataPoints = dataPoints.map((dataPoint) => {
     const matches = dataPoint.match(/\(([0-9-.]*),(\d*)\)/);
     return {
-      x: d3.timeParse("%Y-%m-%d")(matches[1]),
+      x: matches[1],
       y: matches[2],
     };
   });
 
   const margin = {
-      left: 10,
-      right: 10,
-      bottom: 10,
-      top: 10,
+    left: 30,
+    right: 25 + data["x-axis"].Label.length * 5,
+    bottom: 30,
+    top: 30,
   };
 
   // Get svg, its height and width
@@ -24,7 +25,7 @@ export default function loadDiagram(dataPoints, svgId) {
 
   // Add X axis
   const xAxis = d3
-    .scaleTime()
+    .scaleLinear()
     .domain([
       d3.min(transformedDataPoints, function (d) {
         return +d.x;
@@ -49,8 +50,32 @@ export default function loadDiagram(dataPoints, svgId) {
     .range([height - margin.bottom, margin.top]);
 
   // Set axes
-  svg.append("g").attr("transform", `translate(0,${height - margin.bottom})`).call(d3.axisTop(xAxis));
-  svg.append("g").attr("transform", `translate(${margin.left},0)`).call(d3.axisRight(yAxis));
+  svg
+    .append("g")
+    .attr("transform", `translate(0,${height - margin.bottom})`)
+    .call(d3.axisBottom(xAxis))
+    .call((g) =>
+      g
+        .select(".tick:last-of-type text")
+        .clone()
+        .attr("x", (data["x-axis"].Label.length * 5))
+        .attr("text-anchor", "start")
+        .attr("font-weight", "bold")
+        .text(data["x-axis"].Label)
+    );
+  svg
+    .append("g")
+    .attr("transform", `translate(${margin.left},0)`)
+    .call(d3.axisLeft(yAxis))
+    .call((g) =>
+      g
+        .select(".tick:last-of-type text")
+        .clone()
+        .attr("y", -30)
+        .attr("text-anchor", "start")
+        .attr("font-weight", "bold")
+        .text(data["y-axis"].Label)
+    );
 
   // Add the line
   svg
