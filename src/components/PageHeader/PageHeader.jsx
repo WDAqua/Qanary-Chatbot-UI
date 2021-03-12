@@ -46,7 +46,6 @@ export default class PageHeader extends Component {
           />
           <ClickableIcon
             onClick={() => textsHelper.changeLanguage("de")}
-            className="option"
             alt="Deutsch"
             icon={german_flag_icon}
             style={{
@@ -57,7 +56,6 @@ export default class PageHeader extends Component {
           />
           <ClickableIcon
             onClick={() => textsHelper.changeLanguage("en")}
-            className="option"
             alt="English"
             icon={english_flag_icon}
             style={{

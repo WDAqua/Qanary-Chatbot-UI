@@ -7,8 +7,47 @@
 
 .questionsToggle {
     position: relative;
-    min-width: 170px;
+    min-width: 80px;
     height: 100%;
+}
+
+@media screen and (max-width: 339px) {
+    .clickableIcon {
+        width: 80px !important;
+    }
+}
+
+@media screen and (max-width: 319px) {
+    .questionsToggle {
+        min-width: 60px;
+        font-size: small;
+    }
+
+    .clickableIcon {
+        width: 70px !important;
+    }
+}
+
+@media screen and (max-width: 269px) {
+    .questionsToggle {
+        min-width: 50px;
+        font-size: x-small;
+    }
+
+    .clickableIcon {
+        width: 60px !important;
+    }
+}
+
+@media screen and (max-width: 229px) {
+    .questionsToggle {
+        min-width: 40px;
+        font-size: xx-small;
+    }
+
+    .clickableIcon {
+        width: 50px !important;
+    }
 }
 
 .questionsToggle:hover {
