@@ -13,10 +13,7 @@ export default class ClickableIcon extends Component {
   texts = textsHelper.getTexts();
 
   componentDidMount() {
-    const numberOfClickableIcons = document.querySelectorAll(".clickableIcon")
-      .length;
-    this.listenerId = `clickable-icon-${numberOfClickableIcons}`;
-    textsHelper.addListener(this.listenerId, () => {
+    this.listenerId = textsHelper.addListener(() => {
       this.texts = textsHelper.getTexts();
       this.forceUpdate();
     });
@@ -24,7 +21,6 @@ export default class ClickableIcon extends Component {
 
   componentWillUnmount() {
     textsHelper.removeListener(this.listenerId);
-    delete this.listenerId;
   }
 
   render() {

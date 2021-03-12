@@ -7,15 +7,11 @@ import { textsHelper } from "../../helpers";
 export default class Message extends Component {
   texts = textsHelper.getTexts();
 
-
   componentDidMount() {
-    const numberOfClickableIcons = document.querySelectorAll(".messageContainer")
-      .length;
-    this.listenerId = `message-${numberOfClickableIcons}`;
-    textsHelper.addListener(this.listenerId, () => {
+    this.listenerId = textsHelper.addListener(() => {
       this.texts = textsHelper.getTexts();
       this.forceUpdate();
-    })
+    });
   }
 
   componentWillUnmount() {
@@ -27,7 +23,8 @@ export default class Message extends Component {
       <div
         tabIndex="-1"
         className={
-          "messageContainer" + (!!this.props.messageObject?.isReply ? " reply" : "")
+          "messageContainer" +
+          (!!this.props.messageObject?.isReply ? " reply" : "")
         }
       >
         <ClickableIcon
@@ -50,7 +47,9 @@ export default class Message extends Component {
           <div
             className={
               "messageText" +
-              (!!this.props.messageObject?.isReply ? " white-text" : " black-text")
+              (!!this.props.messageObject?.isReply
+                ? " white-text"
+                : " black-text")
             }
           >
             {this.props.messageObject?.text ?? ""}
@@ -61,7 +60,9 @@ export default class Message extends Component {
             <div
               className={
                 "messageText" +
-                (!!this.props.messageObject?.isReply ? " white-text" : " black-text")
+                (!!this.props.messageObject?.isReply
+                  ? " white-text"
+                  : " black-text")
               }
             >
               {this.texts["message-info"]["source-of-data"]}

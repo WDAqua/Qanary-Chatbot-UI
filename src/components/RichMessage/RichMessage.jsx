@@ -30,7 +30,7 @@ export default function RichMessage(props) {
                 <Diagram
                   key={diagram.title}
                   diagramData={diagram}
-                  id={diagram.title}
+                  id={`diagram-${document.querySelectorAll(".diagram").length}`}
                 />
               ))
             : null}

@@ -19,14 +19,14 @@ export default class MessageInput extends Component {
   }
 
   componentDidMount() {
-    textsHelper.addListener("message-input", () => {
+    this.listenerId = textsHelper.addListener(() => {
       this.texts = textsHelper.getTexts();
       this.forceUpdate();
     })
   }
 
   componentWillUnmount() {
-    textsHelper.removeListener("message-input");
+    textsHelper.removeListener(this.listenerId);
   }
 
   onSendMessage() {

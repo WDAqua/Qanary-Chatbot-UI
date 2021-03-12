@@ -9,14 +9,14 @@ export default class OptionsMenu extends Component {
   texts = textsHelper.getTexts();
 
   componentDidMount() {
-    textsHelper.addListener("options-menu", () => {
+    this.listenerId = textsHelper.addListener(() => {
       this.texts = textsHelper.getTexts();
       this.forceUpdate();
     });
   }
 
   componentWillUnmount() {
-    textsHelper.removeListener("options-menu");
+    textsHelper.removeListener(this.listenerId);
   }
 
   render() {
