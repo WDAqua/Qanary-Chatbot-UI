@@ -1,5 +1,5 @@
 import React from "react";
-import { ClickableIcon, OptionsMenu } from "..";
+import { ClickableIcon, InfoContainer, OptionsMenu } from "..";
 import "./PageHeader.css";
 import info_icon_white from "../share/imgs/info_icon_white.svg";
 import more_icon_white from "../share/imgs/more_icon_white.svg";
@@ -15,13 +15,11 @@ import more_icon_white from "../share/imgs/more_icon_white.svg";
 export default function PageHeader() {
   return (
     <>
-      <div
-        tabIndex="-1"
-        id="header"
-        className="burgundy"
-      >
+      <div tabIndex="-1" id="header" className="burgundy">
         <ClickableIcon
-          onClick={() => console.log("Hi")}
+          onClick={() => {
+            document.getElementById("imprint").classList.toggle("hidden");
+          }}
           icon={info_icon_white}
           alt={"Info"}
           style={{
@@ -35,7 +33,7 @@ export default function PageHeader() {
             document.getElementById("optionsMenu").classList.toggle("hidden");
           }}
           icon={more_icon_white}
-          alt={"Info"}
+          alt={"More"}
           style={{
             float: "right",
             height: "100%",
@@ -44,6 +42,8 @@ export default function PageHeader() {
         />
       </div>
       <OptionsMenu />
+      <InfoContainer id="imprint" info="This is an imprint." />
+      <InfoContainer id="exemplaryQuestions" info="These are exemplary questions." />
     </>
   );
 }

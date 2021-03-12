@@ -21,11 +21,7 @@ export default class OptionsMenu extends Component {
 
   render() {
     return (
-      <div
-        id="optionsMenu"
-        className="right-side hidden"
-        tabIndex="-1"
-      >
+      <div id="optionsMenu" className="right-side hidden" tabIndex="-1">
         <ClickableIcon
           onClick={() => textsHelper.changeLanguage("de")}
           className="option"
@@ -46,7 +42,15 @@ export default class OptionsMenu extends Component {
             height: "60px",
           }}
         />
-        <div className="option" tabIndex="0">
+        <div
+          className="option"
+          tabIndex="0"
+          onClick={() => {
+            document
+              .getElementById("exemplaryQuestions")
+              .classList.toggle("hidden");
+          }}
+        >
           {this.texts["options-menu"]["exemplary-questions"]}
         </div>
       </div>
