@@ -16,7 +16,22 @@
     "source-of-data": "Source of data: ",
     "robert-koch-institute": "Robert Koch Institute"
   },
+  "example-questions": {
+    "ask-question": "Ask this question"
+  },
   "options-menu": {
     "exemplary-questions": "Exemplary Questions"
-  }
+  },
+  "exemplary-questions": [
+    "Question 1",
+    "Question 2",
+    "Question 3",
+    "Question 4",
+    "Question 5",
+    "Question 6",
+    "Question 7",
+    "Question 8",
+    "Question 9",
+    "Question 10"
+  ]
 }

@@ -16,7 +16,22 @@
     "source-of-data": "Datenquelle: ",
     "robert-koch-institute": "Robert-Koch-Institut"
   },
+  "example-questions": {
+    "ask-question": "Diese Frage stellen"
+  },
   "options-menu": {
     "exemplary-questions": "Beispielfragen"
-  }
+  },
+  "exemplary-questions": [
+    "Frage Frage Frage Frage Frage Frage Frage Frage Frage Frage Frage Frage Frage Frage Frage Frage Frage Frage Frage Frage Frage Frage Frage Frage Frage Frage Frage Frage Frage Frage  1",
+    "Frage 2",
+    "Frage 3",
+    "Frage 4",
+    "Frage 5",
+    "Frage 6",
+    "Frage 7",
+    "Frage 8",
+    "Frage 9",
+    "Frage 10"
+  ]
 }

@@ -10,6 +10,7 @@ function postQuery(question) {
     graph_id: graphId ?? "",
   };
   const texts = textsHelper.getTexts();
+
   return fetch(config["chatbot-backend-url"], {
     method: "POST",
     body: JSON.stringify(requestBody),
@@ -47,7 +48,7 @@ function postQuery(question) {
           diagram: [
             {
               title: "Very serious diagram",
-              data_points: ["(1,10)", "(2,17)", "(3,42)", "(4,28)"],
+              data_points: ["(2021-01-01,1)", "(2021-02-01,2)", "(2021-03-01,3)", "(2021-04-01,4)"],
             },
           ],
         },

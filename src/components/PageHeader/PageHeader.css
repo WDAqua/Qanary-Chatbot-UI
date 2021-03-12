@@ -4,3 +4,27 @@
     width: 100%;
     z-index: 1;
 }
+
+.questionsToggle {
+    position: relative;
+    min-width: 170px;
+    height: 100%;
+}
+
+.questionsToggle:hover {
+    background-color: #861f32;
+    cursor: pointer;
+}
+
+.questionsToggle:focus {
+    outline: none;
+    background-color: #861f32;
+    text-decoration: underline 1px #000 solid;
+}
+
+.exampleQuestion {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    word-break: normal;
+}

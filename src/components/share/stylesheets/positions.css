@@ -5,6 +5,21 @@
   transform: translateY(-50%);
 }
 
+.horizontal-center {
+  position: absolute;
+  left: 50%;
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+
+.center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+
 .right-side {
     position: absolute;
     right: 0%;

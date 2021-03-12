@@ -54,7 +54,7 @@ class App extends Component {
   render() {
     return (
       <>
-        <PageHeader />
+        <PageHeader sendMessage={this.sendMessage} />
         <MessagePanel messages={this.state.messages} />
         <MessageInput
           sendMessage={this.sendMessage}

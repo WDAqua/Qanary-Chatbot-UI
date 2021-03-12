@@ -3,9 +3,9 @@ const d3 = window.d3;
 export default function loadDiagram(dataPoints, svgId) {
   // Convert data points from strings to objects
   const transformedDataPoints = dataPoints.map((dataPoint) => {
-    const matches = dataPoint.match(/\((\d*),(\d*)\)/);
+    const matches = dataPoint.match(/\(([0-9-.]*),(\d*)\)/);
     return {
-      x: matches[1],
+      x: d3.timeParse("%Y-%m-%d")(matches[1]),
       y: matches[2],
     };
   });
@@ -24,7 +24,7 @@ export default function loadDiagram(dataPoints, svgId) {
 
   // Add X axis
   const xAxis = d3
-    .scaleLinear()
+    .scaleTime()
     .domain([
       d3.min(transformedDataPoints, function (d) {
         return +d.x;
