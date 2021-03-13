@@ -81,7 +81,15 @@ export default class PageHeader extends Component {
             </span>
           </div>
         </div>
-        <ContentContainer id="imprint">This is an imprint</ContentContainer>
+        <ContentContainer id="imprint">
+          <h1>{this.texts.notice.header}</h1>
+          <h4>{this.texts.notice.credits["chatbot-header"]}</h4>
+          <div>{this.texts.notice.credits.chatbot}</div>
+          <h4>{this.texts.notice.credits["project-supervision-header"]}</h4>
+          <div>{this.texts.notice.credits["project-supervision"]}</div>
+          <h4>{this.texts.notice.credits["frontend-header"]}</h4>
+          <div>{this.texts.notice.credits.frontend}</div>
+        </ContentContainer>
         <ContentContainer id="exemplaryQuestions">
           {this.texts["exemplary-questions"].map((questionText, i) => (
             // i is the shortest unique identifier in this case and the content will not be updated

@@ -10,7 +10,8 @@
       "no-answer-found": "Es konnte keine Antwort geladen werden. Nochmal versuchen?"
   },
   "default-responses": {
-    "try-again": "Ja"
+    "try-again": "Ja",
+    "initial-message": "Hallo, ich bin ein Bot. Achten Sie bitte auf Groß- und Kleinschreibung, weil ich sonst manche Fragen nicht verstehen könnte."
   },
   "message-info": {
     "source-of-data": "Datenquelle: ",
@@ -33,5 +34,16 @@
     "Frage 8",
     "Frage 9",
     "Frage 10"
-  ]
+  ],
+  "notice": {
+    "header": "Danksagungen",
+    "credits": {
+      "chatbot-header": "Chatbot",
+      "chatbot": "Diese Anwendung wurde von dem Coronabot-Team entwickelt. Es besteht aus Johannes Richard Bartsch, Paul Heinze, Rostislav Iudin, Johannes Rudolf Herkner und Tim Schrader.",
+      "project-supervision-header": "Projektbetreuung",
+      "project-supervision": "Das Projekt wurde von Aleksandr Perevalov und Professor Both betreut.",
+      "frontend-header": "Frontend",
+      "frontend": "Das Frontend wurde von Jonas Wunsch entwickelt."
+    }
+  }
 }

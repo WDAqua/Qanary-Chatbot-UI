@@ -26,7 +26,7 @@ function postQuery(question) {
       }
     })
     .then((data) => {
-      graphId = data?.graph_id;
+      graphId = !!data["follow_up_needed"] ? data?.graph_id : "";
       return {
         question: data.question ?? question,
         answer: data.answer ?? texts["error-messages"]["no-answer-found"],

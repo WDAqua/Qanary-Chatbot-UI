@@ -68,3 +68,7 @@
     justify-content: space-evenly;
     word-break: normal;
 }
+
+#imprint.contentContainer {
+    display: initial;
+}

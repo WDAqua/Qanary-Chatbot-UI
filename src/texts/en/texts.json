@@ -10,7 +10,8 @@
       "no-answer-found": "No answer could be loaded. Try again?"
   },
   "default-responses": {
-    "try-again": "Yes"
+    "try-again": "Yes",
+    "initial-message": "Hi, I'm a bot. Please pay attention to proper capitalization because otherwise I may not understand some of your questions."
   },
   "message-info": {
     "source-of-data": "Source of data: ",
@@ -33,5 +34,16 @@
     "Question 8",
     "Question 9",
     "Question 10"
-  ]
+  ],
+  "notice": {
+    "header": "Credits",
+    "credits": {
+      "chatbot-header": "Chatbot",
+      "chatbot": "This application has been developed by the Coronabot team. Its members are Johannes Richard Bartsch, Paul Heinze, Rostislav Iudin, Johannes Rudolf Herkner and Tim Schrader.",
+      "project-supervision-header": "Project Supervision",
+      "project-supervision": "The project was supervised by Aleksandr Perevalov and Andreas Both.",
+      "frontend-header": "Frontend",
+      "frontend": "The frontend has been developed by Jonas Wunsch."
+    }
+  }
 }

@@ -3,6 +3,7 @@ import "./App.css";
 import { MessageInput, MessagePanel, PageHeader } from "./components";
 import chatBotService from "./services/chatbot.service";
 import robot_icon_black from "./components/share/imgs/robot_icon_black.svg";
+import { textsHelper } from "./helpers";
 
 class App extends Component {
   constructor(props) {
@@ -13,7 +14,20 @@ class App extends Component {
       isSending: false,
     };
 
+    this.texts = textsHelper.getTexts();
+
     this.sendMessage = this.sendMessage.bind(this);
+  }
+
+  componentDidMount() {
+    this.listenerId = textsHelper.addListener(() => {
+      this.texts = textsHelper.getTexts();
+      this.forceUpdate();
+    });
+  }
+
+  componentWillUnmount() {
+    textsHelper.removeListener(this.listenerId);
   }
 
   async sendMessage(messageText = "") {
@@ -52,10 +66,24 @@ class App extends Component {
   }
 
   render() {
+    const now = new Date();
     return (
       <>
         <PageHeader sendMessage={this.sendMessage} />
-        <MessagePanel messages={this.state.messages} />
+        <MessagePanel
+          messages={[
+            {
+              text: this.texts["default-responses"]["initial-message"],
+              followUpNeeded: false,
+              loadedSuccessfully: false, // This is to prevent the source of data bit from showing up
+              visualization: {},
+              time: now.getHours() + ":" + ("0" + now.getMinutes()).slice(-2),
+              isReply: true,
+              icon: robot_icon_black,
+            },
+            ...this.state.messages,
+          ]}
+        />
         <MessageInput
           sendMessage={this.sendMessage}
           isSending={this.state.isSending}
