@@ -16,7 +16,7 @@ export default function loadDiagram(data, svgId) {
     left: 30,
     right: 25 + data["x-axis"].Label.length * 5,
     bottom: 30,
-    top: 30,
+    top: 40,
   };
 
   // Get svg, its height and width
