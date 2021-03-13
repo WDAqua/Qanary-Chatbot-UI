@@ -16,7 +16,7 @@ export default class MessagePanel extends Component {
         {this.props.messages.map((message, i) =>
           // i is the shortest unique identifier in this case and the content will not be shuffled, so i is constant
           !!message.visualization ? (
-            <RichMessage key={i} messageObject={message} />
+            <RichMessage key={i} id={i} messageObject={message} />
           ) : (
             <Message key={i} messageObject={message} />
           )

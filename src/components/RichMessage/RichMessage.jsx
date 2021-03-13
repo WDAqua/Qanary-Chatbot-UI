@@ -25,11 +25,13 @@ export default function RichMessage(props) {
             : null}
         </div>
 
-        {!!props.messageObject?.visualization?.diagram && props.messageObject.followUpNeeded != null && !props.messageObject.followUpNeeded ? (
+        {!!props.messageObject?.visualization?.diagram &&
+        props.messageObject.followUpNeeded != null &&
+        !props.messageObject.followUpNeeded ? (
           <div tabIndex="-1" className="diagramContainer">
             <Diagram
               diagramData={props.messageObject.visualization.diagram}
-              id={`diagram-${document.querySelectorAll(".diagram").length}`}
+              id={`diagram-${props.id}`}
             />
           </div>
         ) : null}

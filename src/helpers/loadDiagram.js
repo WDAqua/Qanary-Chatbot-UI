@@ -1,6 +1,7 @@
 const d3 = window.d3;
 
 export default function loadDiagram(data, svgId) {
+  console.log(data, svgId);
   const dataPoints = data.data_points;
   // Convert data points from strings to objects
   const transformedDataPoints = dataPoints.map((dataPoint) => {

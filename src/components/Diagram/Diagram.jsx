@@ -16,6 +16,10 @@ export default class Diagram extends Component {
     });
   }
 
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.resizeSVG);
+  }
+
   resizeSVG() {
     this.forceUpdate();
     this.redrawDiagram();
@@ -28,7 +32,7 @@ export default class Diagram extends Component {
   }
 
   redrawDiagram() {
-    const svgElement = document.querySelector("svg");
+    const svgElement = document.querySelector(`#${this.props.id}`);
     while (svgElement?.lastChild) {
       svgElement.removeChild(svgElement.lastChild);
     }
