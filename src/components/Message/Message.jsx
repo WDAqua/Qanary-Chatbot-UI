@@ -55,7 +55,7 @@ export default class Message extends Component {
             }}
           >
           </div>
-          {!this.props.messageObject?.follow_up_needed &&
+          {!this.props.messageObject?.followUpNeeded &&
           !!this.props.messageObject?.isReply &&
           !!this.props.messageObject?.loadedSuccessfully ? (
             <div
