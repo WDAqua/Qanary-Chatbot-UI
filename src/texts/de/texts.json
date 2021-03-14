@@ -18,7 +18,7 @@
   },
   "default-responses": {
     "try-again": "Ja",
-    "initial-message": "Hallo, ich bin Coronabot. Ich beantworte Fragen zu den Fallzahlen des Coronavirus bzw. COVID-19 in Deutschland. Ich bin keine offizielle Informationsquelle, sondern ein Demonstrator. Der offizielle deutsche Chatbot zum Thema COVID-19 ist unter <a rel=\"noreferrer\" target=\"_blank\" href=\"https://chatbot.it.bund.de/\">chatbot.it.bund.de</a> abrufbar. Dieser Demonstrator wurde an der <a rel=\"noreferrer\" target=\"_blank\" href=\"https://hs-anhalt.de/\">Hochschule Anhalt</a> entwickelt. Mehr Informationen dazu werden im Bereich <img src=\"imgs/info_icon_white.svg\" alt=\"Informationen\" style=\"cursor: text\"></img> dargestellt."
+    "initial-message": "Hallo, ich bin Coronabot. Ich beantworte Fragen zu den Fallzahlen des Coronavirus bzw. COVID-19 in Deutschland. Ich nutze zwar die offiziellen Datenquellen des RKI, aber ich bin keine offizielle Anwendung, sondern ein Demonstrator. Der offizielle deutsche Chatbot zum Thema COVID-19 ist unter <a rel=\"noreferrer\" target=\"_blank\" href=\"https://chatbot.it.bund.de/\">chatbot.it.bund.de</a> abrufbar. Dieser Demonstrator wurde an der <a rel=\"noreferrer\" target=\"_blank\" href=\"https://hs-anhalt.de/\">Hochschule Anhalt</a> entwickelt. Mehr Informationen dazu werden im Bereich <img src=\"imgs/info_icon_white.svg\" alt=\"Informationen\" style=\"cursor: text\"></img> dargestellt."
   },
   "message-info": {
     "source-of-data": "Datenquelle: ",
