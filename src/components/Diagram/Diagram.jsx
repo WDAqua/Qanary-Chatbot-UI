@@ -40,20 +40,24 @@ export default class Diagram extends Component {
   }
 
   render() {
-    const width =
-      parseInt(document.querySelector(".richContentContainer")?.clientWidth) * 0.6 ?? 300;
+    const width = Math.min(
+      parseInt(document.querySelector(".richContentContainer")?.clientWidth) *
+        0.6 ?? 300,
+      800
+    );
+    console.log(width);
     // pick height at 2/5th the width to create a nice landscape ratio
     const height = (width * 2) / 5;
     return (
       <div>
-      <svg
-        tabIndex="0"
-        className="diagram"
-        id={this.props.id}
-        width={`${width}`}
-        height={`${height}`}
-      />
-      <div className="diagramTitle">{this.props.diagramData.title}</div>
+        <svg
+          tabIndex="0"
+          className="diagram"
+          id={this.props.id}
+          width={`${width}`}
+          height={`${height}`}
+        />
+        <div className="diagramTitle">{this.props.diagramData.title}</div>
       </div>
     );
   }
