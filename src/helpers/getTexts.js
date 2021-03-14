@@ -21,6 +21,10 @@ function changeLanguage(newLanguage = "de") {
   listeners.forEach((listener) => listener.callback());
 }
 
+function getCurrentLanguage() {
+  return currentLanguage;
+}
+
 function getTexts() {
   return texts;
 }
@@ -39,4 +43,4 @@ function removeListener(id) {
   listeners.splice(listenerPosition, 1);
 }
 
-export { changeLanguage, getTexts, addListener, removeListener };
+export { changeLanguage, getTexts, addListener, removeListener, getCurrentLanguage };

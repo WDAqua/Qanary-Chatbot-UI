@@ -1,14 +1,34 @@
 #header {
     position: relative;
+    display: flex;
+    flex-wrap: nowrap;
     height: 75px;
     width: 100%;
     z-index: 1;
+    background-color: var(--dark-teal);
+}
+
+#header > *{
+    flex-grow: 1;
+    flex-shrink: 2;
 }
 
 .questionsToggle {
     position: relative;
     min-width: 80px;
     height: 100%;
+}
+
+.pageTitle {
+    position: relative;
+    flex-grow: 15 !important;
+    height: 100%;
+}
+.pageTitle > a {
+    font-size: x-large;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
 }
 
 @media screen and (max-width: 339px) {
@@ -18,7 +38,7 @@
 }
 
 @media screen and (max-width: 319px) {
-    .questionsToggle {
+    .questionsToggle, .pageTitle > a {
         min-width: 60px;
         font-size: small;
     }
@@ -29,7 +49,7 @@
 }
 
 @media screen and (max-width: 269px) {
-    .questionsToggle {
+    .questionsToggle, .pageTitle > a {
         min-width: 50px;
         font-size: x-small;
     }
@@ -40,7 +60,7 @@
 }
 
 @media screen and (max-width: 229px) {
-    .questionsToggle {
+    .questionsToggle, .pageTitle > a {
         min-width: 40px;
         font-size: xx-small;
     }
@@ -51,13 +71,13 @@
 }
 
 .questionsToggle:hover {
-    background-color: #861f32;
+    background-color: var(--bright-teal);
     cursor: pointer;
 }
 
 .questionsToggle:focus {
     outline: none;
-    background-color: #861f32;
+    background-color: var(--bright-teal);
     text-decoration: underline 1px #000 solid;
 }
 

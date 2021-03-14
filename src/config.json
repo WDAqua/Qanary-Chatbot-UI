@@ -1,4 +1,5 @@
 {
     "chatbot-backend-url": "https://webengineering.ins.hs-anhalt.de:44020",
+    "chatbot-frontend-url": "http://coronabot.ins.hs-anhalt.de/",
     "default-language": "de"
 }

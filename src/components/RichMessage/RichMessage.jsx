@@ -14,7 +14,6 @@ export default function RichMessage(props) {
                 <Button
                   text={button.title ?? ""}
                   key={i}
-                  className="light-pink"
                   style={{
                     minWidth: `${100}px`,
                     height: `${35}px`,

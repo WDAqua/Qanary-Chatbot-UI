@@ -1,12 +1,10 @@
 import React, { Component } from "react";
 import { Button, ClickableIcon, ContentContainer } from "..";
 import { textsHelper } from "../../helpers";
-import german_flag_icon from "../share/imgs/german_flag_icon.webp";
-import english_flag_icon from "../share/imgs/english_flag_icon.webp";
+import flag_icon from "../share/imgs/flag_icon.webp";
 import info_icon_white from "../share/imgs/info_icon_white.svg";
 import "./PageHeader.css";
-//import info_icon_black from '../share/imgs/info_icon_black.svg'
-//import more_icon_black from '../share/imgs/more_icon_black.svg'
+import config from "../../config.json";
 
 /**
  * @name PageHeader
@@ -31,55 +29,56 @@ export default class PageHeader extends Component {
   render() {
     return (
       <>
-        <div tabIndex="-1" id="header" className="burgundy">
+        <div tabIndex="-1" id="header">
           <ClickableIcon
             onClick={() => {
               document.getElementById("imprint").classList.toggle("hidden");
             }}
             icon={info_icon_white}
-            alt={"Info"}
-            style={{
-              float: "left",
-              height: "100%",
-              width: "60px",
-            }}
-          />
-          <ClickableIcon
-            onClick={() => textsHelper.changeLanguage("de")}
-            alt="Deutsch"
-            icon={german_flag_icon}
-            style={{
-              float: "right",
-              width: "100px",
-              height: "60px",
-            }}
-          />
-          <ClickableIcon
-            onClick={() => textsHelper.changeLanguage("en")}
-            alt="English"
-            icon={english_flag_icon}
-            style={{
-              float: "right",
-              width: "100px",
-              height: "60px",
-            }}
+            alt={this.texts["page-header"].icons["info-alt"]}
           />
           <div
-            className="questionsToggle"
+            className="pageTitle"
             tabIndex="0"
+          >
+            <a
+              href={config["chatbot-frontend-url"]}
+              rel="noreferrer"
+              target="_self"
+              className="center white-text"
+            >
+              {this.texts["page-header"].title}
+            </a>
+          </div>
+          <div
+            className="questionsToggle"
+            tabIndex="-1"
             onClick={() => {
               document
                 .getElementById("exemplaryQuestions")
                 .classList.toggle("hidden");
-            }}
-            style={{
-              float: "right",
             }}
           >
             <span className="center white-text">
               {this.texts["options-menu"]["exemplary-questions"]}
             </span>
           </div>
+          <ClickableIcon
+            onClick={() => {
+              if (textsHelper.getCurrentLanguage() === "de") {
+                textsHelper.changeLanguage("en");
+              } else {
+                textsHelper.changeLanguage("de");
+              }
+            }}
+            alt={this.texts["page-header"].icons["change-language-alt"]}
+            icon={flag_icon}
+            style={{
+              position: "relative",
+              top: "10px",
+              height: "40px",
+            }}
+          />
         </div>
         <ContentContainer id="imprint">
           <h1>{this.texts.notice.header}</h1>
@@ -96,7 +95,12 @@ export default class PageHeader extends Component {
             <div key={i} className="exampleQuestion">
               {questionText}
               <Button
-                onClick={() => this.props.sendMessage(questionText)}
+                onClick={() => {
+                  this.props.sendMessage(questionText);
+                  document
+                    .getElementById("exemplaryQuestions")
+                    .classList.toggle("hidden");
+                }}
                 text={this.texts["example-questions"]["ask-question"]}
               />
             </div>

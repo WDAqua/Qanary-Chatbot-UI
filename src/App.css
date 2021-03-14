@@ -1,4 +1,15 @@
+@font-face {
+  font-family: BundesSans;
+  src: url("./fonts/BundesSansWeb-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+}
+
 #root {
+  --bright-teal: #007787;
+  --dark-teal: #174c57;
+  --bright-blue: #80cdec;
+
   position: absolute;
   height: 100%;
   width: 100%;
@@ -10,5 +21,5 @@
 }
 
 #root * {
-  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-family: BundesSans, sans-serif;
 }

@@ -40,8 +40,7 @@ export default class Message extends Component {
         <div
           tabIndex="0"
           className={
-            "messageDataContainer" +
-            (!!this.props.messageObject?.isReply ? " burgundy" : "")
+            "messageDataContainer"
           }
         >
           <div
@@ -51,8 +50,10 @@ export default class Message extends Component {
                 ? " white-text"
                 : " black-text")
             }
+            dangerouslySetInnerHTML={{
+              __html: this.props.messageObject?.text ?? "",
+            }}
           >
-            {this.props.messageObject?.text ?? ""}
           </div>
           {!this.props.messageObject?.follow_up_needed &&
           !!this.props.messageObject?.isReply &&
@@ -75,7 +76,7 @@ export default class Message extends Component {
               </a>{" "}
             </div>
           ) : null}
-          <div className="messageTimeSent light-pink-text">
+          <div className="messageTimeSent">
             {this.props.messageObject?.time}
           </div>
         </div>

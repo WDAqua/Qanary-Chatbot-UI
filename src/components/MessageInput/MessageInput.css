@@ -16,6 +16,7 @@
   width: 90%;
   resize: none;
   display: inline-block;
+  padding: 1ex;
 }
 
 #inputTextBox::placeholder {

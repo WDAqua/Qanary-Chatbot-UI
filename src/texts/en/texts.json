@@ -1,17 +1,24 @@
 {
+  "page-header": {
+    "title": "Coronabot Demonstrator",
+    "icons": {
+      "change-language-alt": "Change language",
+      "info-alt": "Information"
+    }
+  },
   "message-input": {
     "submit-button": "Send",
     "placeholder-text": "Your question to me..."
   },
   "clickable-icon": {
-      "fallback-text": "No icon was found"
+    "fallback-text": "No icon was found"
   },
   "error-messages": {
-      "no-answer-found": "No answer could be loaded. Try again?"
+    "no-answer-found": "No answer could be loaded. Try again?"
   },
   "default-responses": {
     "try-again": "Yes",
-    "initial-message": "Hi, I'm a bot. Please pay attention to proper capitalization because otherwise I may not understand some of your questions."
+    "initial-message": "Hello, I am Coronabot. I answer questions about the number of cases of COVID-19 in Germany. \\I am not an official source of information, but a demonstrator. The official German chatbot on COVID-19 is available at <a rel=\"noreferrer\" target=\"_blank\" href=\"https://chatbot.it.bund.de/\">chatbot.it.bund.de</a>. This demonstrator was developed at <a rel=\"noreferrer\" target=\"_blank\" href=\"https://www.hs-anhalt.de/en/start-page.html\">Anhalt University of Applied Sciences</a>. More information on this regard is presented in the <img src=\"imgs/info_icon_white.svg\" alt=\"Information\" style=\"cursor: text\"></img> section."
   },
   "message-info": {
     "source-of-data": "Source of data: ",
