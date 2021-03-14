@@ -13,7 +13,7 @@ export default function loadDiagram(data, svgId) {
   });
 
   const margin = {
-    left: 30,
+    left: 50,
     right: 25 + data["x-axis"].Label.length * 5,
     bottom: 30,
     top: 40,
