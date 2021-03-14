@@ -5,6 +5,7 @@
     overflow-y: auto;
 }
 
+/*
 #messagePanel::before {
     content: 'Covid-19 Chatbot';
     text-align: center;
@@ -16,3 +17,4 @@
     margin-bottom: 3vh;
     color: var(--dark-teal);
 }
+*/
