@@ -36,6 +36,12 @@ export default class PageHeader extends Component {
             }}
             icon={info_icon_white}
             alt={this.texts["page-header"].icons["info-alt"]}
+            style={{
+              position: "relative",
+              maxWidth: "100px",
+              maxHeight: "40px",
+              top: "calc((100% - 40px) / 2)",
+            }}
           />
           <div
             className="pageTitle"
@@ -75,8 +81,9 @@ export default class PageHeader extends Component {
             icon={flag_icon}
             style={{
               position: "relative",
-              top: "10px",
-              height: "40px",
+              maxWidth: "100px",
+              maxHeight: "40px",
+              top: "calc((100% - 40px) / 2)",
             }}
           />
         </div>
