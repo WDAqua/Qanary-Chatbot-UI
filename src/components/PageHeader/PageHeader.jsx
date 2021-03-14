@@ -87,9 +87,7 @@ export default class PageHeader extends Component {
             }}
           />
         </div>
-        <ContentContainer id="imprint">
-          {this.texts.credits}
-        </ContentContainer>
+        <ContentContainer id="imprint" dangerouslySetInnerHTML={this.texts.credits} />
         <ContentContainer id="exemplaryQuestions">
           {this.texts["exemplary-questions"].map((questionText, i) => (
             // i is the shortest unique identifier in this case and the content will not be updated
