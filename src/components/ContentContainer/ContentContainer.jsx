@@ -17,10 +17,12 @@ export default function ContentContainer(props) {
       onBlur={(blurEvent) => {
         const self = document.getElementById(props.id);
         if (
-          !document.getElementById("header").contains(blurEvent.relatedTarget) &&
+          !document
+            .getElementById("header")
+            .contains(blurEvent.relatedTarget) &&
           !self.contains(blurEvent.relatedTarget)
         ) {
-          self.classList.toggle("hidden");
+          self.classList.add("hidden");
         }
       }}
     >
