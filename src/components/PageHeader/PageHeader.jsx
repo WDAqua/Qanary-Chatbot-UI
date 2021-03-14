@@ -33,6 +33,12 @@ export default class PageHeader extends Component {
           <ClickableIcon
             onClick={() => {
               const imprint = document.getElementById("imprint");
+              const exemplaryQuestions = document.getElementById(
+                "exemplaryQuestions"
+              );
+              if (!exemplaryQuestions.classList.contains("hidden")) {
+                exemplaryQuestions.classList.toggle("hidden");
+              }
               imprint.classList.toggle("hidden");
               imprint.focus();
             }}
@@ -62,6 +68,10 @@ export default class PageHeader extends Component {
               const exemplaryQuestion = document.getElementById(
                 "exemplaryQuestions"
               );
+              const imprint = document.getElementById("imprint");
+              if (!imprint.classList.contains("hidden")) {
+                imprint.classList.toggle("hidden");
+              }
               exemplaryQuestion.classList.toggle("hidden");
               exemplaryQuestion.focus();
             }}
