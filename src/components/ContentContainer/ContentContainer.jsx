@@ -6,8 +6,10 @@ export default function ContentContainer(props) {
     <div
       id={props.id ?? ""}
       className={"contentContainer hidden" + (props.className ?? "")}
+      dangerouslySetInnerHTML={{
+        __html: (props.children ?? undefined),
+      }}
     >
-      {props.children ?? ""}
     </div>
   );
 }

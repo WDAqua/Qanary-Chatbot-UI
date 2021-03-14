@@ -42,15 +42,5 @@
     "Frage 9",
     "Frage 10"
   ],
-  "notice": {
-    "header": "Danksagungen",
-    "credits": {
-      "chatbot-header": "Chatbot",
-      "chatbot": "Diese Anwendung wurde von dem Coronabot-Team entwickelt. Es besteht aus Johannes Richard Bartsch, Paul Heinze, Rostislav Iudin, Johannes Rudolf Herkner und Tim Schrader.",
-      "project-supervision-header": "Projektbetreuung",
-      "project-supervision": "Das Projekt wurde von Aleksandr Perevalov und Professor Both betreut.",
-      "frontend-header": "Frontend",
-      "frontend": "Das Frontend wurde von Jonas Wunsch entwickelt."
-    }
-  }
+  "credits": "Diese Anwendung wurde am <a href=\"https://www.hs-anhalt.de/hochschule-anhalt/fachbereich-5/ueberblick.html\" target=\"_blank\" rel=\"noreferrer\">Fachbereich Informatik und Sprachen</a> der <a href=\"https://hs-anhalt.de/\" target=\"_blank\" rel=\"noreferrer\">Hochschule Anhalt</a> im Rahmen der Lehrveranstaltung &quot;Question Answering &amp; Chatbots&quot; unter der Leitung von <a href=\"https://www.hs-anhalt.de/hochschule-anhalt/service/personenverzeichnis/prof-dr-andreas-both.html\" target=\"_blank\" rel=\"noreferrer\">Prof. Dr. Andreas Both</a> entwickelt. Die Betreuung erfolgte durch Prof. Both und <a href=\"https://www.hs-anhalt.de/hochschule-anhalt/service/personenverzeichnis/aleksandr-perevalov.html\" target=\"_blank\" rel\"noreferrer\">Aleksandr Perevalov</a> sowie durch die Projektpartner des <a href=\"https://www.bmi.bund.de/\" target=\"_blank\" rel=\"noreferrer\">Bundesministerium des Innern, für Bau und Heimat</a> und <a href=\"https://www.itzbund.de/\" target=\"_blank\" rel=\"noreferrer\">ITZBund</a>. Es handelt sich hierbei um einen wissenschaftlichen Demonstrator, der offizielle deutsche COVID-19 Chatbot ist <a href=\"https://chatbot.it.bund.de/\" target=\"_blank\" rel=\"noreferrer\">hier</a> abrufbar.<p><h3>Projektteam</h3>Das studentische Projektteam bestand aus: <ul><li>Backend: Johannes Richard Bartsch, Paul Heinze, Rostislav Iudin, Johannes Rudolf Herkner and Tim Schrader<li>Frontend: Jonas Wunsch</ul>"
 }

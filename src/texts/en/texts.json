@@ -42,15 +42,5 @@
     "Question 9",
     "Question 10"
   ],
-  "notice": {
-    "header": "Credits",
-    "credits": {
-      "chatbot-header": "Chatbot",
-      "chatbot": "This application has been developed by the Coronabot team. Its members are Johannes Richard Bartsch, Paul Heinze, Rostislav Iudin, Johannes Rudolf Herkner and Tim Schrader.",
-      "project-supervision-header": "Project Supervision",
-      "project-supervision": "The project was supervised by Aleksandr Perevalov and Andreas Both.",
-      "frontend-header": "Frontend",
-      "frontend": "The frontend has been developed by Jonas Wunsch."
-    }
-  }
+  "credits": "This application was developed at the <a href=\"https://www.hs-anhalt.de/hochschule-anhalt/fachbereich-5/ueberblick.html\" target=\"_blank\" rel=\"noreferrer\">Department of Computer Science and Languages</a> of the <a href=\"https://hs-anhalt.de/\" target=\"_blank\" rel=\"noreferrer\">Anhalt University of Applied Sciences</a> as part of the course &quot;Question Answering &amp; Chatbots&quot; under the direction of <a href=\"https://www.hs-anhalt.de/hochschule-anhalt/service/personenverzeichnis/prof-dr-andreas-both.html\" target=\"_blank\" rel=\"noreferrer\">Prof. Dr. Andreas Both</a>. Supervision was provided by Prof. Both and <a href=\"https://www.hs-anhalt.de/hochschule-anhalt/service/personenverzeichnis/aleksandr-perevalov.html\" target=\"_blank\" rel=\"noreferrer\">Aleksandr Perevalov</a>, as well as project partners from the <a href=\"https://www.bmi.bund.de/\" target=\"_blank\" rel=\"noreferrer\">Federal Ministry of the Interior, for Construction and Home Affairs</a> and <a href=\"https://www.itzbund.de/\" target=\"_blank\" rel=\"noreferrer\">ITZBund</a>. This is a scientific demonstrator, the official German COVID-19 chatbot is available <a href=\"https://chatbot.it.bund.de/\" target=\"_blank\" rel=\"noreferrer\">here</a>.<p><h3>Projekt Team</h3>The project team consisted of the following students: <ul><li>Backend: Johannes Richard Bartsch, Paul Heinze, Rostislav Iudin, Johannes Rudolf Herkner and Tim Schrader<li>Frontend: Jonas Wunsch</ul>"
 }
