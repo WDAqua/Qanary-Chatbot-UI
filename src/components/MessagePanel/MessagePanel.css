@@ -5,7 +5,7 @@
     overflow-y: auto;
 }
 
-#messagePanel *:first-child {
+#messagePanel > *:first-child {
     margin-top: 2vh;
 }
 
