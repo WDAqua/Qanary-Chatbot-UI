@@ -96,7 +96,7 @@ export default class PageHeader extends Component {
           {this.texts["exemplary-questions"].map((questionText, i) => (
             // i is the shortest unique identifier in this case and the content will not be updated
             <div key={i} className="exampleQuestion">
-              {questionText}
+              <div>{questionText}</div>
               <Button
                 onClick={() => {
                   this.props.sendMessage(questionText);

@@ -31,16 +31,16 @@
     "exemplary-questions": "Beispiele"
   },
   "exemplary-questions": [
-    "Frage Frage Frage Frage Frage Frage Frage Frage Frage Frage Frage Frage Frage Frage Frage Frage Frage Frage Frage Frage Frage Frage Frage Frage Frage Frage Frage Frage Frage Frage  1",
-    "Frage 2",
-    "Frage 3",
-    "Frage 4",
-    "Frage 5",
-    "Frage 6",
-    "Frage 7",
-    "Frage 8",
-    "Frage 9",
-    "Frage 10"
+    "Tote Köln",
+    "Infektionszahlen Frankfurt",
+    "Wie viele Fälle gab es im Februar in Berlin Spandau?",
+    "Fälle 12.02.2021",
+    "Wie viele Fälle wurden diese Woche gemeldet?",
+    "Infektionszahlen Januar",
+    "Todeszahlen Oktober",
+    "Wie viele Tote gab es im Februar in Quedlinburg?",
+    "Fälle gestern",
+    "Wie viele Fälle wurden im Juni in Berlin und Brandenburg gemeldet?"
   ],
   "credits": "Diese Anwendung wurde am <a href=\"https://www.hs-anhalt.de/hochschule-anhalt/fachbereich-5/ueberblick.html\" target=\"_blank\" rel=\"noreferrer\">Fachbereich Informatik und Sprachen</a> der <a href=\"https://hs-anhalt.de/\" target=\"_blank\" rel=\"noreferrer\">Hochschule Anhalt</a> im Rahmen der Lehrveranstaltung &quot;Question Answering &amp; Chatbots&quot; unter der Leitung von <a href=\"https://www.hs-anhalt.de/hochschule-anhalt/service/personenverzeichnis/prof-dr-andreas-both.html\" target=\"_blank\" rel=\"noreferrer\">Prof. Dr. Andreas Both</a> entwickelt. Die Betreuung erfolgte durch Prof. Both und <a href=\"https://www.hs-anhalt.de/hochschule-anhalt/service/personenverzeichnis/aleksandr-perevalov.html\" target=\"_blank\" rel\"noreferrer\">Aleksandr Perevalov</a> sowie durch die Projektpartner des <a href=\"https://www.bmi.bund.de/\" target=\"_blank\" rel=\"noreferrer\">Bundesministerium des Innern, für Bau und Heimat</a> und <a href=\"https://www.itzbund.de/\" target=\"_blank\" rel=\"noreferrer\">ITZBund</a>. Es handelt sich hierbei um einen wissenschaftlichen Demonstrator, der offizielle deutsche COVID-19 Chatbot ist <a href=\"https://chatbot.it.bund.de/\" target=\"_blank\" rel=\"noreferrer\">hier</a> abrufbar.<p><h3>Projektteam</h3>Das studentische Projektteam bestand aus Studierenden unserer Studieng&auml;nge &quot;Angewandte Informatik&quot; (Bachelor) und &quot;Data Science&quot; (Master): <ul><li>Backend: Johannes Richard Bartsch, Paul Heinze, Rostislav Iudin, Johannes Rudolf Herkner and Tim Schrader<li>Frontend: Jonas Wunsch</ul>"
 }

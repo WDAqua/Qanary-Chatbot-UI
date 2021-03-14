@@ -89,6 +89,10 @@
     word-break: normal;
 }
 
+.exampleQuestion div:not(.button) {
+    width: 60%;
+}
+
 #imprint.contentContainer {
     display: initial;
 }

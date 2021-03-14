@@ -31,16 +31,16 @@
     "exemplary-questions": "Examples"
   },
   "exemplary-questions": [
-    "Question 1",
-    "Question 2",
-    "Question 3",
-    "Question 4",
-    "Question 5",
-    "Question 6",
-    "Question 7",
-    "Question 8",
-    "Question 9",
-    "Question 10"
+    "How many cases were reported in august in Magdeburg?",
+    "How many people died in Halle?",
+    "case numbers 12.02.2021",
+    "infections Frankfurt",
+    "infections july",
+    "deaths yesterday",
+    "Infections in Berlin and Kiel",
+    "How many cases were reported last month?",
+    "deaths last week in Frankfurt and Bitterfeld",
+    "How many cases were reported on the first of april 2020?"
   ],
   "credits": "This application was developed at the <a href=\"https://www.hs-anhalt.de/hochschule-anhalt/fachbereich-5/ueberblick.html\" target=\"_blank\" rel=\"noreferrer\">Department of Computer Science and Languages</a> of the <a href=\"https://hs-anhalt.de/\" target=\"_blank\" rel=\"noreferrer\">Anhalt University of Applied Sciences</a> as part of the course &quot;Question Answering &amp; Chatbots&quot; under the direction of <a href=\"https://www.hs-anhalt.de/en/university/service/directory-of-people/prof-dr-andreas-both.html\" target=\"_blank\" rel=\"noreferrer\">Prof. Dr. Andreas Both</a>. Supervision was provided by Prof. Both and <a href=\"https://www.hs-anhalt.de/en/university/service/directory-of-people/aleksandr-perevalov.html\" target=\"_blank\" rel=\"noreferrer\">Aleksandr Perevalov</a>, as well as project partners from the <a href=\"https://www.bmi.bund.de/\" target=\"_blank\" rel=\"noreferrer\">Federal Ministry of the Interior, for Construction and Home Affairs</a> and <a href=\"https://www.itzbund.de/\" target=\"_blank\" rel=\"noreferrer\">ITZBund</a>. This is a scientific demonstrator, the official German COVID-19 chatbot is available <a href=\"https://chatbot.it.bund.de/\" target=\"_blank\" rel=\"noreferrer\">here</a>.<p><h3>Projekt Team</h3>The project team consisted of the following students of our study programs &quot;Bachelor Applied Computer Science&quot; and &quot;Master Data Science&quot;: <ul><li>Backend: Johannes Richard Bartsch, Paul Heinze, Rostislav Iudin, Johannes Rudolf Herkner and Tim Schrader</li><li>Frontend: Jonas Wunsch</li></ul>"
 }
