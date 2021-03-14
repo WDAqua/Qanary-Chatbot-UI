@@ -5,6 +5,10 @@
     overflow-y: auto;
 }
 
+#messagePanel *:first-child {
+    margin-top: 2vh;
+}
+
 /*
 #messagePanel::before {
     content: 'Covid-19 Chatbot';

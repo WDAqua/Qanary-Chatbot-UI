@@ -32,7 +32,9 @@ export default class PageHeader extends Component {
         <div tabIndex="-1" id="header">
           <ClickableIcon
             onClick={() => {
-              document.getElementById("imprint").classList.toggle("hidden");
+              const imprint = document.getElementById("imprint");
+              imprint.classList.toggle("hidden");
+              imprint.focus();
             }}
             icon={info_icon_white}
             alt={this.texts["page-header"].icons["info-alt"]}
@@ -43,10 +45,7 @@ export default class PageHeader extends Component {
               top: "calc((100% - 40px) / 2)",
             }}
           />
-          <div
-            className="pageTitle"
-            tabIndex="0"
-          >
+          <div className="pageTitle" tabIndex="0">
             <a
               href={config["chatbot-frontend-url"]}
               rel="noreferrer"
@@ -60,9 +59,11 @@ export default class PageHeader extends Component {
             className="questionsToggle"
             tabIndex="-1"
             onClick={() => {
-              document
-                .getElementById("exemplaryQuestions")
-                .classList.toggle("hidden");
+              const exemplaryQuestion = document.getElementById(
+                "exemplaryQuestions"
+              );
+              exemplaryQuestion.classList.toggle("hidden");
+              exemplaryQuestion.focus();
             }}
           >
             <span className="center white-text">
@@ -87,7 +88,10 @@ export default class PageHeader extends Component {
             }}
           />
         </div>
-        <ContentContainer id="imprint" dangerouslySetInnerHTML={this.texts.credits} />
+        <ContentContainer
+          id="imprint"
+          dangerouslySetInnerHTML={this.texts.credits}
+        />
         <ContentContainer id="exemplaryQuestions">
           {this.texts["exemplary-questions"].map((questionText, i) => (
             // i is the shortest unique identifier in this case and the content will not be updated
