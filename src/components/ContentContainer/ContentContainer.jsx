@@ -6,13 +6,22 @@ export default function ContentContainer(props) {
     <div
       id={props.id ?? ""}
       className={"contentContainer hidden" + (props.className ?? "")}
-      dangerouslySetInnerHTML={!!props.dangerouslySetInnerHTML ? {
-        __html: (props.dangerouslySetInnerHTML),
-      } : undefined}
+      dangerouslySetInnerHTML={
+        !!props.dangerouslySetInnerHTML
+          ? {
+              __html: props.dangerouslySetInnerHTML,
+            }
+          : undefined
+      }
       tabIndex="0"
-      onBlur={() => {
+      onBlur={(blurEvent) => {
         const self = document.getElementById(props.id);
-        self.classList.toggle("hidden");
+        if (
+          !document.getElementById("header").contains(blurEvent.relatedTarget) &&
+          !self.contains(blurEvent.relatedTarget)
+        ) {
+          self.classList.toggle("hidden");
+        }
       }}
     >
       {props.children ?? undefined}
