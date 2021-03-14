@@ -2,7 +2,7 @@ import { Component } from "react";
 import "./App.css";
 import { MessageInput, MessagePanel, PageHeader } from "./components";
 import chatBotService from "./services/chatbot.service";
-import robot_icon_black from "./components/share/imgs/robot_icon_black.svg";
+import robot_icon from "./components/share/imgs/robot_icon.svg";
 import { textsHelper } from "./helpers";
 
 class App extends Component {
@@ -57,7 +57,7 @@ class App extends Component {
       visualization: reply.visualization,
       time: now.getHours() + ":" + ("0" + now.getMinutes()).slice(-2),
       isReply: true,
-      icon: robot_icon_black,
+      icon: robot_icon,
     });
     this.setState({
       messages: messagesCopy,
@@ -79,7 +79,7 @@ class App extends Component {
               visualization: {},
               time: now.getHours() + ":" + ("0" + now.getMinutes()).slice(-2),
               isReply: true,
-              icon: robot_icon_black,
+              icon: robot_icon,
             },
             ...this.state.messages,
           ]}
