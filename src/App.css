@@ -6,10 +6,6 @@
 }
 
 #root {
-  --bright-teal: #007787;
-  --dark-teal: #174c57;
-  --bright-blue: #80cdec;
-
   position: absolute;
   height: 100%;
   width: 100%;

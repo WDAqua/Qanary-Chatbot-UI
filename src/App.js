@@ -3,6 +3,7 @@ import "./App.css";
 import { MessageInput, MessagePanel, PageHeader } from "./components";
 import chatBotService from "./services/chatbot.service";
 import robot_icon from "./components/share/imgs/robot_icon.svg";
+import user_icon from "./components/share/imgs/account_icon_black.svg";
 import { textsHelper } from "./helpers";
 
 class App extends Component {
@@ -39,6 +40,7 @@ class App extends Component {
       time: now.getHours() + ":" + ("0" + now.getMinutes()).slice(-2),
       isReply: false,
       loadedSuccessfully: true,
+      icon: user_icon,
     });
     let reply = await chatBotService.postQuery(messageText);
     if (!!reply.visualization?.buttons)

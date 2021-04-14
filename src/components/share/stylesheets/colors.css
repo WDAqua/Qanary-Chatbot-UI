@@ -1,17 +1,15 @@
+#root {
+    --bright-teal: #007787;
+    --dark-teal: #174c57;
+    --bright-blue: #80cdec;
+}
+
 .light-gray {
     background-color: #b2b2b2 !important;
 }
 
 .dark-gray {
     background-color: #8f8e8e;
-}
-
-.burgundy {
-    background-color: #aa2941;
-}
-
-.light-pink {
-    background-color: #e09ba9;
 }
 
 .white-text {
@@ -28,8 +26,4 @@
 
 .white-text > a {
     color: rgb(197, 197, 197);
-}
-
-.light-pink-text {
-    color: #e09ba9;;
 }
