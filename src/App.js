@@ -5,6 +5,7 @@ import chatBotService from "./services/chatbot.service";
 import robot_icon from "./components/share/imgs/robot_icon.svg";
 import user_icon from "./components/share/imgs/account_icon_black.svg";
 import { textsHelper } from "./helpers";
+import CONFIG from "./config.json";
 
 class App extends Component {
   constructor(props) {
@@ -23,11 +24,17 @@ class App extends Component {
   componentDidMount() {
     const queryParams = window.location;
     // This RegExp accepts either ?q=questionText or &q=questionText to be as flexible as possible
-    const potentialQueries = /\?q=([^&]*)|&q=([^&]*)/.exec(queryParams);
+    const queryRegExp = new RegExp(
+      `?${CONFIG["initial-question-parameter-name"]}=([^&]*)|&${CONFIG["initial-question-parameter-name"]}=([^&]*)`
+    );
+    const potentialQueries = queryRegExp.exec(queryParams);
     // Pick the first result by default, unless it's empty or undefined (only possible cases)
     // Then decode it to use the intended string
-    const initialQuestionText = decodeURIComponent(potentialQueries[1] || potentialQueries[2]);
-    if (!!initialQuestionText) this.sendMessage(decodeURIComponent(initialQuestionText));
+    const initialQuestionText = decodeURIComponent(
+      potentialQueries[1] || potentialQueries[2]
+    );
+    if (!!initialQuestionText)
+      this.sendMessage(decodeURIComponent(initialQuestionText));
     this.listenerId = textsHelper.addListener(() => {
       this.texts = textsHelper.getTexts();
       this.forceUpdate();
