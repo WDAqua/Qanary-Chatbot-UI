@@ -1,7 +1,6 @@
 const d3 = window.d3;
 
 export default function loadDiagram(data, svgId) {
-  console.log(data, svgId);
   const dataPoints = data.data_points;
   // Convert data points from strings to objects
   const transformedDataPoints = dataPoints.map((dataPoint) => {
@@ -48,18 +47,24 @@ export default function loadDiagram(data, svgId) {
         return +d.y;
       }),
     ])
-    .range([height - margin.bottom, margin.top]);
+    .range([height - margin.bottom, margin.top])
+    .interpolate(d3.interpolateRound);
 
   // Set axes
   svg
     .append("g")
     .attr("transform", `translate(0,${height - margin.bottom})`)
-    .call(d3.axisBottom(xAxis))
+    .call(
+      d3
+        .axisBottom(xAxis)
+        .ticks(data["data_points"].length)
+        .tickFormat(d3.format("d"))
+    )
     .call((g) =>
       g
         .select(".tick:last-of-type text")
         .clone()
-        .attr("x", (data["x-axis"].Label.length * 5))
+        .attr("x", data["x-axis"].Label.length * 5)
         .attr("text-anchor", "start")
         .attr("font-weight", "bold")
         .text(data["x-axis"].Label)

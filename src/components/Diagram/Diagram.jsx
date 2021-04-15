@@ -45,7 +45,6 @@ export default class Diagram extends Component {
         0.6 ?? 300,
       800
     );
-    console.log(width);
     // pick height at 2/5th the width to create a nice landscape ratio
     const height = (width * 2) / 5;
     return (

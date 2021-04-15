@@ -25,13 +25,15 @@ class App extends Component {
     const queryParams = window.location;
     // This RegExp accepts either ?q=questionText or &q=questionText to be as flexible as possible
     const queryRegExp = new RegExp(
-      `?${CONFIG["initial-question-parameter-name"]}=([^&]*)|&${CONFIG["initial-question-parameter-name"]}=([^&]*)`
+      `\\?${CONFIG["initial-question-parameter-name"] || "q"}=([^&]*)|&${
+        CONFIG["initial-question-parameter-name"] || "q"
+      }=([^&]*)`
     );
     const potentialQueries = queryRegExp.exec(queryParams);
     // Pick the first result by default, unless it's empty or undefined (only possible cases)
     // Then decode it to use the intended string
     const initialQuestionText = decodeURIComponent(
-      potentialQueries[1] || potentialQueries[2]
+      potentialQueries?.[1] || potentialQueries?.[2] || ""
     );
     if (!!initialQuestionText)
       this.sendMessage(decodeURIComponent(initialQuestionText));
