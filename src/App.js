@@ -21,6 +21,13 @@ class App extends Component {
   }
 
   componentDidMount() {
+    const queryParams = window.location;
+    // This RegExp accepts either ?q=questionText or &q=questionText to be as flexible as possible
+    const potentialQueries = /\?q=([^&]*)|&q=([^&]*)/.exec(queryParams);
+    // Pick the first result by default, unless it's empty or undefined (only possible cases)
+    // Then decode it to use the intended string
+    const initialQuestionText = decodeURIComponent(potentialQueries[1] || potentialQueries[2]);
+    if (!!initialQuestionText) this.sendMessage(decodeURIComponent(initialQuestionText));
     this.listenerId = textsHelper.addListener(() => {
       this.texts = textsHelper.getTexts();
       this.forceUpdate();
