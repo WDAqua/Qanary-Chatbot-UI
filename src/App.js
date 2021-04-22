@@ -23,10 +23,10 @@ class App extends Component {
 
   componentDidMount() {
     const queryParams = window.location;
-    // This RegExp accepts either ?q=questionText or &q=questionText to be as flexible as possible
+    // This RegExp accepts either ?question=questionText or &question=questionText to be as flexible as possible
     const queryRegExp = new RegExp(
-      `\\?${CONFIG["initial-question-parameter-name"] || "q"}=([^&]*)|&${
-        CONFIG["initial-question-parameter-name"] || "q"
+      `\\?${CONFIG["initial-question-parameter-name"] || "question"}=([^&]*)|&${
+        CONFIG["initial-question-parameter-name"] || "question"
       }=([^&]*)`
     );
     const potentialQueries = queryRegExp.exec(queryParams);
@@ -41,6 +41,10 @@ class App extends Component {
       this.texts = textsHelper.getTexts();
       this.forceUpdate();
     });
+    window.addEventListener("popstate", (popStateEvent) => {
+      // Update component state with messages from history state
+      this.setState({ messages: popStateEvent.state.messages });
+    });
   }
 
   componentWillUnmount() {
@@ -48,6 +52,7 @@ class App extends Component {
   }
 
   async sendMessage(messageText = "") {
+    // push new message to state
     this.setState({ isSending: true });
     let messagesCopy = this.state.messages;
     let now = new Date();
@@ -58,6 +63,7 @@ class App extends Component {
       loadedSuccessfully: true,
       icon: user_icon,
     });
+    // await reply and push it to state
     let reply = await chatBotService.postQuery(messageText);
     if (!!reply.visualization?.buttons)
       reply.visualization.buttons = reply.visualization.buttons.map(
@@ -81,6 +87,20 @@ class App extends Component {
       messages: messagesCopy,
       isSending: false,
     });
+    // Push new state to history, see https://developer.mozilla.org/en-US/docs/Web/API/History_API
+    let url = new URL(window.location);
+    url.searchParams.set(
+      CONFIG["initial-question-parameter-name"] || "question",
+      messageText
+    );
+    window.history.pushState(
+      {
+        path: url.href,
+        messages: messagesCopy,
+      },
+      "",
+      url
+    );
   }
 
   render() {
