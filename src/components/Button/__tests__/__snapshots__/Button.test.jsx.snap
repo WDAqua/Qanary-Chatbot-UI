@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly with inline style 1`] = `
+<button
+  className="button "
+  style={
+    Object {
+      "color": "red",
+    }
+  }
+>
+  
+</button>
+`;
+
+exports[`renders correctly with no props 1`] = `
+<button
+  className="button "
+  style={Object {}}
+>
+  
+</button>
+`;
+
+exports[`renders correctly with only null props 1`] = `
+<button
+  className="button "
+  style={Object {}}
+>
+  
+</button>
+`;
+
+exports[`renders correctly with only text 1`] = `
+<button
+  className="button "
+  style={Object {}}
+>
+  test
+</button>
+`;
+
+exports[`renders correctly with only undefined props 1`] = `
+<button
+  className="button "
+  style={Object {}}
+>
+  
+</button>
+`;

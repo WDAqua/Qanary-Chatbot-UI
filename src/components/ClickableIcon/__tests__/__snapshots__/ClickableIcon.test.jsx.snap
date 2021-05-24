@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly with no props 1`] = `
+<div
+  className="clickableIcon "
+  style={Object {}}
+  tabIndex="0"
+>
+  <img
+    alt="Kein Icon gefunden"
+    src="https://plchldr.co/i/50x50?&bg=8f8e8e&fc=000&text=Kein Icon gefunden"
+    tabIndex="-1"
+  />
+</div>
+`;

@@ -93,6 +93,7 @@ class App extends Component {
       CONFIG["initial-question-parameter-name"] || "question",
       messageText
     );
+    messagesCopy = messagesCopy.map((message) => message.followUpNeeded ? {...message, visualization: undefined} : message )
     window.history.pushState(
       {
         path: url.href,
