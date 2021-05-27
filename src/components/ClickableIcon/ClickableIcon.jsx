@@ -3,7 +3,8 @@ import { textsHelper } from "../../helpers";
 import "./ClickableIcon.css";
 
 /**
- *
+ * @description A styled, robust icon component with optional built-in click event support
+ * 
  * @property {function} onClick The function that gets executed when the button is clicked
  * @property {string} icon The URI of the image that should be used as the icon
  * @property {string} alt The alt text that should be displayed, if the image cannot be loaded

@@ -6,15 +6,14 @@ import { textsHelper } from "../../helpers";
 
 /**
  * @typedef {object} Message
- *  @property {boolean} isReply determines whether it's a bot or user message (left or right side, colour scheme, etc.)
- *  @property {boolean} loadedSuccessfully determines if source disclaimer gets displayed or not
- *  @property {boolean} followUpNeeded determines if extra buttons are displayed
- *  @property {string} time The time the message was sent
- *  @property {string} icon The image next to the message
- *  @property {string} text The message's contents
- */
-
-/**
+ *   @property {boolean} isReply determines whether it's a bot or user message (left or right side, colour scheme, etc.)
+ *   @property {boolean} loadedSuccessfully determines if source disclaimer gets displayed or not
+ *   @property {boolean} followUpNeeded determines if extra buttons are displayed
+ *   @property {string} time The time the message was sent
+ *   @property {string} icon The image next to the message
+ *   @property {string} text The message's contents
+ * 
+ * @description The visual representation of a Message object, as specified in the typedef in this file
  * 
  * @property {Message} messageObject The message data to be rendered
  */

@@ -2,6 +2,7 @@ import React from "react";
 import "./ContentContainer.css";
 
 /**
+ * @description a styled, robust container component for displaying arbitrary text and html with an onblur hide effect
  * 
  * @property {string} id 
  * @property {string} className
