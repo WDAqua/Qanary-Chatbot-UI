@@ -7,10 +7,9 @@ import "./PageHeader.css";
 import config from "../../config.json";
 
 /**
- * @name PageHeader
- *
  * @description This is the header of the page containing the title and various buttons
  *
+ * @property {function} sendMessage The same function that's used in the MessageInput to send examplary questions
  */
 export default class PageHeader extends Component {
   texts = textsHelper.getTexts();

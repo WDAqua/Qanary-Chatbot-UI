@@ -6,7 +6,7 @@ import "./MessagePanel.css";
 /**
  * @description Contains and displays all messages as the correct components
  * 
- * @property {array} messages all message objects, as specified by the typedef in `Message.jsx`, possibly with a `visualization` property containing data on, for instance, buttons
+ * @property {array} messages all message objects, as specified by the typedef in `RichMessage.jsx`
  */
 export default class MessagePanel extends Component {
   componentDidUpdate() {
