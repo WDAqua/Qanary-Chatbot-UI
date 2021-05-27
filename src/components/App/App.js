@@ -1,11 +1,11 @@
 import { Component } from "react";
 import "./App.css";
-import { MessageInput, MessagePanel, PageHeader } from "./components";
-import chatBotService from "./services/chatbot.service";
-import robot_icon from "./components/share/imgs/robot_icon.svg";
-import user_icon from "./components/share/imgs/account_icon_black.svg";
-import { textsHelper } from "./helpers";
-import CONFIG from "./config.json";
+import { MessageInput, MessagePanel, PageHeader } from "..";
+import chatBotService from "../../services/chatbot.service";
+import robot_icon from "../share/imgs/robot_icon.svg";
+import user_icon from "../share/imgs/account_icon_black.svg";
+import { textsHelper } from "../../helpers";
+import CONFIG from "../../config.json";
 
 class App extends Component {
   constructor(props) {
@@ -55,7 +55,7 @@ class App extends Component {
     // push new message to state
     this.setState({ isSending: true });
     let messagesCopy = this.state.messages;
-    let now = new Date();
+    let now = new Date(Date.now());
     messagesCopy.push({
       text: messageText,
       time: now.getHours() + ":" + ("0" + now.getMinutes()).slice(-2),
@@ -73,7 +73,7 @@ class App extends Component {
         })
       );
 
-    now = new Date();
+    now = new Date(Date.now());
     messagesCopy.push({
       text: reply.answer,
       followUpNeeded: reply.followUpNeeded,
@@ -105,7 +105,7 @@ class App extends Component {
   }
 
   render() {
-    const now = new Date();
+    const now = new Date(Date.now());
     return (
       <>
         <PageHeader sendMessage={this.sendMessage} />

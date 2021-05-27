@@ -1,0 +1,325 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders App correctly 1`] = `
+Array [
+  <div
+    id="header"
+    tabIndex="-1"
+  >
+    <div
+      className="clickableIcon "
+      onClick={[Function]}
+      style={
+        Object {
+          "maxHeight": "40px",
+          "maxWidth": "100px",
+          "position": "relative",
+          "top": "calc((100% - 40px) / 2)",
+        }
+      }
+      tabIndex="0"
+    >
+      <img
+        alt="Informationen"
+        src="info_icon_white.svg"
+        tabIndex="-1"
+      />
+    </div>
+    <div
+      className="pageTitle"
+      tabIndex="0"
+    >
+      <a
+        className="center white-text"
+        href="http://coronabot.ins.hs-anhalt.de/"
+        rel="noreferrer"
+        target="_self"
+      >
+        Coronabot Demonstrator
+      </a>
+    </div>
+    <div
+      className="questionsToggle"
+      onClick={[Function]}
+      tabIndex="-1"
+    >
+      <span
+        className="center white-text"
+      >
+        Beispiele
+      </span>
+    </div>
+    <div
+      className="clickableIcon "
+      onClick={[Function]}
+      style={
+        Object {
+          "maxHeight": "40px",
+          "maxWidth": "100px",
+          "position": "relative",
+          "top": "calc((100% - 40px) / 2)",
+        }
+      }
+      tabIndex="0"
+    >
+      <img
+        alt="Sprache wechseln"
+        src="flag_icon.webp"
+        tabIndex="-1"
+      />
+    </div>
+  </div>,
+  <div
+    className="contentContainer hidden"
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "Diese Anwendung wurde am <a href=\\"https://www.hs-anhalt.de/hochschule-anhalt/fachbereich-5/ueberblick.html\\" target=\\"_blank\\" rel=\\"noreferrer\\">Fachbereich Informatik und Sprachen</a> der <a href=\\"https://hs-anhalt.de/\\" target=\\"_blank\\" rel=\\"noreferrer\\">Hochschule Anhalt</a> im Rahmen der Lehrveranstaltung &quot;Question Answering &amp; Chatbots&quot; unter der Leitung von <a href=\\"https://www.hs-anhalt.de/hochschule-anhalt/service/personenverzeichnis/prof-dr-andreas-both.html\\" target=\\"_blank\\" rel=\\"noreferrer\\">Prof. Dr. Andreas Both</a> entwickelt. Die Betreuung erfolgte durch Prof. Both und <a href=\\"https://www.hs-anhalt.de/hochschule-anhalt/service/personenverzeichnis/aleksandr-perevalov.html\\" target=\\"_blank\\" rel\\"noreferrer\\">Aleksandr Perevalov</a> sowie durch die Projektpartner des <a href=\\"https://www.bmi.bund.de/\\" target=\\"_blank\\" rel=\\"noreferrer\\">Bundesministerium des Innern, für Bau und Heimat</a> und <a href=\\"https://www.itzbund.de/\\" target=\\"_blank\\" rel=\\"noreferrer\\">ITZBund</a>. Es handelt sich hierbei um einen wissenschaftlichen Demonstrator, der offizielle deutsche COVID-19 Chatbot ist <a href=\\"https://chatbot.it.bund.de/\\" target=\\"_blank\\" rel=\\"noreferrer\\">hier</a> abrufbar.<p><h3>Projektteam</h3>Das studentische Projektteam bestand aus Studierenden unserer Studieng&auml;nge &quot;Angewandte Informatik&quot; (Bachelor) und &quot;Data Science&quot; (Master): <ul><li>Backend: Johannes Richard Bartsch, Paul Heinze, Rostislav Iudin, Johannes Rudolf Herkner and Tim Schrader<li>Frontend: Jonas Wunsch</ul>",
+      }
+    }
+    id="imprint"
+    onBlur={[Function]}
+    tabIndex="0"
+  />,
+  <div
+    className="contentContainer hidden"
+    id="exemplaryQuestions"
+    onBlur={[Function]}
+    tabIndex="0"
+  >
+    <div
+      className="exampleQuestion"
+    >
+      <div>
+        Tote Köln
+      </div>
+      <button
+        className="button "
+        onClick={[Function]}
+        style={Object {}}
+      >
+        Diese Frage stellen
+      </button>
+    </div>
+    <div
+      className="exampleQuestion"
+    >
+      <div>
+        Infektionszahlen Frankfurt
+      </div>
+      <button
+        className="button "
+        onClick={[Function]}
+        style={Object {}}
+      >
+        Diese Frage stellen
+      </button>
+    </div>
+    <div
+      className="exampleQuestion"
+    >
+      <div>
+        Wie viele Fälle gab es im Februar in Berlin Spandau?
+      </div>
+      <button
+        className="button "
+        onClick={[Function]}
+        style={Object {}}
+      >
+        Diese Frage stellen
+      </button>
+    </div>
+    <div
+      className="exampleQuestion"
+    >
+      <div>
+        Fälle 12.02.2021
+      </div>
+      <button
+        className="button "
+        onClick={[Function]}
+        style={Object {}}
+      >
+        Diese Frage stellen
+      </button>
+    </div>
+    <div
+      className="exampleQuestion"
+    >
+      <div>
+        Wie viele Fälle wurden diese Woche gemeldet?
+      </div>
+      <button
+        className="button "
+        onClick={[Function]}
+        style={Object {}}
+      >
+        Diese Frage stellen
+      </button>
+    </div>
+    <div
+      className="exampleQuestion"
+    >
+      <div>
+        Infektionszahlen Januar
+      </div>
+      <button
+        className="button "
+        onClick={[Function]}
+        style={Object {}}
+      >
+        Diese Frage stellen
+      </button>
+    </div>
+    <div
+      className="exampleQuestion"
+    >
+      <div>
+        Todeszahlen Oktober
+      </div>
+      <button
+        className="button "
+        onClick={[Function]}
+        style={Object {}}
+      >
+        Diese Frage stellen
+      </button>
+    </div>
+    <div
+      className="exampleQuestion"
+    >
+      <div>
+        Wie viele Tote gab es im Februar in Quedlinburg?
+      </div>
+      <button
+        className="button "
+        onClick={[Function]}
+        style={Object {}}
+      >
+        Diese Frage stellen
+      </button>
+    </div>
+    <div
+      className="exampleQuestion"
+    >
+      <div>
+        Fälle gestern
+      </div>
+      <button
+        className="button "
+        onClick={[Function]}
+        style={Object {}}
+      >
+        Diese Frage stellen
+      </button>
+    </div>
+    <div
+      className="exampleQuestion"
+    >
+      <div>
+        Wie viele Fälle wurden im Juni in Berlin und Brandenburg gemeldet?
+      </div>
+      <button
+        className="button "
+        onClick={[Function]}
+        style={Object {}}
+      >
+        Diese Frage stellen
+      </button>
+    </div>
+  </div>,
+  <div
+    id="messagePanel"
+    tabIndex="-1"
+  >
+    <div
+      tabIndex="-1"
+    >
+      <div
+        className="messageContainer reply"
+        tabIndex="-1"
+      >
+        <div
+          className="clickableIcon "
+          style={
+            Object {
+              "cursor": "initial",
+              "height": "100px",
+              "width": "100px",
+            }
+          }
+          tabIndex="-1"
+        >
+          <img
+            alt="Coronabot"
+            src="robot_icon.svg"
+            tabIndex="-1"
+          />
+        </div>
+        <div
+          className="messageDataContainer"
+          tabIndex="0"
+        >
+          <div
+            className="messageText white-text"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "Hallo, ich bin Coronabot. Ich beantworte Fragen zu den Fallzahlen des Coronavirus bzw. COVID-19 in Deutschland. Ich nutze zwar die offiziellen Datenquellen des <a rel=\\"noreferrer\\" target=\\"_blank\\" href=\\"https://www.rki.de/\\">Robert Koch-Instituts</a>, aber ich bin keine offizielle Anwendung, sondern ein wissenschaftlicher Demonstrator. Der offizielle deutsche Chatbot zum Thema COVID-19 ist unter <a rel=\\"noreferrer\\" target=\\"_blank\\" href=\\"https://chatbot.it.bund.de/\\">chatbot.it.bund.de</a> abrufbar. Dieser Demonstrator wurde an der <a rel=\\"noreferrer\\" target=\\"_blank\\" href=\\"https://hs-anhalt.de/\\">Hochschule Anhalt</a> entwickelt. Mehr Informationen dazu werden im Bereich <img src=\\"imgs/info_icon_white.svg\\" alt=\\"Informationen\\" style=\\"cursor: text\\"></img> dargestellt.",
+              }
+            }
+          />
+          <div
+            className="messageTimeSent"
+          >
+            1:00
+          </div>
+        </div>
+      </div>
+      <div
+        className="richContentContainer"
+        tabIndex="-1"
+      >
+        <div
+          className="buttonsContainer"
+          tabIndex="-1"
+        />
+      </div>
+    </div>
+  </div>,
+  <div
+    className=""
+    id="loadingBar"
+    tabIndex="-1"
+  />,
+  <div
+    id="messageInput"
+    tabIndex="-1"
+  >
+    <textarea
+      className="black-text"
+      id="inputTextBox"
+      onChange={[Function]}
+      onKeyPress={[Function]}
+      placeholder="Ihre Frage an mich..."
+      value=""
+    />
+    <div
+      id="submitButtonContainer"
+      tabIndex="-1"
+    >
+      <button
+        className="button light-gray black-text vertical-center right-side"
+        onClick={[Function]}
+        style={
+          Object {
+            "height": "40px",
+            "marginRight": "10px",
+            "width": "100px",
+          }
+        }
+      >
+        Senden
+      </button>
+    </div>
+  </div>,
+]
+`;

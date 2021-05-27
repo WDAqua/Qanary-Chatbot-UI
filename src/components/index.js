@@ -6,6 +6,7 @@ import "./share/stylesheets/positions.css";
 // to allow easy and concise imports from one place, instead of import every single
 // component from a different place
 
+import App from "./App/App";
 import MessageInput from "./MessageInput/MessageInput";
 import MessagePanel from "./MessagePanel/MessagePanel";
 import PageHeader from "./PageHeader/PageHeader";
@@ -16,6 +17,7 @@ import RichMessage from "./RichMessage/RichMessage";
 import ContentContainer from "./ContentContainer/ContentContainer";
 
 export {
+  App,
   MessageInput,
   MessagePanel,
   PageHeader,
