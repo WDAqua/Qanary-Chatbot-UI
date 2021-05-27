@@ -1,0 +1,281 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly with invalid icon as reply 1`] = `
+<div
+  className="messageContainer reply"
+  tabIndex="-1"
+>
+  <div
+    className="clickableIcon "
+    style={
+      Object {
+        "cursor": "initial",
+        "height": "100px",
+        "width": "100px",
+      }
+    }
+    tabIndex="-1"
+  >
+    <img
+      alt="Coronabot"
+      src="invalid"
+      tabIndex="-1"
+    />
+  </div>
+  <div
+    className="messageDataContainer"
+    tabIndex="0"
+  >
+    <div
+      className="messageText white-text"
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "",
+        }
+      }
+    />
+    <div
+      className="messageText white-text"
+    >
+      Datenquelle: 
+      <a
+        href="https://experience.arcgis.com/experience/478220a4c454480e823b17327b2bf1d4/page/page_0/"
+        rel="noreferrer"
+        target="_blank"
+      >
+        Robert-Koch-Institut
+      </a>
+       
+    </div>
+    <div
+      className="messageTimeSent"
+    >
+      13:37
+    </div>
+  </div>
+</div>
+`;
+
+exports[`renders correctly with invalid icon as user message 1`] = `
+<div
+  className="messageContainer"
+  tabIndex="-1"
+>
+  <div
+    className="clickableIcon "
+    style={
+      Object {
+        "cursor": "initial",
+        "height": "100px",
+        "width": "100px",
+      }
+    }
+    tabIndex="-1"
+  >
+    <img
+      alt="Nutzer"
+      src="invalid"
+      tabIndex="-1"
+    />
+  </div>
+  <div
+    className="messageDataContainer"
+    tabIndex="0"
+  >
+    <div
+      className="messageText black-text"
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "",
+        }
+      }
+    />
+    <div
+      className="messageTimeSent"
+    >
+      13:37
+    </div>
+  </div>
+</div>
+`;
+
+exports[`renders correctly with no props 1`] = `
+<div
+  className="messageContainer"
+  tabIndex="-1"
+>
+  <div
+    className="clickableIcon "
+    style={
+      Object {
+        "cursor": "initial",
+        "height": "100px",
+        "width": "100px",
+      }
+    }
+    tabIndex="-1"
+  >
+    <img
+      alt="Nutzer"
+      src="account_icon_black.svg"
+      tabIndex="-1"
+    />
+  </div>
+  <div
+    className="messageDataContainer"
+    tabIndex="0"
+  >
+    <div
+      className="messageText black-text"
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "",
+        }
+      }
+    />
+    <div
+      className="messageTimeSent"
+    />
+  </div>
+</div>
+`;
+
+exports[`renders correctly with undefined message object properties 1`] = `
+<div
+  className="messageContainer"
+  tabIndex="-1"
+>
+  <div
+    className="clickableIcon "
+    style={
+      Object {
+        "cursor": "initial",
+        "height": "100px",
+        "width": "100px",
+      }
+    }
+    tabIndex="-1"
+  >
+    <img
+      alt="Nutzer"
+      src="account_icon_black.svg"
+      tabIndex="-1"
+    />
+  </div>
+  <div
+    className="messageDataContainer"
+    tabIndex="0"
+  >
+    <div
+      className="messageText black-text"
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "",
+        }
+      }
+    />
+    <div
+      className="messageTimeSent"
+    />
+  </div>
+</div>
+`;
+
+exports[`renders correctly with valid reply message object, including disclaimer 1`] = `
+<div
+  className="messageContainer reply"
+  tabIndex="-1"
+>
+  <div
+    className="clickableIcon "
+    style={
+      Object {
+        "cursor": "initial",
+        "height": "100px",
+        "width": "100px",
+      }
+    }
+    tabIndex="-1"
+  >
+    <img
+      alt="Coronabot"
+      src="account_icon_black.svg"
+      tabIndex="-1"
+    />
+  </div>
+  <div
+    className="messageDataContainer"
+    tabIndex="0"
+  >
+    <div
+      className="messageText white-text"
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "",
+        }
+      }
+    />
+    <div
+      className="messageText white-text"
+    >
+      Datenquelle: 
+      <a
+        href="https://experience.arcgis.com/experience/478220a4c454480e823b17327b2bf1d4/page/page_0/"
+        rel="noreferrer"
+        target="_blank"
+      >
+        Robert-Koch-Institut
+      </a>
+       
+    </div>
+    <div
+      className="messageTimeSent"
+    >
+      13:37
+    </div>
+  </div>
+</div>
+`;
+
+exports[`renders correctly with valid user message object, without disclaimer 1`] = `
+<div
+  className="messageContainer"
+  tabIndex="-1"
+>
+  <div
+    className="clickableIcon "
+    style={
+      Object {
+        "cursor": "initial",
+        "height": "100px",
+        "width": "100px",
+      }
+    }
+    tabIndex="-1"
+  >
+    <img
+      alt="Nutzer"
+      src="account_icon_black.svg"
+      tabIndex="-1"
+    />
+  </div>
+  <div
+    className="messageDataContainer"
+    tabIndex="0"
+  >
+    <div
+      className="messageText black-text"
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "",
+        }
+      }
+    />
+    <div
+      className="messageTimeSent"
+    >
+      13:37
+    </div>
+  </div>
+</div>
+`;

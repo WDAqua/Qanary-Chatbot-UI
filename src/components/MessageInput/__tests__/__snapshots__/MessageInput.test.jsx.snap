@@ -1,0 +1,124 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly with loading bar 1`] = `
+Array [
+  <div
+    className="visible"
+    id="loadingBar"
+    tabIndex="-1"
+  />,
+  <div
+    id="messageInput"
+    tabIndex="-1"
+  >
+    <textarea
+      className="black-text"
+      id="inputTextBox"
+      onChange={[Function]}
+      onKeyPress={[Function]}
+      placeholder="Ihre Frage an mich..."
+      value=""
+    />
+    <div
+      id="submitButtonContainer"
+      tabIndex="-1"
+    >
+      <button
+        className="button light-gray black-text vertical-center right-side"
+        onClick={[Function]}
+        style={
+          Object {
+            "height": "40px",
+            "marginRight": "10px",
+            "width": "100px",
+          }
+        }
+      >
+        Senden
+      </button>
+    </div>
+  </div>,
+]
+`;
+
+exports[`renders correctly with no props 1`] = `
+Array [
+  <div
+    className=""
+    id="loadingBar"
+    tabIndex="-1"
+  />,
+  <div
+    id="messageInput"
+    tabIndex="-1"
+  >
+    <textarea
+      className="black-text"
+      id="inputTextBox"
+      onChange={[Function]}
+      onKeyPress={[Function]}
+      placeholder="Ihre Frage an mich..."
+      value=""
+    />
+    <div
+      id="submitButtonContainer"
+      tabIndex="-1"
+    >
+      <button
+        className="button light-gray black-text vertical-center right-side"
+        onClick={[Function]}
+        style={
+          Object {
+            "height": "40px",
+            "marginRight": "10px",
+            "width": "100px",
+          }
+        }
+      >
+        Senden
+      </button>
+    </div>
+  </div>,
+]
+`;
+
+exports[`renders correctly without loading bar 1`] = `
+Array [
+  <div
+    className=""
+    id="loadingBar"
+    tabIndex="-1"
+  />,
+  <div
+    id="messageInput"
+    tabIndex="-1"
+  >
+    <textarea
+      className="black-text"
+      id="inputTextBox"
+      onChange={[Function]}
+      onKeyPress={[Function]}
+      placeholder="Ihre Frage an mich..."
+      value=""
+    />
+    <div
+      id="submitButtonContainer"
+      tabIndex="-1"
+    >
+      <button
+        className="button light-gray black-text vertical-center right-side"
+        onClick={[Function]}
+        style={
+          Object {
+            "height": "40px",
+            "marginRight": "10px",
+            "width": "100px",
+          }
+        }
+      >
+        Senden
+      </button>
+    </div>
+  </div>,
+]
+`;

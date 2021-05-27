@@ -1,0 +1,358 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly with just empty object 1`] = `
+<div
+  id="messagePanel"
+  tabIndex="-1"
+>
+  <div
+    className="messageContainer"
+    tabIndex="-1"
+  >
+    <div
+      className="clickableIcon "
+      style={
+        Object {
+          "cursor": "initial",
+          "height": "100px",
+          "width": "100px",
+        }
+      }
+      tabIndex="-1"
+    >
+      <img
+        alt="Nutzer"
+        src="account_icon_black.svg"
+        tabIndex="-1"
+      />
+    </div>
+    <div
+      className="messageDataContainer"
+      tabIndex="0"
+    >
+      <div
+        className="messageText black-text"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "",
+          }
+        }
+      />
+      <div
+        className="messageTimeSent"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`renders correctly with multiple distinct valid messages 1`] = `
+<div
+  id="messagePanel"
+  tabIndex="-1"
+>
+  <div
+    className="messageContainer"
+    tabIndex="-1"
+  >
+    <div
+      className="clickableIcon "
+      style={
+        Object {
+          "cursor": "initial",
+          "height": "100px",
+          "width": "100px",
+        }
+      }
+      tabIndex="-1"
+    >
+      <img
+        alt="Nutzer"
+        src="account_icon_black.svg"
+        tabIndex="-1"
+      />
+    </div>
+    <div
+      className="messageDataContainer"
+      tabIndex="0"
+    >
+      <div
+        className="messageText black-text"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "test",
+          }
+        }
+      />
+      <div
+        className="messageTimeSent"
+      >
+        13:37
+      </div>
+    </div>
+  </div>
+  <div
+    className="messageContainer"
+    tabIndex="-1"
+  >
+    <div
+      className="clickableIcon "
+      style={
+        Object {
+          "cursor": "initial",
+          "height": "100px",
+          "width": "100px",
+        }
+      }
+      tabIndex="-1"
+    >
+      <img
+        alt="Nutzer"
+        src="account_icon_black.svg"
+        tabIndex="-1"
+      />
+    </div>
+    <div
+      className="messageDataContainer"
+      tabIndex="0"
+    >
+      <div
+        className="messageText black-text"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "test2",
+          }
+        }
+      />
+      <div
+        className="messageTimeSent"
+      >
+        13:37
+      </div>
+    </div>
+  </div>
+  <div
+    className="messageContainer"
+    tabIndex="-1"
+  >
+    <div
+      className="clickableIcon "
+      style={
+        Object {
+          "cursor": "initial",
+          "height": "100px",
+          "width": "100px",
+        }
+      }
+      tabIndex="-1"
+    >
+      <img
+        alt="Nutzer"
+        src="account_icon_black.svg"
+        tabIndex="-1"
+      />
+    </div>
+    <div
+      className="messageDataContainer"
+      tabIndex="0"
+    >
+      <div
+        className="messageText black-text"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "test3",
+          }
+        }
+      />
+      <div
+        className="messageTimeSent"
+      >
+        13:37
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`renders correctly with multiple equal valid messages 1`] = `
+<div
+  id="messagePanel"
+  tabIndex="-1"
+>
+  <div
+    className="messageContainer"
+    tabIndex="-1"
+  >
+    <div
+      className="clickableIcon "
+      style={
+        Object {
+          "cursor": "initial",
+          "height": "100px",
+          "width": "100px",
+        }
+      }
+      tabIndex="-1"
+    >
+      <img
+        alt="Nutzer"
+        src="account_icon_black.svg"
+        tabIndex="-1"
+      />
+    </div>
+    <div
+      className="messageDataContainer"
+      tabIndex="0"
+    >
+      <div
+        className="messageText black-text"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "test",
+          }
+        }
+      />
+      <div
+        className="messageTimeSent"
+      >
+        13:37
+      </div>
+    </div>
+  </div>
+  <div
+    className="messageContainer"
+    tabIndex="-1"
+  >
+    <div
+      className="clickableIcon "
+      style={
+        Object {
+          "cursor": "initial",
+          "height": "100px",
+          "width": "100px",
+        }
+      }
+      tabIndex="-1"
+    >
+      <img
+        alt="Nutzer"
+        src="account_icon_black.svg"
+        tabIndex="-1"
+      />
+    </div>
+    <div
+      className="messageDataContainer"
+      tabIndex="0"
+    >
+      <div
+        className="messageText black-text"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "test",
+          }
+        }
+      />
+      <div
+        className="messageTimeSent"
+      >
+        13:37
+      </div>
+    </div>
+  </div>
+  <div
+    className="messageContainer"
+    tabIndex="-1"
+  >
+    <div
+      className="clickableIcon "
+      style={
+        Object {
+          "cursor": "initial",
+          "height": "100px",
+          "width": "100px",
+        }
+      }
+      tabIndex="-1"
+    >
+      <img
+        alt="Nutzer"
+        src="account_icon_black.svg"
+        tabIndex="-1"
+      />
+    </div>
+    <div
+      className="messageDataContainer"
+      tabIndex="0"
+    >
+      <div
+        className="messageText black-text"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "test",
+          }
+        }
+      />
+      <div
+        className="messageTimeSent"
+      >
+        13:37
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`renders correctly with no props 1`] = `
+<div
+  id="messagePanel"
+  tabIndex="-1"
+/>
+`;
+
+exports[`renders correctly with one valid message 1`] = `
+<div
+  id="messagePanel"
+  tabIndex="-1"
+>
+  <div
+    className="messageContainer"
+    tabIndex="-1"
+  >
+    <div
+      className="clickableIcon "
+      style={
+        Object {
+          "cursor": "initial",
+          "height": "100px",
+          "width": "100px",
+        }
+      }
+      tabIndex="-1"
+    >
+      <img
+        alt="Nutzer"
+        src="account_icon_black.svg"
+        tabIndex="-1"
+      />
+    </div>
+    <div
+      className="messageDataContainer"
+      tabIndex="0"
+    >
+      <div
+        className="messageText black-text"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "test",
+          }
+        }
+      />
+      <div
+        className="messageTimeSent"
+      >
+        13:37
+      </div>
+    </div>
+  </div>
+</div>
+`;

@@ -4,6 +4,20 @@ import "./Message.css";
 import account_icon_black from "../share/imgs/account_icon_black.svg";
 import { textsHelper } from "../../helpers";
 
+/**
+ * @typedef {object} Message
+ *  @property {boolean} isReply determines whether it's a bot or user message (left or right side, colour scheme, etc.)
+ *  @property {boolean} loadedSuccessfully determines if source disclaimer gets displayed or not
+ *  @property {boolean} followUpNeeded determines if extra buttons are displayed
+ *  @property {string} time The time the message was sent
+ *  @property {string} icon The image next to the message
+ *  @property {string} text The message's contents
+ */
+
+/**
+ * 
+ * @property {Message} messageObject The message data to be rendered
+ */
 export default class Message extends Component {
   texts = textsHelper.getTexts();
 
@@ -28,7 +42,7 @@ export default class Message extends Component {
         }
       >
         <ClickableIcon
-          alt="Avatar"
+          alt={!!this.props.messageObject?.isReply ? this.texts["clickable-icon"]["bot-icon-alt"] : this.texts["clickable-icon"]["user-icon-alt"] }
           icon={this.props.messageObject?.icon ?? account_icon_black}
           tabIndex={"-1"}
           style={{
@@ -37,12 +51,7 @@ export default class Message extends Component {
             cursor: "initial",
           }}
         />
-        <div
-          tabIndex="0"
-          className={
-            "messageDataContainer"
-          }
-        >
+        <div tabIndex="0" className={"messageDataContainer"}>
           <div
             className={
               "messageText" +
@@ -53,8 +62,7 @@ export default class Message extends Component {
             dangerouslySetInnerHTML={{
               __html: this.props.messageObject?.text ?? "",
             }}
-          >
-          </div>
+          ></div>
           {!this.props.messageObject?.followUpNeeded &&
           !!this.props.messageObject?.isReply &&
           !!this.props.messageObject?.loadedSuccessfully ? (

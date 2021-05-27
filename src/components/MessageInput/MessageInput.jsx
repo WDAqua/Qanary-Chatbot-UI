@@ -3,6 +3,11 @@ import { Button } from "..";
 import "./MessageInput.css";
 import { textsHelper } from "../../helpers";
 
+/**
+ * 
+ * @property {function} sendMessage The callback to be called using the message input's text
+ * @property {boolean} isSending Value determining if loading bar is displayed
+ */
 export default class MessageInput extends Component {
   constructor(props) {
     super(props);

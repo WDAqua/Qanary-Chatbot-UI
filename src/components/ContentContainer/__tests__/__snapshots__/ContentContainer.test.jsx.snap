@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly with innerhtml element 1`] = `
+<div
+  className="contentContainer hidden"
+  dangerouslySetInnerHTML={
+    Object {
+      "__html": "<button>Element</button>",
+    }
+  }
+  id=""
+  onBlur={[Function]}
+  tabIndex="0"
+/>
+`;
+
+exports[`renders correctly with innerhtml text 1`] = `
+<div
+  className="contentContainer hidden"
+  dangerouslySetInnerHTML={
+    Object {
+      "__html": "inner html",
+    }
+  }
+  id=""
+  onBlur={[Function]}
+  tabIndex="0"
+/>
+`;
+
+exports[`renders correctly with no props 1`] = `
+<div
+  className="contentContainer hidden"
+  id=""
+  onBlur={[Function]}
+  tabIndex="0"
+/>
+`;
+
+exports[`renders correctly with null props 1`] = `
+<div
+  className="contentContainer hidden"
+  id=""
+  onBlur={[Function]}
+  tabIndex="0"
+/>
+`;
+
+exports[`renders correctly with undefined props 1`] = `
+<div
+  className="contentContainer hidden"
+  id=""
+  onBlur={[Function]}
+  tabIndex="0"
+/>
+`;

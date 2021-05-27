@@ -44,6 +44,7 @@ it("renders correctly with only null props", () => {
 // Blackbox tests
 // You cannot dispatch events using test renderer, so I need to actually add the element to the DOM 
 // and dispatch an actual event. Calling the function directly would oppose the idea of a blackbox.
+// Why not enzyme? Because enzyme doesn't officially support React 17.
 
 let container;
 
