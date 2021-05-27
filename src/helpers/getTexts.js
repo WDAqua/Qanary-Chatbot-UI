@@ -1,4 +1,5 @@
-let currentLanguage = require("../config.json")["default-language"];
+const config = require("../config.json");
+let currentLanguage = config["default-language"];
 let texts = require(`../texts/${currentLanguage}/texts.json`);
 let listeners = [];
 
@@ -17,8 +18,14 @@ const idGenerator = getIdGenerator();
 function changeLanguage(newLanguage = "de") {
   if (currentLanguage === newLanguage) return;
   currentLanguage = newLanguage;
-  texts = require(`../texts/${currentLanguage}/texts.json`);
-  listeners.forEach((listener) => listener.callback());
+  try {
+    console.log(currentLanguage, newLanguage);
+    texts = require(`../texts/${currentLanguage}/texts.json`);
+    listeners.forEach((listener) => listener.callback());
+  } catch(errorMessage) {
+    console.error(errorMessage);
+    currentLanguage = config["default-language"];
+  }
 }
 
 function getCurrentLanguage() {

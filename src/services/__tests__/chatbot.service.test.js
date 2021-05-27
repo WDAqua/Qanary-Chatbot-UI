@@ -26,9 +26,9 @@ it("sends a valid post request", async () => {
 });
 
 it("handles a failed request appropriately", async () => {
-  const mockFn = (window.fetch = jest.fn(() => {
+  window.fetch = jest.fn(() => {
     return Promise.reject("I'm intentional. Ignore me.");
-  }));
+  });
 
   const result = await chatBotService.postQuery("test");
 
