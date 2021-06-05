@@ -1,15 +1,47 @@
 import React, { Component } from "react";
-import { Button, ClickableIcon, ContentContainer } from "..";
+import {
+  ClickableIcon,
+  QuestionsContainer,
+  SettingsContainer,
+  ImprintContainer,
+} from "..";
 import { textsHelper } from "../../helpers";
 import flag_icon from "../share/imgs/flag_icon.webp";
+import settings_icon_white from "../share/imgs/settings_icon_white.svg";
 import info_icon_white from "../share/imgs/info_icon_white.svg";
 import "./PageHeader.css";
 import config from "../../config.json";
+
+function toggleContainer(containerId) {
+  const container = document.getElementById(containerId);
+
+  // get all containers and remove self
+  let others = Array.from(document.getElementsByClassName("contentContainer"));
+  const ownIndex = others.findIndex((element) => element === container);
+  others.splice(ownIndex, 1);
+
+  // Hide all other containers
+  others.forEach((other) => {
+    if (!other.classList.contains("hidden")) {
+      other.classList.add("hidden");
+    }
+  });
+
+  // Show self and set focus for blur event
+  container.classList.toggle("hidden");
+  if (container.classList.contains("hidden")) {
+    container.focus();
+  }
+}
 
 /**
  * @description This is the header of the page containing the title and various buttons
  *
  * @property {function} sendMessage The same function that's used in the MessageInput to send examplary questions
+ * @property {function} setComponents
+ * @property {function} setBackendUrl
+ * @property {array} components
+ * @property {string} backendUrl
  */
 export default class PageHeader extends Component {
   texts = textsHelper.getTexts();
@@ -30,17 +62,7 @@ export default class PageHeader extends Component {
       <>
         <div tabIndex="-1" id="header">
           <ClickableIcon
-            onClick={() => {
-              const imprint = document.getElementById("imprint");
-              const exemplaryQuestions = document.getElementById(
-                "exemplaryQuestions"
-              );
-              if (!exemplaryQuestions.classList.contains("hidden")) {
-                exemplaryQuestions.classList.toggle("hidden");
-              }
-              imprint.classList.toggle("hidden");
-              imprint.focus();
-            }}
+            onClick={() => toggleContainer("imprint")}
             icon={info_icon_white}
             alt={this.texts["page-header"].icons["info-alt"]}
             style={{
@@ -63,17 +85,7 @@ export default class PageHeader extends Component {
           <div
             className="questionsToggle"
             tabIndex="-1"
-            onClick={() => {
-              const exemplaryQuestion = document.getElementById(
-                "exemplaryQuestions"
-              );
-              const imprint = document.getElementById("imprint");
-              if (!imprint.classList.contains("hidden")) {
-                imprint.classList.toggle("hidden");
-              }
-              exemplaryQuestion.classList.toggle("hidden");
-              exemplaryQuestion.focus();
-            }}
+            onClick={() => toggleContainer("exemplaryQuestions")}
           >
             <span className="center white-text">
               {this.texts["options-menu"]["exemplary-questions"]}
@@ -96,28 +108,27 @@ export default class PageHeader extends Component {
               top: "calc((100% - 40px) / 2)",
             }}
           />
+          <ClickableIcon
+            onClick={() => toggleContainer("chatbotSettings")}
+            alt={this.texts["page-header"].icons["change-language-alt"]}
+            icon={settings_icon_white}
+            style={{
+              position: "relative",
+              maxWidth: "100px",
+              maxHeight: "40px",
+              top: "calc((100% - 40px) / 2)",
+            }}
+          />
         </div>
-        <ContentContainer
-          id="imprint"
-          dangerouslySetInnerHTML={this.texts.credits}
+        <ImprintContainer />
+        <QuestionsContainer sendMessage={this.props.sendMessage} />
+        <SettingsContainer
+          components={this.props.components}
+          backendUrl={this.props.backendUrl}
+          setComponents={this.props.setComponents}
+          setBackendUrl={this.props.setBackendUrl}
+          toggleComponent={this.props.toggleComponent}
         />
-        <ContentContainer id="exemplaryQuestions">
-          {this.texts["exemplary-questions"].map((questionText, i) => (
-            // i is the shortest unique identifier in this case and the content will not be updated
-            <div key={i} className="exampleQuestion">
-              <div>{questionText}</div>
-              <Button
-                onClick={() => {
-                  this.props.sendMessage(questionText);
-                  document
-                    .getElementById("exemplaryQuestions")
-                    .classList.toggle("hidden");
-                }}
-                text={this.texts["example-questions"]["ask-question"]}
-              />
-            </div>
-          ))}
-        </ContentContainer>
       </>
     );
   }

@@ -1,6 +1,11 @@
 {
-    "chatbot-backend-url": "https://webengineering.ins.hs-anhalt.de:44020",
-    "chatbot-frontend-url": "http://coronabot.ins.hs-anhalt.de/",
-    "default-language": "de",
-    "initial-question-parameter-name": "question"
+  "default-chatbot-backend-url": "https://webengineering.ins.hs-anhalt.de:43740",
+  "default-chatbot-components": [
+    "NED-DBpediaSpotlight",
+    "QueryBuilderSimpleRealNameOfSuperhero",
+    "SparqlExecuter"
+  ],
+  "chatbot-frontend-url": "http://coronabot.ins.hs-anhalt.de/",
+  "default-language": "de",
+  "initial-question-parameter-name": "question"
 }

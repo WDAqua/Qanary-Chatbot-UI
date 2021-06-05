@@ -96,3 +96,12 @@
 #imprint.contentContainer {
     display: initial;
 }
+
+.exampleQuestion {
+    padding-bottom: 0.5rem;
+}
+
+.questionSectionTitle {
+    font-size: x-large;
+    padding-bottom: 1rem;
+}

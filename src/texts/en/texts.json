@@ -1,6 +1,6 @@
 {
   "page-header": {
-    "title": "Coronabot Demonstrator",
+    "title": "General purpose chatbot demonstrator",
     "icons": {
       "change-language-alt": "Change language",
       "info-alt": "Information"
@@ -13,14 +13,17 @@
   "clickable-icon": {
     "fallback-text": "No icon was found",
     "user-icon-alt": "User",
-    "bot-icon-alt": "Coronabot"
+    "bot-icon-alt": "Chatbot"
   },
   "error-messages": {
     "no-answer-found": "No answer could be loaded. Try again?"
   },
   "default-responses": {
     "try-again": "Yes",
-    "initial-message": "Hello, I am Coronabot. I answer questions about the number of cases of COVID-19 in Germany. \\I use the official data sources of the <a rel=\"noreferrer\" target=\"_blank\" href=\"https://www.rki.de/EN/\">Robert Koch Institute</a>. However, I am not an official application, but a scientific demonstrator. The official German chatbot regarding COVID-19 is available at <a rel=\"noreferrer\" target=\"_blank\" href=\"https://chatbot.it.bund.de/\">chatbot.it.bund.de</a>. This demonstrator was developed at <a rel=\"noreferrer\" target=\"_blank\" href=\"https://www.hs-anhalt.de/en/start-page.html\">Anhalt University of Applied Sciences</a>. More information on this regard is presented in the <img src=\"imgs/info_icon_white.svg\" alt=\"Information\" style=\"cursor: text\"></img> section."
+    "initial-message": {
+      "is-configured": "Hello. I am a chatbot that is passing your requests to the Question Answering system available at {{url}}.",
+      "is-not-configured": "Hello. I am a chatbot. You haven't configured me yet. So, I cannot provide any answers. Please use the configuration menu located in the upper right corner."
+    }
   },
   "message-info": {
     "source-of-data": "Source of data: ",
@@ -33,16 +36,29 @@
     "exemplary-questions": "Examples"
   },
   "exemplary-questions": [
-    "How many cases were reported in august in Magdeburg?",
-    "How many people died in Halle?",
-    "case numbers 12.02.2021",
-    "infections Frankfurt",
-    "infections july",
-    "deaths yesterday",
-    "Infections in Berlin and Kiel",
-    "How many cases were reported last month?",
-    "deaths last week in Frankfurt and Bitterfeld",
-    "How many cases were reported on the first of april 2020?"
+    {
+      "title": "Dbpedia questions",
+      "questions": [
+        "What is the real name of Batman?",
+        "What is the real name of Catwoman?",
+        "What is the real name of Superman?"
+      ]
+    },
+    {
+      "title": "Wikidata questions",
+      "questions": [
+        "Where and when was Ada Lovelace born?",
+        "Where and when was Quentin Tarantino born?",
+        "Where and when was Angela Merkel born?"
+      ]
+    }
   ],
-  "credits": "This application was developed at the <a href=\"https://www.hs-anhalt.de/hochschule-anhalt/fachbereich-5/ueberblick.html\" target=\"_blank\" rel=\"noreferrer\">Department of Computer Science and Languages</a> of the <a href=\"https://hs-anhalt.de/\" target=\"_blank\" rel=\"noreferrer\">Anhalt University of Applied Sciences</a> as part of the course &quot;Question Answering &amp; Chatbots&quot; under the direction of <a href=\"https://www.hs-anhalt.de/en/university/service/directory-of-people/prof-dr-andreas-both.html\" target=\"_blank\" rel=\"noreferrer\">Prof. Dr. Andreas Both</a>. Supervision was provided by Prof. Both and <a href=\"https://www.hs-anhalt.de/en/university/service/directory-of-people/aleksandr-perevalov.html\" target=\"_blank\" rel=\"noreferrer\">Aleksandr Perevalov</a>, as well as project partners from the <a href=\"https://www.bmi.bund.de/\" target=\"_blank\" rel=\"noreferrer\">Federal Ministry of the Interior, for Construction and Home Affairs</a> and <a href=\"https://www.itzbund.de/\" target=\"_blank\" rel=\"noreferrer\">ITZBund</a>. This is a scientific demonstrator, the official German COVID-19 chatbot is available <a href=\"https://chatbot.it.bund.de/\" target=\"_blank\" rel=\"noreferrer\">here</a>.<p><h3>Projekt Team</h3>The project team consisted of the following students of our study programs &quot;Bachelor Applied Computer Science&quot; and &quot;Master Data Science&quot;: <ul><li>Backend: Johannes Richard Bartsch, Paul Heinze, Rostislav Iudin, Johannes Rudolf Herkner and Tim Schrader</li><li>Frontend: Jonas Wunsch</li></ul>"
+  "settings": {
+    "explanation": "In this menu, you can configure the backend used by the application. The default is https://webengineering.ins.hs-anhalt.de:43740. You also have to set the components to be used in the correct order. The list of available components will be rendered for any valid backend automatically.",
+    "confirm-url": "Confirm URL",
+    "url-malformed": "Please enter a valid URL with http:// or https:// and the port.",
+    "no-components": "No components were found. A valid backend has to be provided and CORS has to be configured accordingly.",
+    "list-explanation": "Set the order of the components here and choose which to use. The order is important and has to be set correctly."
+  },
+  "credits": "This application has been developed by Jonas Wunsch at the <a href=\"https://www.hs-anhalt.de/hochschule-anhalt/fachbereich-5/ueberblick.html\" target=\"_blank\" rel=\"noreferrer\">Department of Computer Science and Languages</a> of the <a href=\"https://hs-anhalt.de/\" target=\"_blank\" rel=\"noreferrer\">Anhalt University of Applied Sciences</a> under the direction of <a href=\"https://www.hs-anhalt.de/en/university/service/directory-of-people/prof-dr-andreas-both.html\" target=\"_blank\" rel=\"noreferrer\">Prof. Dr. Andreas Both</a> and with help from Paul Heinze. The Apache 2.0 license applies to this project."
 }

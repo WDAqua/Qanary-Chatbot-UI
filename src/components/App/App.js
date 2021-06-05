@@ -13,12 +13,20 @@ class App extends Component {
 
     this.state = {
       messages: [],
+      components: CONFIG["default-chatbot-components"].map((componentName) => ({
+        name: componentName,
+        activated: false,
+      })),
+      backendUrl: "",
       isSending: false,
     };
 
     this.texts = textsHelper.getTexts();
 
     this.sendMessage = this.sendMessage.bind(this);
+    this.setBackendUrl = this.setBackendUrl.bind(this);
+    this.setComponents = this.setComponents.bind(this);
+    this.toggleComponent = this.toggleComponent.bind(this);
   }
 
   componentDidMount() {
@@ -43,7 +51,11 @@ class App extends Component {
     });
     window.addEventListener("popstate", (popStateEvent) => {
       // Update component state with messages from history state
-      this.setState({ messages: popStateEvent.state.messages });
+      if (popStateEvent.state == null) {
+        this.setState({ messages: [] });
+      } else {
+        this.setState({ messages: popStateEvent?.state?.messages ?? [] });
+      }
     });
   }
 
@@ -64,11 +76,20 @@ class App extends Component {
       icon: user_icon,
     });
     // await reply and push it to state
-    let reply = await chatBotService.postQuery(messageText);
+    const preparedComponents = this.state.components
+      .filter((component) => component.activated)
+      .map((component) => component.name);
+    console.log(preparedComponents);
+    let reply = await chatBotService.postQuery(
+      messageText,
+      this.state.backendUrl,
+      preparedComponents
+    );
     if (!!reply.visualization?.buttons)
       reply.visualization.buttons = reply.visualization.buttons.map(
         (button) => ({
-          onClick: () => this.sendMessage(button.payload),
+          onClick: () =>
+            this.sendMessage(button.payload, this.state.backendUrl),
           ...button,
         })
       );
@@ -91,9 +112,13 @@ class App extends Component {
     let url = new URL(window.location);
     url.searchParams.set(
       CONFIG["initial-question-parameter-name"] || "question",
-      messageText
+      encodeURIComponent(messageText)
     );
-    messagesCopy = messagesCopy.map((message) => message.followUpNeeded ? {...message, visualization: undefined} : message )
+    messagesCopy = messagesCopy.map((message) =>
+      message.followUpNeeded
+        ? { ...message, visualization: undefined }
+        : message
+    );
     window.history.pushState(
       {
         path: url.href,
@@ -104,15 +129,86 @@ class App extends Component {
     );
   }
 
+  setComponents(components) {
+    // is array and only contains strings, if it has elements
+    if (
+      !Array.isArray(components) ||
+      (Array.isArray(components) &&
+        components.length > 0 &&
+        !components.every(
+          (component) =>
+            component?.name instanceof String ||
+            typeof component?.name === "string"
+        ))
+    ) {
+      throw new Error("components have to be an array");
+    }
+
+    this.setState({
+      components,
+    });
+  }
+
+  toggleComponent(component) {
+    const components = this.state.components;
+
+    const index = components.indexOf(component);
+
+    components[index] = {
+      name: component.name,
+      activated: !component.activated,
+    };
+
+    this.setState({ components });
+  }
+
+  async setBackendUrl(backendUrl) {
+    // is string and ends with port and optionally a slash and NOT /#/application or something else
+    if (
+      (typeof backendUrl !== "string" && !(backendUrl instanceof String)) ||
+      ((typeof backendUrl === "string" || backendUrl instanceof String) &&
+        !/^https{0,1}:\/\/.+?:\d{1,5}\/?$/.test(backendUrl))
+    ) {
+      throw new Error("backend url needs to be string of url with base route");
+    }
+
+    const componentNames =
+      (await chatBotService.getComponents(backendUrl)) ?? [];
+    const components = componentNames.map((componentName) => ({
+      name: componentName,
+      activated: false,
+    }));
+
+    this.setState({
+      backendUrl,
+      components,
+    });
+  }
+
   render() {
     const now = new Date(Date.now());
+    const initialMessage =
+      !!this.state.backendUrl && !!this.state.components?.length > 0
+        ? this.texts["default-responses"]["initial-message"][
+            "is-configured"
+          ].replace("{{url}}", this.state.backendUrl)
+        : this.texts["default-responses"]["initial-message"][
+            "is-not-configured"
+          ];
     return (
       <>
-        <PageHeader sendMessage={this.sendMessage} />
+        <PageHeader
+          sendMessage={this.sendMessage}
+          toggleComponent={this.toggleComponent}
+          setBackendUrl={this.setBackendUrl}
+          setComponents={this.setComponents}
+          components={this.state.components}
+          backendUrl={this.state.backendUrl}
+        />
         <MessagePanel
           messages={[
             {
-              text: this.texts["default-responses"]["initial-message"],
+              text: initialMessage,
               followUpNeeded: false,
               loadedSuccessfully: false, // This is to prevent the source of data bit from showing up
               visualization: {},

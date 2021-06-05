@@ -32,25 +32,6 @@ export default class Message extends Component {
   }
 
   render() {
-    const disclaimerTextColor = !!this.props.messageObject?.isReply
-      ? " white-text"
-      : " black-text";
-    const disclaimerElement =
-      !this.props.messageObject?.followUpNeeded &&
-      !!this.props.messageObject?.isReply &&
-      !!this.props.messageObject?.loadedSuccessfully ? (
-        <div className={"messageText" + disclaimerTextColor}>
-          {this.texts["message-info"]["source-of-data"]}
-          <a
-            href="https://experience.arcgis.com/experience/478220a4c454480e823b17327b2bf1d4/page/page_0/"
-            rel="noreferrer"
-            target="_blank"
-          >
-            {this.texts["message-info"]["robert-koch-institute"]}
-          </a>{" "}
-        </div>
-      ) : null;
-
     return (
       <div
         tabIndex="-1"
@@ -85,7 +66,6 @@ export default class Message extends Component {
               __html: this.props.messageObject?.text ?? "",
             }}
           ></div>
-          {disclaimerElement}
           <div className="messageTimeSent">
             {this.props.messageObject?.time}
           </div>

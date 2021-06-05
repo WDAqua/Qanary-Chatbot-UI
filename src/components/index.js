@@ -15,6 +15,9 @@ import ClickableIcon from "./ClickableIcon/ClickableIcon";
 import Message from "./Message/Message";
 import RichMessage from "./RichMessage/RichMessage";
 import ContentContainer from "./ContentContainer/ContentContainer";
+import SettingsContainer from "./SettingsContainer/SettingsContainer";
+import QuestionsContainer from "./QuestionsContainer/QuestionsContainer";
+import ImprintContainer from "./ImprintContainer/ImprintContainer";
 
 export {
   App,
@@ -26,4 +29,7 @@ export {
   Message,
   RichMessage,
   ContentContainer,
+  SettingsContainer,
+  QuestionsContainer,
+  ImprintContainer,
 };

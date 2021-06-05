@@ -1,32 +1,40 @@
 import config from "../config.json";
 import { textsHelper } from "../helpers";
 
-const chatBotService = { postQuery };
-let graphId = undefined;
+const chatBotService = { postQuery, getComponents };
 
-function postQuery(question) {
+function handleResponse(response) {
+  if (!!response?.ok) {
+    return response.json();
+  } else {
+    throw new Error("Response was not ok");
+  }
+}
+
+function postQuery(
+  question,
+  backendUrl = config["default-chatbot-backend-url"],
+  componentList = config["default-chatbot-components"]
+) {
+  if (!backendUrl) {
+    backendUrl = config["default-chatbot-backend-url"];
+  }
+
   const requestBody = {
     question,
-    graph_id: graphId ?? "",
+    componentList: componentList ?? [],
   };
   const texts = textsHelper.getTexts();
 
-  return fetch(config["chatbot-backend-url"], {
+  return fetch(backendUrl, {
     method: "POST",
     body: JSON.stringify(requestBody),
     headers: {
       "Content-Type": "application/json",
     },
   })
-    .then((response) => {
-      if (!!response?.ok) {
-        return response.json();
-      } else {
-        throw new Error("Response was not ok")
-      }
-    })
+    .then(handleResponse)
     .then((data) => {
-      graphId = !!data["follow_up_needed"] ? data?.graph_id : "";
       return {
         question: data.question ?? question,
         answer: data.answer ?? texts["error-messages"]["no-answer-found"],
@@ -51,6 +59,31 @@ function postQuery(question) {
         followUpNeeded: true,
         loadedSuccessfully: false,
       };
+    });
+}
+
+function getComponents(backendUrl = config["default-chatbot-backend-url"]) {
+  // remove potential trailing slash since it's technically allowed
+  backendUrl = backendUrl.replace(/\/$/, "");
+  return fetch(`${backendUrl}/applications`, {
+    headers: {
+      Accept: "application/json",
+    },
+  })
+    .then(handleResponse)
+    .then((data) => {
+      if (
+        !Array.isArray(data) ||
+        (Array.isArray(data) &&
+          !data.every((component) => component.name != null))
+      ) {
+        throw new Error("Response data was malformed");
+      }
+      return data.map((component) => component.name);
+    })
+    .catch((errorMessage) => {
+      console.error(errorMessage);
+      return [];
     });
 }
 
