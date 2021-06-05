@@ -19,6 +19,7 @@ function postQuery(
   if (!backendUrl) {
     backendUrl = config["default-chatbot-backend-url"];
   }
+  backendUrl = backendUrl.replace(/\/$/, "");
 
   const requestBody = {
     question,
@@ -26,7 +27,7 @@ function postQuery(
   };
   const texts = textsHelper.getTexts();
 
-  return fetch(backendUrl, {
+  return fetch(`${backendUrl}/startquestionansweringwithtextquestion`, {
     method: "POST",
     body: JSON.stringify(requestBody),
     headers: {
