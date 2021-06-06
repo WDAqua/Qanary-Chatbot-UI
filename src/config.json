@@ -1,5 +1,5 @@
 {
-  "default-chatbot-backend-url": "http://webengineering.ins.hs-anhalt.de:43740",
+  "default-chatbot-backend-url": "https://webengineering.ins.hs-anhalt.de:43740",
   "default-chatbot-components": [
     "NED-DBpediaSpotlight",
     "QueryBuilderSimpleRealNameOfSuperHero",
