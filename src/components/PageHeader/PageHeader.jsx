@@ -127,7 +127,7 @@ export default class PageHeader extends Component {
           backendUrl={this.props.backendUrl}
           setComponents={this.props.setComponents}
           setBackendUrl={this.props.setBackendUrl}
-          toggleComponent={this.props.toggleComponent}
+          // toggleComponent={this.props.toggleComponent} // TODO: Add back in once we move on from the MVP
         />
       </>
     );

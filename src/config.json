@@ -1,9 +1,12 @@
 {
-  "default-chatbot-backend-url": "http://webengineering.ins.hs-anhalt.de:43740",
+  "default-chatbot-backend-url": "https://webengineering.ins.hs-anhalt.de:43740",
   "default-chatbot-components": [
     "NED-DBpediaSpotlight",
-    "QueryBuilderSimpleRealNameOfSuperhero",
-    "SparqlExecuter"
+    "QueryBuilderSimpleRealNameOfSuperHero",
+    "SparqlExecuter",
+    "OpenTapiocaNED",
+    "BirthDataQueryBuilder",
+    "WikidataQueryExecuter"
   ],
   "chatbot-frontend-url": "https://webengineering.ins.hs-anhalt.de:43712/",
   "default-language": "de",

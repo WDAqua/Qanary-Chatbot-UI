@@ -4,6 +4,7 @@ import { textsHelper } from "../helpers";
 const chatBotService = { postQuery, getComponents };
 
 function handleResponse(response) {
+  console.log(response);
   if (!!response?.ok) {
     return response.json();
   } else {
@@ -21,24 +22,20 @@ function postQuery(
   }
   backendUrl = backendUrl.replace(/\/$/, "");
 
-  const requestBody = {
-    question,
-    componentList: componentList ?? [],
-  };
   const texts = textsHelper.getTexts();
 
-  return fetch(`${backendUrl}/startquestionansweringwithtextquestion`, {
+  return fetch(`${backendUrl}/gerbil-execute/${componentList.join(",")}?query=${encodeURIComponent(question)}`, {
     method: "POST",
-    body: JSON.stringify(requestBody),
     headers: {
-      "Content-Type": "application/json",
+      "Accept": "application/json",
     },
   })
     .then(handleResponse)
-    .then((data) => {
+    .then((questions) => {
+      const data = JSON.parse(questions.questions[0].question.answers);
       return {
-        question: data.question ?? question,
-        answer: data.answer ?? texts["error-messages"]["no-answer-found"],
+        question: question,
+        answer: data,
         followUpNeeded: data["follow_up_needed"] ?? false,
         visualization: data.visualization ?? {},
         loadedSuccessfully: true,
