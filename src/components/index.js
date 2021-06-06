@@ -18,6 +18,7 @@ import ContentContainer from "./ContentContainer/ContentContainer";
 import SettingsContainer from "./SettingsContainer/SettingsContainer";
 import QuestionsContainer from "./QuestionsContainer/QuestionsContainer";
 import ImprintContainer from "./ImprintContainer/ImprintContainer";
+import TableMessage from "./TableMessage/TableMessage";
 
 export {
   App,
@@ -32,4 +33,5 @@ export {
   SettingsContainer,
   QuestionsContainer,
   ImprintContainer,
+  TableMessage,
 };

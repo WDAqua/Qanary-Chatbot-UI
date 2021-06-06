@@ -8,8 +8,14 @@
     margin-right: 1rem;
 }
 
-#componentSettings {
+#componentInput {
     min-width: 20rem;
+    max-width: 100%;
+    margin-right: 1rem;
+}
+
+#componentsList {
+    min-width: 40rem;
     max-width: 100%;
     margin-right: 1rem;
 }

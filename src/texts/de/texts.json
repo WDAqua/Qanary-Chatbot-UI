@@ -39,26 +39,28 @@
     {
       "title": "Dbpedia-Fragen",
       "questions": [
-        "Was ist der echte Name von Batman?",
-        "Was ist der echte Name von Catwoman?",
-        "Was ist der echte Name von Superman?"
+        "What is the real name of Batman?",
+        "What is the real name of Catwoman?",
+        "What is the real name of Superman?"
       ]
     },
     {
       "title": "Wikidata-Fragen",
       "questions": [
-        "Wo und wann is Ada Lovelace geboren?",
-        "Wo und wann is Quentin Tarantino geboren?",
-        "Wo und wann is Angela Merkel geboren?"
+        "Where and when was Ada Lovelace born?",
+        "Where and when was Quentin Tarantino born?",
+        "Where and when was Angela Merkel born?"
       ]
     }
   ],
   "settings": {
     "explanation": "In diesem Menü können Sie einstellen, welches Backend verwendet werden soll. Voreingestellt ist https://webengineering.ins.hs-anhalt.de:43740. Sie müssen auch die zu verwendenden Komponenten in der richtigen Reihenfolge angeben. Eine Liste der verfügbaren Komponenten wird ein valides Backend automatisch angezeigt.",
     "confirm-url": "URL bestätigen",
+    "confirm-components": "Komponenten bestätigen",
     "url-malformed": "Geben Sie bitte eine valide URL mit http:// bzw. https:// und Port an.",
     "no-components": "Es konnten keine Komponenten gefunden werden. Es muss ein valides Backend angegeben und CORS entsprechend konfiguriert werden.",
-    "list-explanation": "Stellen Sie hier die Reihenfolge der Komponenten ein und markieren Sie die Komponenten, die Sie nutzen möchten. Die Reihenfolge ist wichtig und muss korrekt angegeben werden."
+    "components-explanation": "Geben Sie hier die Komponenten in der richtigen Reihenfolge an. Trennen Sie die Komponenten durch Kommata.",
+    "admin-panel-url": "Liste der Komponenten"
   },
   "credits": "Diese Anwendung wurde am <a href=\"https://www.hs-anhalt.de/hochschule-anhalt/fachbereich-5/ueberblick.html\" target=\"_blank\" rel=\"noreferrer\">Fachbereich Informatik und Sprachen</a> der <a href=\"https://hs-anhalt.de/\" target=\"_blank\" rel=\"noreferrer\">Hochschule Anhalt</a> unter der Leitung von <a href=\"https://www.hs-anhalt.de/hochschule-anhalt/service/personenverzeichnis/prof-dr-andreas-both.html\" target=\"_blank\" rel=\"noreferrer\">Prof. Dr. Andreas Both</a> und mit der Unterstützung von Paul Heinze durch Jonas Wunsch entwickelt. Für diese Anwendung gilt die Apache 2.0 Lizenz."
 }

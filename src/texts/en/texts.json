@@ -56,9 +56,11 @@
   "settings": {
     "explanation": "In this menu, you can configure the backend used by the application. The default is https://webengineering.ins.hs-anhalt.de:43740. You also have to set the components to be used in the correct order. The list of available components will be rendered for any valid backend automatically.",
     "confirm-url": "Confirm URL",
+    "confirm-components": "Confirm components",
     "url-malformed": "Please enter a valid URL with http:// or https:// and the port.",
     "no-components": "No components were found. A valid backend has to be provided and CORS has to be configured accordingly.",
-    "list-explanation": "Set the order of the components here and choose which to use. The order is important and has to be set correctly."
+    "components-explanation": "Set the components in the right order here. Separate them using commas.",
+    "admin-panel-url": "List of components"
   },
   "credits": "This application has been developed by Jonas Wunsch at the <a href=\"https://www.hs-anhalt.de/hochschule-anhalt/fachbereich-5/ueberblick.html\" target=\"_blank\" rel=\"noreferrer\">Department of Computer Science and Languages</a> of the <a href=\"https://hs-anhalt.de/\" target=\"_blank\" rel=\"noreferrer\">Anhalt University of Applied Sciences</a> under the direction of <a href=\"https://www.hs-anhalt.de/en/university/service/directory-of-people/prof-dr-andreas-both.html\" target=\"_blank\" rel=\"noreferrer\">Prof. Dr. Andreas Both</a> and with help from Paul Heinze. The Apache 2.0 license applies to this project."
 }

@@ -13,10 +13,12 @@ class App extends Component {
 
     this.state = {
       messages: [],
-      components: CONFIG["default-chatbot-components"].map((componentName) => ({
+      components: CONFIG["default-chatbot-components"],
+      /* // TODO: Add back in once we move on from the MVP
+      .map((componentName) => ({
         name: componentName,
         activated: false,
-      })),
+      }))*/
       backendUrl: "",
       isSending: false,
     };
@@ -26,7 +28,7 @@ class App extends Component {
     this.sendMessage = this.sendMessage.bind(this);
     this.setBackendUrl = this.setBackendUrl.bind(this);
     this.setComponents = this.setComponents.bind(this);
-    this.toggleComponent = this.toggleComponent.bind(this);
+    // this.toggleComponent = this.toggleComponent.bind(this); // TODO: Add back in once we move on from the MVP
   }
 
   componentDidMount() {
@@ -76,34 +78,42 @@ class App extends Component {
       icon: user_icon,
     });
     // await reply and push it to state
-    const preparedComponents = this.state.components
-      .filter((component) => component.activated)
-      .map((component) => component.name);
-    console.log(preparedComponents);
+    const preparedComponents = this.state.components;
+    // .filter((component) => component.activated) // TODO: Not needed for MVP
+    // .map((component) => component); // TODO: Edit back once we move on from the MVP
     let reply = await chatBotService.postQuery(
       messageText,
       this.state.backendUrl,
       preparedComponents
     );
-    if (!!reply.visualization?.buttons)
+    if (!!reply.visualization?.buttons) {
       reply.visualization.buttons = reply.visualization.buttons.map(
         (button) => ({
           onClick: () =>
-            this.sendMessage(button.payload, this.state.backendUrl),
+            this.sendMessage(button.payload),
           ...button,
         })
       );
+    }
 
     now = new Date(Date.now());
-    messagesCopy.push({
-      text: reply.answer,
+
+    const replyObject = {
       followUpNeeded: reply.followUpNeeded,
       loadedSuccessfully: reply.loadedSuccessfully,
       visualization: reply.visualization,
       time: now.getHours() + ":" + ("0" + now.getMinutes()).slice(-2),
       isReply: true,
       icon: robot_icon,
-    });
+    };
+
+    if (typeof reply.answer === "object") {
+      replyObject.tableData = reply.answer;
+    } else {
+      replyObject.text = reply.answer;
+    }
+
+    messagesCopy.push(replyObject);
     this.setState({
       messages: messagesCopy,
       isSending: false,
@@ -131,14 +141,15 @@ class App extends Component {
 
   setComponents(components) {
     // is array and only contains strings, if it has elements
+    // TODO: Edit string check back once we move on from the MVP
+    console.log(components);
     if (
       !Array.isArray(components) ||
       (Array.isArray(components) &&
         components.length > 0 &&
         !components.every(
           (component) =>
-            component?.name instanceof String ||
-            typeof component?.name === "string"
+            component instanceof String || typeof component === "string"
         ))
     ) {
       throw new Error("components have to be an array");
@@ -149,6 +160,8 @@ class App extends Component {
     });
   }
 
+  /*
+  TODO: Not needed for the MVP, kept for potential use later on
   toggleComponent(component) {
     const components = this.state.components;
 
@@ -160,7 +173,7 @@ class App extends Component {
     };
 
     this.setState({ components });
-  }
+  }*/
 
   async setBackendUrl(backendUrl) {
     // is string and ends with port and optionally a slash and NOT /#/application or something else
@@ -172,16 +185,19 @@ class App extends Component {
       throw new Error("backend url needs to be string of url with base route");
     }
 
+    /*
+    TODO: Dynamic requesting of components would require CORS configuration, so we'll just go with the MVP for now
     const componentNames =
       (await chatBotService.getComponents(backendUrl)) ?? [];
     const components = componentNames.map((componentName) => ({
       name: componentName,
       activated: false,
     }));
+    */
 
     this.setState({
       backendUrl,
-      components,
+      //components, // TODO: Edit back in once we move on from the MVP
     });
   }
 
@@ -199,7 +215,7 @@ class App extends Component {
       <>
         <PageHeader
           sendMessage={this.sendMessage}
-          toggleComponent={this.toggleComponent}
+          // toggleComponent={this.toggleComponent} // TODO: Add back in once we move on from the MVP
           setBackendUrl={this.setBackendUrl}
           setComponents={this.setComponents}
           components={this.state.components}

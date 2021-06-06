@@ -1,0 +1,20 @@
+.dataTable tbody > :nth-child(odd) {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.dataTable thead td {
+    border-bottom: 1px solid black;
+}
+
+.dataTable td:not(td:last-of-type) {
+    border-right: 1px solid black;
+}
+
+.dataTable {
+    border-spacing: 0px;
+}
+
+.dataTable td {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}

@@ -18,6 +18,8 @@ export default class SettingsContainer extends Component {
     textsHelper.removeListener(this.listenerId);
   }
 
+  /*
+  TODO: Edit back in once we move on from the MVP
   moveUp(componentName) {
     const componentsCopy = this.props.components;
     const componentIndex = componentsCopy.findIndex(
@@ -45,6 +47,7 @@ export default class SettingsContainer extends Component {
 
     this.props.setComponents(componentsCopy);
   }
+  */
 
   render() {
     return (
@@ -74,10 +77,55 @@ export default class SettingsContainer extends Component {
           <div className="errorMessage hidden">
             {this.texts.settings["url-malformed"]}
           </div>
+          <div>
+          <a target="_blank" rel="noreferrer" href={`${this.props.backendUrl.replace(/\/$/, "")}/#/applications`}>{this.texts.settings["admin-panel-url"]}</a>
+          </div>
         </div>
-        <div id="componentSettings">
-          <div>{this.texts.settings["list-explanation"]}</div>
-          {this.props.components?.map((component, i) => (
+        <div id="componentSettingsContainer">
+          <div>{this.texts.settings["components-explanation"]}</div>
+          <input
+            type="text"
+            id="componentsList"
+            defaultValue={this.props.components.join(",")}
+          />
+          <input
+            type="button"
+            value={this.texts.settings["confirm-components"]}
+            onClick={() => {
+              const componentsInput = document.getElementById("componentsList");
+              const errElement = document.querySelector(
+                "#componentSettingsContainer > .errorMessage"
+              );
+              try {
+                this.props.setComponents(
+                  componentsInput.value.replace(/\s/g, "").split(",")
+                );
+              } catch (errorMessage) {
+                console.error(errorMessage);
+                errElement.classList.remove("hidden");
+              }
+              errElement.classList.add("hidden");
+            }}
+          />
+          <div
+            className={
+              "errorMessage" +
+              (this.props.components?.length > 0 ? " hidden" : "")
+            }
+          >
+            {this.texts.settings["no-components"]}
+          </div>
+        </div>
+      </ContentContainer>
+    );
+  }
+}
+
+/*
+
+TODO: This is for dynamic loading of the components. Instead, we'll use an input element as an MVP for now
+component.
+{this.props.components?.map((component, i) => (
             <div key={component.name} className="chatbotComponent">
               <span className="componentName">{`${i + 1}. ${component.name}`}</span>
               <input
@@ -93,16 +141,9 @@ export default class SettingsContainer extends Component {
               <input type="checkbox" checked={component.activated} onChange={() => this.props.toggleComponent(component)} />
             </div>
           ))}
-          <div
-            className={
-              "errorMessage" +
-              (this.props.components?.length > 0 ? " hidden" : "")
-            }
-          >
-            {this.texts.settings["no-components"]}
-          </div>
-        </div>
-      </ContentContainer>
-    );
-  }
-}
+
+
+
+          German text for explanation: "Stellen Sie hier die Reihenfolge der Komponenten ein und markieren Sie die Komponenten, die Sie nutzen möchten. Die Reihenfolge ist wichtig und muss korrekt angegeben werden."
+          English text for explanation: "Set the order of the components here and choose which to use. The order is important and has to be set correctly."
+*/
