@@ -78,7 +78,7 @@ export default class SettingsContainer extends Component {
             {this.texts.settings["url-malformed"]}
           </div>
           <div>
-          <a target="_blank" rel="noreferrer" href={`${this.props.backendUrl.replace(/\/$/, "")}/#/applications`}>{this.texts.settings["admin-panel-url"]}</a>
+          <a target="_blank" rel="noreferrer" href={`${this.props.backendUrl.replace(/\/$/, "") || config["default-chatbot-backend-url"]}/#/applications`}>{this.texts.settings["admin-panel-url"]}</a>
           </div>
         </div>
         <div id="componentSettingsContainer">
