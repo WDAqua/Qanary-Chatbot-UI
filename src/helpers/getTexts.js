@@ -19,7 +19,6 @@ function changeLanguage(newLanguage = "de") {
   if (currentLanguage === newLanguage) return;
   currentLanguage = newLanguage;
   try {
-    console.log(currentLanguage, newLanguage);
     texts = require(`../texts/${currentLanguage}/texts.json`);
     listeners.forEach((listener) => listener.callback());
   } catch(errorMessage) {

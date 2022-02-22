@@ -142,7 +142,6 @@ class App extends Component {
   setComponents(components) {
     // is array and only contains strings, if it has elements
     // TODO: Edit string check back once we move on from the MVP
-    console.log(components);
     if (
       !Array.isArray(components) ||
       (Array.isArray(components) &&

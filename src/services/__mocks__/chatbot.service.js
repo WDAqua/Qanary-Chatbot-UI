@@ -4,7 +4,6 @@
 const chatBotService = jest.createMockFromModule("../chatbot.service.js");
 
 chatBotService.postQuery = jest.fn((question) => {
-  console.log("Hi");
   return Promise.resolve({});
 });
 
