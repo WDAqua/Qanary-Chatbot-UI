@@ -39,7 +39,7 @@ export default class TableMessage extends Component {
       this.props.messageObject.tableData.results.bindings.map((dataSet) => (
         <tr>
           {this.props.messageObject.tableData.head.vars.map((header) => (
-            <td>{dataSet[header].value}</td>
+            <td dangerouslySetInnerHTML={{ __html: dataSet[header].value }} />
           ))}
         </tr>
       ));
