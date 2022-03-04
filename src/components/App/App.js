@@ -13,15 +13,17 @@ class App extends Component {
 
     this.state = {
       messages: [],
-      components: CONFIG["default-chatbot-components"],
+      components: JSON.parse(localStorage.getItem("components")) ?? CONFIG["default-chatbot-components"],
       /* // TODO: Add back in once we move on from the MVP
       .map((componentName) => ({
         name: componentName,
         activated: false,
       }))*/
-      backendUrl: "",
+      backendUrl: localStorage.getItem("backendUrl") ?? "",
       isSending: false,
     };
+
+    console.log(localStorage.getItem("backendUrl"));
 
     this.texts = textsHelper.getTexts();
 
@@ -154,6 +156,7 @@ class App extends Component {
       throw new Error("components have to be an array");
     }
 
+    localStorage.setItem("components", JSON.stringify(components))
     this.setState({
       components,
     });
@@ -179,7 +182,7 @@ class App extends Component {
     if (
       (typeof backendUrl !== "string" && !(backendUrl instanceof String)) ||
       ((typeof backendUrl === "string" || backendUrl instanceof String) &&
-        !/^https{0,1}:\/\/.+?:\d{1,5}\/?$/.test(backendUrl))
+        !/^https?:\/\/.+?:\d{1,5}\/?$/.test(backendUrl))
     ) {
       throw new Error("backend url needs to be string of url with base route");
     }
@@ -193,6 +196,9 @@ class App extends Component {
       activated: false,
     }));
     */
+
+
+    localStorage.setItem("backendUrl", backendUrl);
 
     this.setState({
       backendUrl,

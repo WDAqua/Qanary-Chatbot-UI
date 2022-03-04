@@ -2,10 +2,13 @@ import config from "../config.json";
 import { textsHelper } from "../helpers";
 
 const chatBotService = { postQuery, getComponents };
+let graphId = undefined;
 
 function handleResponse(response) {
-  console.log(response);
   if (!!response?.ok) {
+    const newGraphId = response.headers.get("X-qanary-graph");
+    graphId = newGraphId != null ? newGraphId : undefined;
+
     return response.json();
   } else {
     throw new Error("Response was not ok");
@@ -23,13 +26,20 @@ function postQuery(
   backendUrl = backendUrl.replace(/\/$/, "");
 
   const texts = textsHelper.getTexts();
+  const previousGraphAddendum =
+    graphId != null ? `&previousProcessGraph=${graphId}` : "";
 
-  return fetch(`${backendUrl}/gerbil-execute/${componentList.join(",")}?query=${encodeURIComponent(question)}`, {
-    method: "POST",
-    headers: {
-      "Accept": "application/json",
-    },
-  })
+  return fetch(
+    `${backendUrl}/gerbil-execute/${componentList.join(
+      ","
+    )}?query=${encodeURIComponent(question)}${previousGraphAddendum}`,
+    {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+      },
+    }
+  )
     .then(handleResponse)
     .then((questions) => {
       const data = JSON.parse(questions.questions[0].question.answers);
