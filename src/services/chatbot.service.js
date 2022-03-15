@@ -1,13 +1,13 @@
 import config from "../config.json";
 import { textsHelper } from "../helpers";
+import { getCurrentLanguage } from "../helpers/getTexts";
 
 const chatBotService = { postQuery, getComponents };
 let graphId = undefined;
 
 function handleResponse(response) {
   if (!!response?.ok) {
-    const newGraphId = response.headers.get("X-qanary-graph");
-    graphId = newGraphId != null ? newGraphId : undefined;
+    graphId = response.headers.get("X-qanary-graph");
 
     return response.json();
   } else {
@@ -32,7 +32,9 @@ function postQuery(
   return fetch(
     `${backendUrl}/gerbil-execute/${componentList.join(
       ","
-    )}?query=${encodeURIComponent(question)}${previousGraphAddendum}`,
+    )}?query=${encodeURIComponent(
+      question
+    )}&lang=${getCurrentLanguage()}${previousGraphAddendum}`,
     {
       method: "POST",
       headers: {
