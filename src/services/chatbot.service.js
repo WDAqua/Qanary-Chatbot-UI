@@ -44,7 +44,7 @@ function postQuery(
   )
     .then(handleResponse)
     .then((questions) => {
-      const data = JSON.parse(questions.questions[0].question.answers);
+      const data = questions.questions[0].answers[0];
       return {
         question: question,
         answer: data,
