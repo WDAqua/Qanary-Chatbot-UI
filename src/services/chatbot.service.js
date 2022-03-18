@@ -27,7 +27,7 @@ function postQuery(
 
   const texts = textsHelper.getTexts();
   const previousGraphAddendum =
-    graphId != null ? `&previousProcessGraph=${graphId}` : "";
+    graphId != null ? `&priorConversation=${graphId}` : "";
 
   return fetch(
     `${backendUrl}/gerbil-execute/${componentList.join(
