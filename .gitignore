@@ -10,7 +10,7 @@
 
 # production
 /build
-/docker/certs
+/docker/certs/*
 
 # misc
 .DS_Store
