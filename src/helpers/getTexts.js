@@ -1,5 +1,5 @@
 const config = require("../config.json");
-let currentLanguage = config["default-language"];
+let currentLanguage = window._env_?.DEFAULT_LANGUAGE ?? config.DEFAULT_LANGUAGE;
 let texts = require(`../texts/${currentLanguage}/texts.json`);
 let listeners = [];
 
@@ -23,7 +23,7 @@ function changeLanguage(newLanguage = "de") {
     listeners.forEach((listener) => listener.callback());
   } catch(errorMessage) {
     console.error(errorMessage);
-    currentLanguage = config["default-language"];
+    currentLanguage = window._env_?.DEFAULT_LANGUAGE ?? config.DEFAULT_LANGUAGE;
   }
 }
 

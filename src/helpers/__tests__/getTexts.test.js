@@ -7,19 +7,19 @@ afterEach(() => {
 })
 
 it("starts with the default language", () => {
-  expect(textsHelper.getCurrentLanguage()).toEqual(config["default-language"]);
+  expect(textsHelper.getCurrentLanguage()).toEqual(window._env_?.DEFAULT_LANGUAGE ?? config.DEFAULT_LANGUAGE);
 });
 
 it("changes the language to a supported one", () => {
-  expect(textsHelper.getCurrentLanguage()).toEqual(config["default-language"]);
+  expect(textsHelper.getCurrentLanguage()).toEqual(window._env_?.DEFAULT_LANGUAGE ?? config.DEFAULT_LANGUAGE);
   textsHelper.changeLanguage("en");
   expect(textsHelper.getCurrentLanguage()).toEqual("en");
 });
 
 it("falls back to the default language for unsupported ones", () => {
-  expect(textsHelper.getCurrentLanguage()).toEqual(config["default-language"]);
+  expect(textsHelper.getCurrentLanguage()).toEqual(window._env_?.DEFAULT_LANGUAGE ?? config.DEFAULT_LANGUAGE);
   textsHelper.changeLanguage("fr");
-  expect(textsHelper.getCurrentLanguage()).toEqual(config["default-language"]);
+  expect(textsHelper.getCurrentLanguage()).toEqual(window._env_?.DEFAULT_LANGUAGE ?? config.DEFAULT_LANGUAGE);
 });
 
 it("generates unique ids for many listeners", () => {
@@ -34,7 +34,7 @@ it("generates unique ids for many listeners", () => {
 
 it("calls the listener callback when the language is changed", () => {
     const mockFn = jest.fn();
-    expect(textsHelper.getCurrentLanguage()).toEqual(config["default-language"]);
+    expect(textsHelper.getCurrentLanguage()).toEqual(window._env_?.DEFAULT_LANGUAGE ?? config.DEFAULT_LANGUAGE);
     textsHelper.addListener(mockFn);
     textsHelper.changeLanguage("en");
 
@@ -43,7 +43,7 @@ it("calls the listener callback when the language is changed", () => {
 
 it("does not call the listener callback when the language is changed after the listener was removed", () => {
     const mockFn = jest.fn();
-    expect(textsHelper.getCurrentLanguage()).toEqual(config["default-language"]);
+    expect(textsHelper.getCurrentLanguage()).toEqual(window._env_?.DEFAULT_LANGUAGE ?? config.DEFAULT_LANGUAGE);
     const id = textsHelper.addListener(mockFn);
     textsHelper.changeLanguage("en");
     expect(mockFn).toHaveBeenCalledTimes(1);

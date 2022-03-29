@@ -15,7 +15,7 @@ it("sends a valid post request", async () => {
     question: "test",
   };
 
-  expect(mockFn).toHaveBeenCalledWith(config["chatbot-backend-url"], {
+  expect(mockFn).toHaveBeenCalledWith(window._env_?.DEFAULT_CHATBOT_BACKEND_URL ?? config.DEFAULT_CHATBOT_BACKEND_URL, {
     method: "POST",
     body: JSON.stringify(requestBody),
     headers: {

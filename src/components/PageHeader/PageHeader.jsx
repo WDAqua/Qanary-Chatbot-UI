@@ -74,7 +74,10 @@ export default class PageHeader extends Component {
           />
           <div className="pageTitle" tabIndex="0">
             <a
-              href={config["chatbot-frontend-url"]}
+              href={
+                window._env_?.CHATBOT_FRONTEND_URL ??
+                config.CHATBOT_FRONTEND_URL
+              }
               rel="noreferrer"
               target="_self"
               className="center white-text"

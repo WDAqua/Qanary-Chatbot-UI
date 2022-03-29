@@ -1,6 +1,6 @@
 {
-  "default-chatbot-backend-url": "https://webengineering.ins.hs-anhalt.de:43740",
-  "default-chatbot-components": [
+  "DEFAULT_CHATBOT_BACKEND_URL": "https://webengineering.ins.hs-anhalt.de:43740",
+  "DEFAULT_CHATBOT_COMPONENTS": [
     "NED-DBpediaSpotlight",
     "QueryBuilderSimpleRealNameOfSuperHero",
     "SparqlExecuter",
@@ -8,7 +8,7 @@
     "BirthDataQueryBuilder",
     "WikidataQueryExecuter"
   ],
-  "chatbot-frontend-url": "https://webengineering.ins.hs-anhalt.de:43712/",
-  "default-language": "de",
-  "initial-question-parameter-name": "question"
+  "CHATBOT_FRONTEND_URL": "https://webengineering.ins.hs-anhalt.de:43712/",
+  "DEFAULT_LANGUAGE": "de",
+  "INITIAL_QUESTION_PARAMETER_NAME": "question"
 }

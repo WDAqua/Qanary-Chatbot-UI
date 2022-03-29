@@ -5,7 +5,7 @@ import chatBotService from "../../services/chatbot.service";
 import robot_icon from "../share/imgs/robot_icon.svg";
 import user_icon from "../share/imgs/account_icon_black.svg";
 import { textsHelper } from "../../helpers";
-import CONFIG from "../../config.json";
+import config from "../../config.json";
 
 class App extends Component {
   constructor(props) {
@@ -13,7 +13,10 @@ class App extends Component {
 
     this.state = {
       messages: [],
-      components: JSON.parse(localStorage.getItem("components")) ?? CONFIG["default-chatbot-components"],
+      components:
+        JSON.parse(localStorage.getItem("components")) ??
+        window._env_?.DEFAULT_CHATBOT_COMPONENTS ??
+        config.DEFAULT_CHATBOT_COMPONENTS,
       /* // TODO: Add back in once we move on from the MVP
       .map((componentName) => ({
         name: componentName,
@@ -22,8 +25,6 @@ class App extends Component {
       backendUrl: localStorage.getItem("backendUrl") ?? "",
       isSending: false,
     };
-
-    console.log(localStorage.getItem("backendUrl"));
 
     this.texts = textsHelper.getTexts();
 
@@ -37,8 +38,14 @@ class App extends Component {
     const queryParams = window.location;
     // This RegExp accepts either ?question=questionText or &question=questionText to be as flexible as possible
     const queryRegExp = new RegExp(
-      `\\?${CONFIG["initial-question-parameter-name"] || "question"}=([^&]*)|&${
-        CONFIG["initial-question-parameter-name"] || "question"
+      `\\?${
+        (window._env_?.["initial-question-parameter"] ??
+          config.INITIAL_QUESTION_PARAMETER_NAME) ||
+        "question"
+      }=([^&]*)|&${
+        (window._env_?.["initial-question-parameter"] ??
+          config.INITIAL_QUESTION_PARAMETER_NAME) ||
+        "question"
       }=([^&]*)`
     );
     const potentialQueries = queryRegExp.exec(queryParams);
@@ -91,8 +98,7 @@ class App extends Component {
     if (!!reply.visualization?.buttons) {
       reply.visualization.buttons = reply.visualization.buttons.map(
         (button) => ({
-          onClick: () =>
-            this.sendMessage(button.payload),
+          onClick: () => this.sendMessage(button.payload),
           ...button,
         })
       );
@@ -123,7 +129,9 @@ class App extends Component {
     // Push new state to history, see https://developer.mozilla.org/en-US/docs/Web/API/History_API
     let url = new URL(window.location);
     url.searchParams.set(
-      CONFIG["initial-question-parameter-name"] || "question",
+      (window._env_?.INITIAL_QUESTION_PARAMETER_NAME ??
+        config.INITIAL_QUESTION_PARAMETER_NAME) ||
+        "question",
       encodeURIComponent(messageText)
     );
     messagesCopy = messagesCopy.map((message) =>
@@ -156,7 +164,7 @@ class App extends Component {
       throw new Error("components have to be an array");
     }
 
-    localStorage.setItem("components", JSON.stringify(components))
+    localStorage.setItem("components", JSON.stringify(components));
     this.setState({
       components,
     });
@@ -196,7 +204,6 @@ class App extends Component {
       activated: false,
     }));
     */
-
 
     localStorage.setItem("backendUrl", backendUrl);
 
