@@ -78,7 +78,7 @@ Simply change "webengineering.ins.hs-anhalt.de" in lines 3 and 10 to whatever yo
 
 The application itself can be handily configured using the [`.env`](./.env) file. Its keys and values must be valid for JavaScript objects because they're injected as JavaScript code when the container starts. Example:
 
-```
+```text
 ENV_VAR_STRING="value"
 ENV_VAR_OBJECT={key: "value"}
 ENV_VAR_ARRAY=["value1", "value2"]
@@ -100,7 +100,7 @@ It offers the following fields:
   * Explanation: The default Qanary backend to which requests are sent. It should feature the protocol, domain and port. This can also be configured at run-time.
   * Example:
 
-  ```json
+  ```text
   DEFAULT_CHATBOT_BACKEND_URL="https://webengineering.ins.hs-anhalt.de:43740"
   ```
 
@@ -108,7 +108,7 @@ It offers the following fields:
   * Explanation: The default Qanary components which will be used to handle requests. This can also be configured at run-time.
   * Example:
 
-  ```json
+  ```text
   DEFAULT_CHATBOT_COMPONENTS=["NED-DBpediaSpotlight","QueryBuilderSimpleRealNameOfSuperHero","SparqlExecuter","OpenTapiocaNED","BirthDataQueryBuilder","WikidataQueryExecuter"]
   ```
 
@@ -116,7 +116,7 @@ It offers the following fields:
   * Explanation: The URL of the deployed Qanary frontend to which clicking page's header links.
   * Example:
 
-  ```json
+  ```text
   DEFAULT_CHATBOT_FRONTEND_URL="https://webengineering.ins.hs-anhalt.de:43712"
   ```
 
@@ -124,7 +124,7 @@ It offers the following fields:
   * Explanation: The application's default language. Only supported languages can be used here. The currently supported languages are English (en) and German (de). This can be changed at run-time by clicking on the flag icon.
   * Example:
 
-  ```json
+  ```text
   DEFAULT_LANGUAGE="de"
   ```
 
@@ -132,7 +132,7 @@ It offers the following fields:
   * Explanation: The name of the query parameter for the initial question. The initial question is immediately sent to the specified backend upon page load. This query parameter is updated with every question and allows sharing specific queries. It is recommended to use something that's easily understandable, e. g. `"question"` or `"query"`.
   * Example:
 
-  ```json
+  ```text
   INITIAL_QUESTION_PARAMETER_NAME="question"
   ```
 
