@@ -16,7 +16,7 @@ To change the port, simply open the [`.env`](./.env) file and change `QANARY_UI_
 
 Example for running the application on port `8000`:
 
-```env
+```
 QANARY_UI_PORT=8000
 ```
 
@@ -78,7 +78,7 @@ Simply change "webengineering.ins.hs-anhalt.de" in lines 3 and 10 to whatever yo
 
 The application itself can be handily configured using the [`.env`](./.env) file. Its keys and values must be valid for JavaScript objects because they're injected as JavaScript code when the container starts. Example:
 
-```env
+```
 ENV_VAR_STRING="value"
 ENV_VAR_OBJECT={key: "value"}
 ENV_VAR_ARRAY=["value1", "value2"]
@@ -162,7 +162,7 @@ The [prerequisites for regular Docker deployment](#prerequisites) also apply her
 To simply pull the application from Dockerhub and run it as is, follow these steps:
 
 1. Open a terminal.
-2. Type `docker run qanary/qanary-ui:latest -p QANARY_UI_PORT:443 -d --restart on-failure:1` and press `⏎ enter`. Replace `QANARY_UI_PORT` with the port the application should run on.
+2. Type `docker run -p QANARY_UI_PORT:443 -d --restart on-failure:1 qanary/qanary-ui:latest` and press `⏎ enter`. Replace `QANARY_UI_PORT` with the port the application should run on.
 
 To configure the application, you need to overwrite environment variables in the container on start-up. Only the environment variables specified in the existing [`.env`](./.env) file can be overwritten. Simply modify the previously described steps to include one or both of the following methods.
 
