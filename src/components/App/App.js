@@ -5,7 +5,6 @@ import chatBotService from "../../services/chatbot.service";
 import robot_icon from "../share/imgs/robot_icon.svg";
 import user_icon from "../share/imgs/account_icon_black.svg";
 import { textsHelper } from "../../helpers";
-import config from "../../config.json";
 
 class App extends Component {
   constructor(props) {
@@ -15,8 +14,7 @@ class App extends Component {
       messages: [],
       components:
         JSON.parse(localStorage.getItem("components")) ??
-        window._env_?.DEFAULT_CHATBOT_COMPONENTS ??
-        config.DEFAULT_CHATBOT_COMPONENTS,
+        window._env_?.DEFAULT_CHATBOT_COMPONENTS,
       /* // TODO: Add back in once we move on from the MVP
       .map((componentName) => ({
         name: componentName,
@@ -39,13 +37,9 @@ class App extends Component {
     // This RegExp accepts either ?question=questionText or &question=questionText to be as flexible as possible
     const queryRegExp = new RegExp(
       `\\?${
-        (window._env_?.["initial-question-parameter"] ??
-          config.INITIAL_QUESTION_PARAMETER_NAME) ||
-        "question"
+        window._env_?.["initial-question-parameter"] || "question"
       }=([^&]*)|&${
-        (window._env_?.["initial-question-parameter"] ??
-          config.INITIAL_QUESTION_PARAMETER_NAME) ||
-        "question"
+        window._env_?.["initial-question-parameter"] || "question"
       }=([^&]*)`
     );
     const potentialQueries = queryRegExp.exec(queryParams);
@@ -129,9 +123,7 @@ class App extends Component {
     // Push new state to history, see https://developer.mozilla.org/en-US/docs/Web/API/History_API
     let url = new URL(window.location);
     url.searchParams.set(
-      (window._env_?.INITIAL_QUESTION_PARAMETER_NAME ??
-        config.INITIAL_QUESTION_PARAMETER_NAME) ||
-        "question",
+      window._env_?.INITIAL_QUESTION_PARAMETER_NAME || "question",
       encodeURIComponent(messageText)
     );
     messagesCopy = messagesCopy.map((message) =>

@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import "./SettingsContainer.css";
 import { ContentContainer } from "..";
 import { textsHelper } from "../../helpers";
-import config from "../../config.json";
 
 export default class SettingsContainer extends Component {
   texts = textsHelper.getTexts();
@@ -58,9 +57,7 @@ export default class SettingsContainer extends Component {
             type="text"
             id="backendUrlInput"
             defaultValue={
-              this.props.backendUrl ||
-              (window._env_?.DEFAULT_CHATBOT_BACKEND_URL ??
-                config.DEFAULT_CHATBOT_BACKEND_URL)
+              this.props.backendUrl || window._env_?.DEFAULT_CHATBOT_BACKEND_URL
             }
           />
           <input
@@ -87,7 +84,8 @@ export default class SettingsContainer extends Component {
               rel="noreferrer"
               href={`${
                 this.props.backendUrl.replace(/\/$/, "") ||
-                (window._env_?.DEFAULT_CHATBOT_BACKEND_URL ?? config.DEFAULT_CHATBOT_BACKEND_URL)
+                (window._env_?.DEFAULT_CHATBOT_BACKEND_URL ??
+                  config.DEFAULT_CHATBOT_BACKEND_URL)
               }/#/applications`}
             >
               {this.props.backendUrl || this.texts.settings["admin-panel-url"]}
