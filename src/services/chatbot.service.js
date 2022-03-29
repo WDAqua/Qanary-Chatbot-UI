@@ -1,4 +1,3 @@
-import config from "../config.json";
 import { textsHelper } from "../helpers";
 import { getCurrentLanguage } from "../helpers/getTexts";
 
@@ -17,11 +16,11 @@ function handleResponse(response) {
 
 function postQuery(
   question,
-  backendUrl = config["default-chatbot-backend-url"],
-  componentList = config["default-chatbot-components"]
+  backendUrl = window._env_?.DEFAULT_CHATBOT_BACKEND_URL,
+  componentList = window._env_?.DEFAULT_CHATBOT_COMPONENTS
 ) {
   if (!backendUrl) {
-    backendUrl = config["default-chatbot-backend-url"];
+    backendUrl = window._env_?.DEFAULT_CHATBOT_BACKEND_URL;
   }
   backendUrl = backendUrl.replace(/\/$/, "");
 
@@ -72,7 +71,7 @@ function postQuery(
     });
 }
 
-function getComponents(backendUrl = config["default-chatbot-backend-url"]) {
+function getComponents(backendUrl = window._env_?.DEFAULT_CHATBOT_BACKEND_URL) {
   // remove potential trailing slash since it's technically allowed
   backendUrl = backendUrl.replace(/\/$/, "");
   return fetch(`${backendUrl}/applications`, {

@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import "./SettingsContainer.css";
 import { ContentContainer } from "..";
 import { textsHelper } from "../../helpers";
-import config from "../../config.json";
 
 export default class SettingsContainer extends Component {
   texts = textsHelper.getTexts();
@@ -57,7 +56,9 @@ export default class SettingsContainer extends Component {
           <input
             type="text"
             id="backendUrlInput"
-            defaultValue={this.props.backendUrl || config["default-chatbot-backend-url"]}
+            defaultValue={
+              this.props.backendUrl || window._env_?.DEFAULT_CHATBOT_BACKEND_URL
+            }
           />
           <input
             type="button"
@@ -78,7 +79,17 @@ export default class SettingsContainer extends Component {
             {this.texts.settings["url-malformed"]}
           </div>
           <div>
-          <a target="_blank" rel="noreferrer" href={`${this.props.backendUrl.replace(/\/$/, "") || config["default-chatbot-backend-url"]}/#/applications`}>{this.props.backendUrl || this.texts.settings["admin-panel-url"]}</a>
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href={`${
+                this.props.backendUrl.replace(/\/$/, "") ||
+                (window._env_?.DEFAULT_CHATBOT_BACKEND_URL ??
+                  config.DEFAULT_CHATBOT_BACKEND_URL)
+              }/#/applications`}
+            >
+              {this.props.backendUrl || this.texts.settings["admin-panel-url"]}
+            </a>
           </div>
         </div>
         <div id="componentSettingsContainer">

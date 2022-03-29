@@ -10,7 +10,6 @@ import flag_icon from "../share/imgs/flag_icon.webp";
 import settings_icon_white from "../share/imgs/settings_icon_white.svg";
 import info_icon_white from "../share/imgs/info_icon_white.svg";
 import "./PageHeader.css";
-import config from "../../config.json";
 
 function toggleContainer(containerId) {
   const container = document.getElementById(containerId);
@@ -74,7 +73,7 @@ export default class PageHeader extends Component {
           />
           <div className="pageTitle" tabIndex="0">
             <a
-              href={config["chatbot-frontend-url"]}
+              href={window._env_?.CHATBOT_FRONTEND_URL}
               rel="noreferrer"
               target="_self"
               className="center white-text"

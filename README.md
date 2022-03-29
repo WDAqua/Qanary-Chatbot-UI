@@ -1,6 +1,6 @@
 # Qanary Chatbot UI
 
-This simple chatbot like installation is enabled to an easy access to Question Answering (QA) system build using the [Qanary framework](https://github.com/WDAqua/Qanary). You can host your own Web UI or just use our [demo installation](https://webengineering.ins.hs-anhalt.de:43712/). 
+This simple chatbot like installation is enabled to an easy access to Question Answering (QA) system build using the [Qanary framework](https://github.com/WDAqua/Qanary). You can host your own Web UI or just use our [demo installation](https://webengineering.ins.hs-anhalt.de:43712/).
 
 Of course, you can connect also to you own Qanary-driven QA system. The Web UI contains an easy-to-use configuration (see the upper right corner) where you can connect instantly to the/your Qanary service and define the Qanary QA components you would like to use.
 
@@ -16,7 +16,7 @@ To change the port, simply open the [`.env`](./.env) file and change `QANARY_UI_
 
 Example for running the application on port `8000`:
 
-```env
+```
 QANARY_UI_PORT=8000
 ```
 
@@ -26,29 +26,29 @@ Certificates are disabled by by default, but you may add your own by following t
 
 1. Open the [`nginx.conf`](docker/nginx/nginx.conf) file.
 2. Comment lines 10 to 17 of the configuration back in.
-   1. Before:
+   * Before:
 
-    ```nginx
-    #ssl_certificate /etc/nginx/certs/webengineering.ins.hs-anhalt.de.cert;
-    #ssl_certificate_key /etc/nginx/certs/webengineering.ins.hs-anhalt.de.key;
-    #
-    #sl_protocols TLSv1.2 TLSv1.3;
-    #ssl_ciphers ECDHE-RSA-AES256-GCM-SHA512:DHE-RSA-AES256-GCM-SHA512:ECDHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-SHA384;
-    #ssl_prefer_server_ciphers on;
-    #ssl_ecdh_curve secp384r1;
-    ```
+      ```nginx
+      #ssl_certificate /etc/nginx/certs/webengineering.ins.hs-anhalt.de.cert;
+      #ssl_certificate_key /etc/nginx/certs/webengineering.ins.hs-anhalt.de.key;
+      #
+      #sl_protocols TLSv1.2 TLSv1.3;
+      #ssl_ciphers ECDHE-RSA-AES256-GCM-SHA512:DHE-RSA-AES256-GCM-SHA512:ECDHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-SHA384;
+      #ssl_prefer_server_ciphers on;
+      #ssl_ecdh_curve secp384r1;
+      ```
 
-    2. After:
+   * After:
 
-    ```nginx
-    ssl_certificate /etc/nginx/certs/webengineering.ins.hs-anhalt.de.cert;
-    ssl_certificate_key /etc/nginx/certs/webengineering.ins.hs-anhalt.de.key;
+      ```nginx
+      ssl_certificate /etc/nginx/certs/webengineering.ins.hs-anhalt.de.cert;
+      ssl_certificate_key /etc/nginx/certs/webengineering.ins.hs-anhalt.de.key;
     
-    ssl_protocols TLSv1.2 TLSv1.3;
-    ssl_ciphers ECDHE-RSA-AES256-GCM-SHA512:DHE-RSA-AES256-GCM-SHA512:ECDHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-SHA384;
-    ssl_prefer_server_ciphers on;
-    ssl_ecdh_curve secp384r1;
-    ```
+      ssl_protocols TLSv1.2 TLSv1.3;
+      ssl_ciphers ECDHE-RSA-AES256-GCM-SHA512:DHE-RSA-AES256-GCM-SHA512:ECDHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-SHA384;
+      ssl_prefer_server_ciphers on;
+      ssl_ecdh_curve secp384r1;
+      ```
 
 3. In line 9, change `listen 443;` to `listen 443 ssl;`
 4. If it does not yet exist, create a directory called "certs" inside the docker directory.
@@ -56,17 +56,17 @@ Certificates are disabled by by default, but you may add your own by following t
 6. In the [`nginx.conf`](docker/nginx/nginx.conf) file, replace "webengineering.ins.hs-anhalt.de" in lines 11 to 12 with the name(s) you chose for your files.
 7. Open the [`Dockerfile`](Dockerfile).
 8. Comment line 15 back in.
-   1. Before:
+   * Before:
 
-   ```Dockerfile
-   #COPY ./docker/certs /etc/nginx/certs
-   ```
+      ```Dockerfile
+      #COPY ./docker/certs /etc/nginx/certs
+      ```
 
-   1. After:
+   * After:
 
-    ```Dockerfile
-    COPY ./docker/certs /etc/nginx/certs
-    ```
+      ```Dockerfile
+      COPY ./docker/certs /etc/nginx/certs
+      ```
 
 #### Server Name
 
@@ -76,53 +76,64 @@ Simply change "webengineering.ins.hs-anhalt.de" in lines 3 and 10 to whatever yo
 
 ### Application Configuration
 
-The application itself can be handily configured using the [`config.json`](src/config.json) file. It must be [a valid json file](https://www.json.org/json-en.html). It offers the following fields:
+The application itself can be handily configured using the [`.env`](./.env) file. Its keys and values must be valid for JavaScript objects because they're injected as JavaScript code when the container starts. Example:
 
-* `default-chatbot-backend-url`
+```text
+ENV_VAR_STRING="value"
+ENV_VAR_OBJECT={key: "value"}
+ENV_VAR_ARRAY=["value1", "value2"]
+```
+
+Becomes:
+
+```js
+{
+  ENV_VAR_STRING: "value",
+  ENV_VAR_OBJECT: {key: "value"},
+  ENV_VAR_ARRAY: ["value1", "value2"],
+}
+```
+
+It offers the following fields:
+
+* `DEFAULT_CHATBOT_BACKEND_URL`
   * Explanation: The default Qanary backend to which requests are sent. It should feature the protocol, domain and port. This can also be configured at run-time.
   * Example:
 
-  ```json
-  "default-chatbot-backend-url": "https://webengineering.ins.hs-anhalt.de:43740"
+  ```text
+  DEFAULT_CHATBOT_BACKEND_URL="https://webengineering.ins.hs-anhalt.de:43740"
   ```
 
-* `default-chatbot-components`
+* `DEFAULT_CHATBOT_COMPONENTS`
   * Explanation: The default Qanary components which will be used to handle requests. This can also be configured at run-time.
   * Example:
 
-  ```json
-  "default-chatbot-components": [
-    "NED-DBpediaSpotlight",
-    "QueryBuilderSimpleRealNameOfSuperHero",
-    "SparqlExecuter",
-    "OpenTapiocaNED",
-    "BirthDataQueryBuilder",
-    "WikidataQueryExecuter"
-  ],
+  ```text
+  DEFAULT_CHATBOT_COMPONENTS=["NED-DBpediaSpotlight","QueryBuilderSimpleRealNameOfSuperHero","SparqlExecuter","OpenTapiocaNED","BirthDataQueryBuilder","WikidataQueryExecuter"]
   ```
 
-* `default-chatbot-frontend-url`
+* `DEFAULT_CHATBOT_FRONTEND_URL`
   * Explanation: The URL of the deployed Qanary frontend to which clicking page's header links.
   * Example:
 
-  ```json
-  "default-chatbot-backend-url": "https://webengineering.ins.hs-anhalt.de:43712",
+  ```text
+  DEFAULT_CHATBOT_FRONTEND_URL="https://webengineering.ins.hs-anhalt.de:43712"
   ```
 
-* `default-language`
+* `DEFAULT_LANGUAGE`
   * Explanation: The application's default language. Only supported languages can be used here. The currently supported languages are English (en) and German (de). This can be changed at run-time by clicking on the flag icon.
   * Example:
 
-  ```json
-  "default-language": "de"
+  ```text
+  DEFAULT_LANGUAGE="de"
   ```
 
-* `initial-question-parameter-name`
+* `INITIAL_QUESTION_PARAMETER_NAME`
   * Explanation: The name of the query parameter for the initial question. The initial question is immediately sent to the specified backend upon page load. This query parameter is updated with every question and allows sharing specific queries. It is recommended to use something that's easily understandable, e. g. `"question"` or `"query"`.
   * Example:
 
-  ```json
-  "initial-question-parameter-name": "question",
+  ```text
+  INITIAL_QUESTION_PARAMETER_NAME="question"
   ```
 
 ## How To Deploy
@@ -148,7 +159,23 @@ The [prerequisites for regular Docker deployment](#prerequisites) also apply her
 
 ### Pulling and Running
 
-With this approach, neither the [application configuration](#application-configuration) nor the [deployment configuration](#deployment-configuration) can be changed beyond the application's port.
+To simply pull the application from Dockerhub and run it as is, follow these steps:
 
 1. Open a terminal.
-2. Type `docker run qanary/qanary-ui:latest -p QANARY_UI_PORT:443 -d --restart on-failure:1` and press `⏎ enter`. Replace `QANARY_UI_PORT` with the port the application should run under.
+2. Type `docker run -p QANARY_UI_PORT:443 -d --restart on-failure:1 qanary/qanary-ui:latest` and press `⏎ enter`. Replace `QANARY_UI_PORT` with the port the application should run on.
+
+To configure the application, you need to overwrite environment variables in the container on start-up. Only the environment variables specified in the existing [`.env`](./.env) file can be overwritten. Simply modify the previously described steps to include one or both of the following methods.
+
+* Individual variables by example of `DEFAULT_LANGUAGE` and `INITIAL_QUESTION_PARAMETER_NAME`:
+
+  ```sh
+  docker run -e "DEFAULT_LANGUAGE=\"en\"" -e "INITIAL_QUESTION_PARAMETER_NAME=\"query\"" -p 8000:443 -d --restart on-failure:1 qanary/qanary-ui:latest
+  ```
+
+* Example for a `.env` file:
+  
+  ```sh
+  docker run --env-file prod.env -p 8000:443 -d --restart on-failure:1 qanary/qanary-ui:latest
+  ```
+
+For more information, see [the official documentation](https://docs.docker.com/engine/reference/commandline/run/#set-environment-variables--e---env---env-file)

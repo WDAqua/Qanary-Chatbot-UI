@@ -1,5 +1,4 @@
 import chatBotService from "../chatbot.service";
-import config from "../../config.json";
 import texts from "../../texts/de/texts.json";
 
 // Unit tests
@@ -15,13 +14,16 @@ it("sends a valid post request", async () => {
     question: "test",
   };
 
-  expect(mockFn).toHaveBeenCalledWith(config["chatbot-backend-url"], {
-    method: "POST",
-    body: JSON.stringify(requestBody),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+  expect(mockFn).toHaveBeenCalledWith(
+    window._env_?.DEFAULT_CHATBOT_BACKEND_URL,
+    {
+      method: "POST",
+      body: JSON.stringify(requestBody),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
 });
 
 it("handles a failed request appropriately", async () => {
