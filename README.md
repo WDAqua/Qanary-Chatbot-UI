@@ -1,8 +1,8 @@
 # Qanary Chatbot UI
 
-This simple chatbot like installation is enabled to an easy access to Question Answering (QA) system build using the [Qanary framework](https://github.com/WDAqua/Qanary). You can host your own Web UI or just use our [demo installation](https://webengineering.ins.hs-anhalt.de:43712/).
+This simple chatbot like installation is enabled to an easy access to Question Answering (QA) systems build using the [Qanary framework](https://github.com/WDAqua/Qanary) (or other system implementing the required JSON-producing RESTful web service interface). You can host your own Chatbot Web UI or just use our [demo installation](https://webengineering.ins.hs-anhalt.de:43712/).
 
-Of course, you can connect also to you own Qanary-driven QA system. The Web UI contains an easy-to-use configuration (see the upper right corner) where you can connect instantly to the/your Qanary service and define the Qanary QA components you would like to use.
+Of course, you can connect also to your own Qanary-driven QA system. The Web UI contains an easy-to-use configuration (see the upper right corner of the screenshot) where you can connect instantly to the/your Qanary service and define on-the-fly the Qanary QA components you would like to use.
 
 ![qanary-chatbot-ui](https://user-images.githubusercontent.com/6186824/120986221-a438f380-c77c-11eb-8078-5e19d51a0874.png)
 
@@ -12,7 +12,7 @@ Of course, you can connect also to you own Qanary-driven QA system. The Web UI c
 
 #### Port
 
-To change the port, simply open the [`.env`](./.env) file and change `QANARY_UI_PORT`'s value to the desired port.
+To change the port, simply edit the [`.env`](./.env) file and change `QANARY_UI_PORT`'s value to the desired port.
 
 Example for running the application on port `8000`:
 
@@ -22,9 +22,9 @@ QANARY_UI_PORT=8000
 
 #### TSL Certificates
 
-Certificates are disabled by by default, but you may add your own by following these instructions:
+Certificates are disabled by by default, but you may add your own due to higher security. You might configure them following the instructions:
 
-1. Open the [`nginx.conf`](docker/nginx/nginx.conf) file.
+1. Edit the [`nginx.conf`](docker/nginx/nginx.conf) file.
 2. Comment lines 10 to 17 of the configuration back in.
    * Before:
 
@@ -51,11 +51,11 @@ Certificates are disabled by by default, but you may add your own by following t
       ```
 
 3. In line 9, change `listen 443;` to `listen 443 ssl;`
-4. If it does not yet exist, create a directory called "certs" inside the docker directory.
-5. Add your certificate to docker/certs and name the files "`MY.DOMAIN`.cert" and "`MY.DOMAIN`.key" respectively. Replace `MY.DOMAIN` with whatever you wish.
+4. If it does not yet exist, create a directory called `certs` inside the existing directory `docker`.
+5. Copy your certificate to the folder `docker/certs` and name the files "`MY.DOMAIN`.cert" and "`MY.DOMAIN`.key" respectively. Replace `MY.DOMAIN` with whatever you wish.
 6. In the [`nginx.conf`](docker/nginx/nginx.conf) file, replace "webengineering.ins.hs-anhalt.de" in lines 11 to 12 with the name(s) you chose for your files.
-7. Open the [`Dockerfile`](Dockerfile).
-8. Comment line 15 back in.
+7. Open the file [`Dockerfile`](Dockerfile) in an editor.
+8. Remove the comment in line 15:
    * Before:
 
       ```Dockerfile
@@ -117,7 +117,7 @@ It offers the following fields:
   * Example:
 
   ```text
-  DEFAULT_CHATBOT_FRONTEND_URL="https://webengineering.ins.hs-anhalt.de:43712"
+  DEFAULT_CHATBOT_FRONTEND_URL="https://webengineering.ins.hs-anhalt.de:43712/"
   ```
 
 * `DEFAULT_LANGUAGE`
@@ -129,7 +129,7 @@ It offers the following fields:
   ```
 
 * `INITIAL_QUESTION_PARAMETER_NAME`
-  * Explanation: The name of the query parameter for the initial question. The initial question is immediately sent to the specified backend upon page load. This query parameter is updated with every question and allows sharing specific queries. It is recommended to use something that's easily understandable, e. g. `"question"` or `"query"`.
+  * Explanation: The name of the query parameter for the initial question. The initial question is immediately sent to the specified backend upon page load. This query parameter is updated with every question and allows sharing specific queries. It is recommended to use something that's easily understandable, e.g., `"question"` or `"query"`.
   * Example:
 
   ```text
@@ -162,7 +162,11 @@ The [prerequisites for regular Docker deployment](#prerequisites) also apply her
 To simply pull the application from Dockerhub and run it as is, follow these steps:
 
 1. Open a terminal.
-2. Type `docker run -p QANARY_UI_PORT:443 -d --restart on-failure:1 qanary/qanary-ui:latest` and press `⏎ enter`. Replace `QANARY_UI_PORT` with the port the application should run on.
+2. Exdcute the following command. Hereby, replace `QANARY_UI_PORT` with the port the application should run on.
+
+```shell
+`docker run -p QANARY_UI_PORT:443 -d --restart on-failure:1 qanary/qanary-ui:latest`
+```
 
 To configure the application, you need to overwrite environment variables in the container on start-up. Only the environment variables specified in the existing [`.env`](./.env) file can be overwritten. Simply modify the previously described steps to include one or both of the following methods.
 
