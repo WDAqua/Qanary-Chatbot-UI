@@ -84,8 +84,7 @@ export default class SettingsContainer extends Component {
               rel="noreferrer"
               href={`${
                 this.props.backendUrl.replace(/\/$/, "") ||
-                (window._env_?.DEFAULT_CHATBOT_BACKEND_URL ??
-                  config.DEFAULT_CHATBOT_BACKEND_URL)
+                window._env_?.DEFAULT_CHATBOT_BACKEND_URL
               }/#/applications`}
             >
               {this.props.backendUrl || this.texts.settings["admin-panel-url"]}
