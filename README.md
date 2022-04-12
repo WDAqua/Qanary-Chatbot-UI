@@ -165,7 +165,7 @@ To simply pull the application from Dockerhub and run it as is, follow these ste
 2. Execute the following command. Hereby, replace `QANARY_UI_PORT` with the port the application should run on your system.
 
 ```shell
-`docker run -p QANARY_UI_PORT:443 -d --restart on-failure:1 qanary/qanary-ui:latest`
+docker run -p QANARY_UI_PORT:443 -d --restart on-failure:1 qanary/qanary-ui:latest
 ```
 
 To configure the application, you need to overwrite environment variables in the container on start-up. Only the environment variables specified in the existing [`.env`](./.env) file can be overwritten. Simply modify the previously described steps to include one or both of the following methods.
