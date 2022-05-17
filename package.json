@@ -1,6 +1,6 @@
 {
-  "name": "corona-chatbot",
-  "version": "0.3.2",
+  "name": "qanary-ui",
+  "version": "0.3.3",
   "private": true,
   "dependencies": {
     "@qanary/spring-boot-health-check": "^0.0.3",
