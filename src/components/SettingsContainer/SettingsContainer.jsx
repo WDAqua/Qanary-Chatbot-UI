@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./SettingsContainer.css";
 import { ContentContainer } from "..";
 import { textsHelper } from "../../helpers";
+import { SpringBootHealthCheck } from "@qanary/spring-boot-health-check";
 
 export default class SettingsContainer extends Component {
   texts = textsHelper.getTexts();
@@ -52,6 +53,11 @@ export default class SettingsContainer extends Component {
     return (
       <ContentContainer id="chatbotSettings">
         {this.texts.settings.explanation}
+        <SpringBootHealthCheck
+          springBootAppUrl={
+            this.props.backendUrl || window._env_?.DEFAULT_CHATBOT_BACKEND_URL
+          }
+        />
         <div id="urlSettingsContainer">
           <input
             type="text"

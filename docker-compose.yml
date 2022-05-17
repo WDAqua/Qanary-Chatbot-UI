@@ -1,7 +1,7 @@
 version: '3.5'
 services:
   qanary-ui:
-    image: qanary-ui:latest
+    image: qanary/qanary-ui:latest
     build: .
     restart: on-failure:1
     ports:
