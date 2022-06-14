@@ -1,5 +1,8 @@
 name: Docker Image CI
 
+env:
+ DOCKER_IMAGE_NAME: qanary/qanary-ui
+
 on:
   push:
     branches: [ main ]
@@ -10,14 +13,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag qanary-ui:latest
+    - name: Build the Docker image and tag it
+      run: docker build . --file Dockerfile --tag ${{ env.DOCKER_IMAGE_NAME }}:latest
     - name: Docker Login
       uses: docker/login-action@v2
       with:
         username: ${{ secrets.DOCKER_USER }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-    - name: Tag docker image
-      run: docker tag qanary-ui:latest qanary/qanary-ui:latest
     - name: Push docker image
-      run: docker push qanary/qanary-ui:latest
+      run: docker push ${{ env.DOCKER_IMAGE_NAME }}:latest
