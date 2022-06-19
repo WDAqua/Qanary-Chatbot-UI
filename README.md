@@ -138,7 +138,7 @@ It offers the following fields:
 
 ## How To Deploy  using `docker-compose`
 
-The chatbot UI can easily be deployed by using the existing Docker set-up or by simply [pulling the official image from Dockerhub](#how-to-deploy-via-docker-image-from-dockerhub).
+The chatbot UI can easily be deployed by using the existing Docker set-up or by simply [pulling the official image from Dockerhub](#how-to-deploy-via-docker-image-from-dockerhub). The images are available as [`qanary/qanary-ui` at Docker Hub](https://hub.docker.com/r/qanary/qanary-ui/tags).
 
 ### Prerequisites
 
