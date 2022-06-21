@@ -27,6 +27,6 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
     - name: Push docker image with latest version
       run: docker push qanary/qanary-ui:latest
-    -name: Push docker image with specific version
+    - name: Push docker image with specific version
       run: >
         docker push qanary/qanary-ui:"$X_APP_VERSION"
