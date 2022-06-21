@@ -1,5 +1,8 @@
 name: Docker Image CI
 
+env:
+ DOCKER_IMAGE_NAME: qanary/qanary-ui
+
 on:
   push:
     branches: [ main ]
