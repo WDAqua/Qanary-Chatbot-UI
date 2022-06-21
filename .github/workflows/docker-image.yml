@@ -11,7 +11,8 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Get current version from package.json
-      run: echo "X_NEW_VERSION=$(cat < package.json | grep -Po '(?<=\"version\": \")([^\"]*)')" >> $GITHUB_ENV
+      run: >
+        echo "X_NEW_VERSION=$(cat < package.json | grep -Po '(?<=\"version\": \")([^\"]*)')" >> $GITHUB_ENV
     - name: Compare latest and current version
       run: if [ "$X_NEW_VERSION" != "$X_APP_VERSION" ]; then echo "X_OLD_VERSION=$X_APP_VERSION" >> "$GITHUB_ENV"; echo "X_APP_VERSION=$X_NEW_VERSION" >> "$GITHUB_ENV"; fi
     - name: Build the Docker image
