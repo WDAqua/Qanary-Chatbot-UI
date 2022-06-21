@@ -16,7 +16,8 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag qanary-ui:latest
     - name: Tag image with specific version
-      run: docker tag qanary-ui:latest qanary/qanary-ui:"$X_APP_VERSION"; fi
+      run: >
+        docker tag qanary-ui:latest qanary/qanary-ui:"$X_APP_VERSION"
     - name: Tag docker image with latest version
       run: docker tag qanary-ui:latest qanary/qanary-ui:latest
     - name: Docker Login
@@ -27,4 +28,5 @@ jobs:
     - name: Push docker image with latest version
       run: docker push qanary/qanary-ui:latest
     -name: Push docker image with specific version
-      run: docker push qanary/qanary-ui:"$X_APP_VERSION"
+      run: >
+        docker push qanary/qanary-ui:"$X_APP_VERSION"
