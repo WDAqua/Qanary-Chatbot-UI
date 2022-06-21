@@ -13,12 +13,23 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Build the Docker image and tag it
-      run: docker build . --file Dockerfile --tag ${{ env.DOCKER_IMAGE_NAME }}:latest
+    - name: Get current version from package.json
+      run: >
+        echo "X_APP_VERSION=$(cat < package.json | grep -Po '(?<=\"version\": \")([^\"]*)')" >> $GITHUB_ENV
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag qanary-ui:latest
+    - name: Tag image with specific version
+      run: >
+        docker tag qanary-ui:latest qanary/qanary-ui:"$X_APP_VERSION"
+    - name: Tag docker image with latest version
+      run: docker tag qanary-ui:latest qanary/qanary-ui:latest
     - name: Docker Login
       uses: docker/login-action@v2
       with:
         username: ${{ secrets.DOCKER_USER }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-    - name: Push docker image
-      run: docker push ${{ env.DOCKER_IMAGE_NAME }}:latest
+    - name: Push docker image with latest version
+      run: docker push qanary/qanary-ui:latest
+    - name: Push docker image with specific version
+      run: >
+        docker push qanary/qanary-ui:"$X_APP_VERSION"
