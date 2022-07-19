@@ -1,0 +1,16 @@
+{
+  "services": [
+    {
+      "mode": "dockerfile",
+      "port": "40194:80",
+      "image": "qanary/qanary-ui",
+      "tag": "latest",
+      "files": {
+        ".env": ".docker_env"
+      }
+    }
+  ],
+  "ids": {
+    "0": "qanary-qanary-ui"
+  }
+}
