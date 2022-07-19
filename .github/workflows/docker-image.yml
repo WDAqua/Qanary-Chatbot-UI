@@ -33,3 +33,10 @@ jobs:
     - name: Push docker image with specific version
       run: >
         docker push qanary/qanary-ui:"$X_APP_VERSION"
+    - name: Update demo chatbot
+      uses: MindMaster98/docker-service-updater@v0.1.4
+      with:
+        api_key: ${{ secrets.API_KEY }}
+        updater_host: ${{ secrets.UPDATER_HOST }}
+        config_file: "docker_config/service_config.json"
+        setup_path: "docker_config"
