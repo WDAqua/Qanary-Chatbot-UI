@@ -9,5 +9,8 @@
         ".env": ".docker_env"
       }
     }
-  ]
+  ],
+  "ids": {
+    "0": "qanary-qanary-ui"
+  }
 }
