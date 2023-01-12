@@ -25,7 +25,7 @@ jobs:
           --build-arg DEFAULT_CHATBOT_COMPONENTS="${{ secrets.DEFAULT_CHATBOT_COMPONENTS }}"
           --build-arg INITIAL_QUESTION_PARAMETER_NAME="${{ secrets.INITIAL_QUESTION_PARAMETER_NAME }}"
           --build-arg DEFAULT_BACKEND_TYPE="${{ secrets.DEFAULT_BACKEND_TYPE }}"
-          backend --file Dockerfile --tag "$DOCKER_IMAGE_NAME:deploy"
+          . --file Dockerfile --tag "$DOCKER_IMAGE_NAME:deploy"
       - name: Build image for Dockerhub
         run: docker build . --file Dockerfile --tag "$DOCKER_IMAGE_NAME:latest"
       - name: Tag image with specific version
