@@ -39,6 +39,6 @@ jobs:
       - name: Push docker image with latest version
         run: docker push "$DOCKER_IMAGE_NAME:latest"
       - name: Push docker image with specific version
-        run: docker push "$DOCKER_IMAGE_NAME:"X_APP_VERSION"
+        run: docker push "$DOCKER_IMAGE_NAME:X_APP_VERSION"
       - name: Push docker image for deployment
         run: docker push "$DOCKER_IMAGE_NAME:deploy"
