@@ -20,7 +20,7 @@ Example for running the application on port `8000`:
 QANARY_UI_PORT=8000
 ```
 
-#### TSL Certificates
+#### TLS Certificates
 
 Certificates are disabled by by default, but you may add your own due to higher security. You might configure them following the instructions:
 

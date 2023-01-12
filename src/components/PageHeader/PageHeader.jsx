@@ -10,6 +10,7 @@ import flag_icon from "../share/imgs/flag_icon.webp";
 import settings_icon_white from "../share/imgs/settings_icon_white.svg";
 import info_icon_white from "../share/imgs/info_icon_white.svg";
 import "./PageHeader.css";
+import { chatbotFrontendUrl } from "../../helpers/constants";
 
 function toggleContainer(containerId) {
   const container = document.getElementById(containerId);
@@ -73,7 +74,7 @@ export default class PageHeader extends Component {
           />
           <div className="pageTitle" tabIndex="0">
             <a
-              href={window._env_?.CHATBOT_FRONTEND_URL}
+              href={chatbotFrontendUrl}
               rel="noreferrer"
               target="_self"
               className="center white-text"
@@ -124,8 +125,10 @@ export default class PageHeader extends Component {
         <SettingsContainer
           components={this.props.components}
           backendUrl={this.props.backendUrl}
+          backendType={this.props.backendType}
           setComponents={this.props.setComponents}
           setBackendUrl={this.props.setBackendUrl}
+          setBackendType={this.props.setBackendType}
           // toggleComponent={this.props.toggleComponent} // TODO: Add back in once we move on from the MVP
         />
       </>

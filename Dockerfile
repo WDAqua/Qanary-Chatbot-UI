@@ -1,12 +1,21 @@
 # build stage
 FROM node:lts-alpine as build-stage
+
+ARG PUBLIC_URL
+ARG DEFAULT_LANGUAGE
+ARG CHATBOT_FRONTEND_URL
+ARG DEFAULT_CHATBOT_BACKEND_URL
+ARG DEFAULT_CHATBOT_COMPONENTS
+ARG INITIAL_QUESTION_PARAMETER_NAME
+ARG DEFAULT_BACKEND_TYPE
+
 WORKDIR /app
 COPY ./package*.json ./
 
 RUN npm ci
 
 COPY . ./
-RUN npm run build
+RUN PUBLIC_URL="$CHATBOT_FRONTEND_URL" npm run build
 
 # production stage
 FROM nginx:stable-alpine as production-stage

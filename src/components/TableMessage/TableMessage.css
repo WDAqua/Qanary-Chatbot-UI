@@ -1,20 +1,23 @@
-.dataTable tbody > :nth-child(odd) {
-    background-color: rgba(0, 0, 0, 0.1);
+table tbody > :nth-child(odd) {
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
-.dataTable thead td {
-    border-bottom: 1px solid black;
+table thead td,
+table th {
+  border-bottom: 1px solid black;
+  padding-inline: 0.5rem;
 }
 
-.dataTable td:not(td:last-of-type) {
-    border-right: 1px solid black;
+table td:not(td:last-of-type),
+table th:not(th:last-of-type) {
+  border-right: 1px solid black;
 }
 
-.dataTable {
-    border-spacing: 0px;
+table {
+  border-spacing: 0px;
 }
 
-.dataTable td {
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+table td,
+table th {
+  padding-inline: 0.5rem;
 }
