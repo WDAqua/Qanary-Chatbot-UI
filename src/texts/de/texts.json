@@ -60,7 +60,8 @@
     "url-malformed": "Geben Sie bitte eine valide URL mit http:// bzw. https:// und Port an.",
     "no-components": "Es konnten keine Komponenten gefunden werden. Es muss ein valides Backend angegeben und CORS entsprechend konfiguriert werden.",
     "components-explanation": "Geben Sie hier die Komponenten in der richtigen Reihenfolge an. Trennen Sie die Komponenten durch Kommata.",
-    "admin-panel-url": "Liste der Komponenten"
+    "admin-panel-url": "Liste der Komponenten",
+    "select-service-type": "Wählen Sie die Art des Services aus, den Sie nutzen möchten: "
   },
   "credits": "Diese Anwendung wurde am <a href=\"https://www.hs-anhalt.de/hochschule-anhalt/fachbereich-5/ueberblick.html\" target=\"_blank\" rel=\"noreferrer\">Fachbereich Informatik und Sprachen</a> der <a href=\"https://hs-anhalt.de/\" target=\"_blank\" rel=\"noreferrer\">Hochschule Anhalt</a> unter der Leitung von <a href=\"https://www.hs-anhalt.de/hochschule-anhalt/service/personenverzeichnis/prof-dr-andreas-both.html\" target=\"_blank\" rel=\"noreferrer\">Prof. Dr. Andreas Both</a> und mit der Unterstützung von Paul Heinze durch Jonas Wunsch entwickelt. Für diese Anwendung gilt die Apache 2.0 Lizenz."
 }

@@ -1,10 +1,15 @@
 import { Component } from "react";
 import "./App.css";
 import { MessageInput, MessagePanel, PageHeader } from "..";
-import chatBotService from "../../services/chatbot.service";
 import robot_icon from "../share/imgs/robot_icon.svg";
 import user_icon from "../share/imgs/account_icon_black.svg";
 import { textsHelper } from "../../helpers";
+import {
+  defaultBackendType,
+  defaultChatbotComponents,
+  initialQuestionParameter,
+} from "../../helpers/constants";
+import { supportedServiceNames, supportedServices } from "../../services";
 
 class App extends Component {
   constructor(props) {
@@ -14,7 +19,7 @@ class App extends Component {
       messages: [],
       components:
         JSON.parse(localStorage.getItem("components")) ??
-        window._env_?.DEFAULT_CHATBOT_COMPONENTS,
+        defaultChatbotComponents,
       /* // TODO: Add back in once we move on from the MVP
       .map((componentName) => ({
         name: componentName,
@@ -22,6 +27,10 @@ class App extends Component {
       }))*/
       backendUrl: localStorage.getItem("backendUrl") ?? "",
       isSending: false,
+      backendType:
+        defaultBackendType in supportedServiceNames
+          ? defaultBackendType
+          : supportedServiceNames[0],
     };
 
     this.texts = textsHelper.getTexts();
@@ -29,18 +38,16 @@ class App extends Component {
     this.sendMessage = this.sendMessage.bind(this);
     this.setBackendUrl = this.setBackendUrl.bind(this);
     this.setComponents = this.setComponents.bind(this);
-    // this.toggleComponent = this.toggleComponent.bind(this); // TODO: Add back in once we move on from the MVP
+    this.setBackendType = this.setBackendType.bind(this);
+    // TODO: Add back in once we move on from the MVP
+    // this.toggleComponent = this.toggleComponent.bind(this);
   }
 
   componentDidMount() {
     const queryParams = window.location;
     // This RegExp accepts either ?question=questionText or &question=questionText to be as flexible as possible
     const queryRegExp = new RegExp(
-      `\\?${
-        window._env_?.["initial-question-parameter"] || "question"
-      }=([^&]*)|&${
-        window._env_?.["initial-question-parameter"] || "question"
-      }=([^&]*)`
+      `\\?${initialQuestionParameter}=([^&]*)|&${initialQuestionParameter}=([^&]*)`
     );
     const potentialQueries = queryRegExp.exec(queryParams);
     // Pick the first result by default, unless it's empty or undefined (only possible cases)
@@ -71,7 +78,7 @@ class App extends Component {
   async sendMessage(messageText = "") {
     // push new message to state
     this.setState({ isSending: true });
-    let messagesCopy = this.state.messages;
+    let messagesCopy = [...this.state.messages];
     let now = new Date(Date.now());
     messagesCopy.push({
       text: messageText,
@@ -84,38 +91,40 @@ class App extends Component {
     const preparedComponents = this.state.components;
     // .filter((component) => component.activated) // TODO: Not needed for MVP
     // .map((component) => component); // TODO: Edit back once we move on from the MVP
-    let reply = await chatBotService.postQuery(
+    let replies = await supportedServices[this.state.backendType].postQuery(
       messageText,
       this.state.backendUrl,
       preparedComponents
     );
-    if (!!reply.visualization?.buttons) {
-      reply.visualization.buttons = reply.visualization.buttons.map(
-        (button) => ({
-          onClick: () => this.sendMessage(button.payload),
-          ...button,
-        })
-      );
+    for (const reply of Array.isArray(replies) ? replies : [replies]) {
+      if (!!reply.visualization?.buttons) {
+        reply.visualization.buttons = reply.visualization.buttons.map(
+          (button) => ({
+            onClick: () => this.sendMessage(button.payload),
+            ...button,
+          })
+        );
+      }
+
+      now = new Date(Date.now());
+
+      const replyObject = {
+        followUpNeeded: reply.followUpNeeded,
+        loadedSuccessfully: reply.loadedSuccessfully,
+        visualization: reply.visualization,
+        time: now.getHours() + ":" + ("0" + now.getMinutes()).slice(-2),
+        isReply: true,
+        icon: robot_icon,
+      };
+
+      if (typeof reply.answer === "object") {
+        replyObject.tableData = reply.answer;
+      } else {
+        replyObject.text = reply.answer;
+      }
+
+      messagesCopy.push(replyObject);
     }
-
-    now = new Date(Date.now());
-
-    const replyObject = {
-      followUpNeeded: reply.followUpNeeded,
-      loadedSuccessfully: reply.loadedSuccessfully,
-      visualization: reply.visualization,
-      time: now.getHours() + ":" + ("0" + now.getMinutes()).slice(-2),
-      isReply: true,
-      icon: robot_icon,
-    };
-
-    if (typeof reply.answer === "object") {
-      replyObject.tableData = reply.answer;
-    } else {
-      replyObject.text = reply.answer;
-    }
-
-    messagesCopy.push(replyObject);
     this.setState({
       messages: messagesCopy,
       isSending: false,
@@ -123,7 +132,7 @@ class App extends Component {
     // Push new state to history, see https://developer.mozilla.org/en-US/docs/Web/API/History_API
     let url = new URL(window.location);
     url.searchParams.set(
-      window._env_?.INITIAL_QUESTION_PARAMETER_NAME || "question",
+      initialQuestionParameter,
       encodeURIComponent(messageText)
     );
     messagesCopy = messagesCopy.map((message) =>
@@ -205,6 +214,14 @@ class App extends Component {
     });
   }
 
+  setBackendType(backendType) {
+    if (supportedServiceNames.includes(backendType)) {
+      this.setState({
+        backendType,
+      });
+    }
+  }
+
   render() {
     const now = new Date(Date.now());
     const initialMessage =
@@ -222,8 +239,10 @@ class App extends Component {
           // toggleComponent={this.toggleComponent} // TODO: Add back in once we move on from the MVP
           setBackendUrl={this.setBackendUrl}
           setComponents={this.setComponents}
+          setBackendType={this.setBackendType}
           components={this.state.components}
           backendUrl={this.state.backendUrl}
+          backendType={this.state.backendType}
         />
         <MessagePanel
           messages={[

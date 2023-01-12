@@ -1,4 +1,8 @@
 import { textsHelper } from "../helpers";
+import {
+  defaultChatbotBackendUrl,
+  defaultChatbotComponents,
+} from "../helpers/constants";
 import { getCurrentLanguage } from "../helpers/getTexts";
 
 const chatBotService = { postQuery, getComponents };
@@ -16,11 +20,11 @@ function handleResponse(response) {
 
 function postQuery(
   question,
-  backendUrl = window._env_?.DEFAULT_CHATBOT_BACKEND_URL,
-  componentList = window._env_?.DEFAULT_CHATBOT_COMPONENTS
+  backendUrl = defaultChatbotBackendUrl,
+  componentList = defaultChatbotComponents
 ) {
   if (!backendUrl) {
-    backendUrl = window._env_?.DEFAULT_CHATBOT_BACKEND_URL;
+    backendUrl = defaultChatbotBackendUrl;
   }
   backendUrl = backendUrl.replace(/\/$/, "");
 
@@ -71,7 +75,7 @@ function postQuery(
     });
 }
 
-function getComponents(backendUrl = window._env_?.DEFAULT_CHATBOT_BACKEND_URL) {
+function getComponents(backendUrl = defaultChatbotBackendUrl) {
   // remove potential trailing slash since it's technically allowed
   backendUrl = backendUrl.replace(/\/$/, "");
   return fetch(`${backendUrl}/applications`, {

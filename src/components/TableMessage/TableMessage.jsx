@@ -33,13 +33,16 @@ export default class TableMessage extends Component {
 
   render() {
     const tableHeaders = this.props.messageObject.tableData.head?.vars.map(
-      (header) => <td>{header}</td>
+      (header) => <td key={header}>{header}</td>
     );
     const tableElements =
-      this.props.messageObject.tableData.results?.bindings.map((dataSet) => (
-        <tr>
+      this.props.messageObject.tableData.results?.bindings.map((dataSet, i) => (
+        <tr key={Object.keys(dataSet).join(",")}>
           {this.props.messageObject.tableData.head?.vars.map((header) => (
-            <td dangerouslySetInnerHTML={{ __html: dataSet[header].value }} />
+            <td
+              key={header + dataSet[header.value]}
+              dangerouslySetInnerHTML={{ __html: dataSet[header].value }}
+            />
           ))}
         </tr>
       ));
