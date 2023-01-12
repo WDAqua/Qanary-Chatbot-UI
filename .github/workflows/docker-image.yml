@@ -1,42 +1,51 @@
 name: Docker Image CI
 
 env:
- DOCKER_IMAGE_NAME: qanary/qanary-ui
+  DOCKER_IMAGE_NAME: qanary/qanary-ui
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Get current version from package.json
-      run: >
-        echo "X_APP_VERSION=$(cat < package.json | grep -Po '(?<=\"version\": \")([^\"]*)')" >> $GITHUB_ENV
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag qanary-ui:latest
-    - name: Tag image with specific version
-      run: >
-        docker tag qanary-ui:latest qanary/qanary-ui:"$X_APP_VERSION"
-    - name: Tag docker image with latest version
-      run: docker tag qanary-ui:latest qanary/qanary-ui:latest
-    - name: Docker Login
-      uses: docker/login-action@v2
-      with:
-        username: ${{ secrets.DOCKER_USER }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
-    - name: Push docker image with latest version
-      run: docker push qanary/qanary-ui:latest
-    - name: Push docker image with specific version
-      run: >
-        docker push qanary/qanary-ui:"$X_APP_VERSION"
-    - name: Update demo chatbot
-      uses: MindMaster98/docker-service-updater@v0.1.4
-      with:
-        api_key: ${{ secrets.API_KEY }}
-        updater_host: ${{ secrets.UPDATER_HOST }}
-        config_file: "docker_config/service_config.json"
-        setup_path: "docker_config"
+      - uses: actions/checkout@v3
+      - name: Get current version from package.json
+        run: >
+          echo "X_APP_VERSION=$(cat < package.json | grep -Po '(?<=\"version\": \")([^\"]*)')" >> $GITHUB_ENV
+      - name: Build the Docker image for deployment
+        run: >
+          docker build
+          --build-arg DEFAULT_LANGUAGE="${{ secrets.DEFAULT_LANGUAGE }}"
+          --build-arg CHATBOT_FRONTEND_URL="${{ secrets.CHATBOT_FRONTEND_URL }}"
+          --build-arg DEFAULT_CHATBOT_BACKEND_URL="${{ secrets.DEFAULT_CHATBOT_BACKEND_URL }}"
+          --build-arg DEFAULT_CHATBOT_COMPONENTS="${{ secrets.DEFAULT_CHATBOT_COMPONENTS }}"
+          --build-arg INITIAL_QUESTION_PARAMETER_NAME="${{ secrets.INITIAL_QUESTION_PARAMETER_NAME }}"
+          --build-arg DEFAULT_BACKEND_TYPE="${{ secrets.DEFAULT_BACKEND_TYPE }}"
+          . --file Dockerfile --tag "$DOCKER_IMAGE_NAME:deploy"
+      - name: Build image for Dockerhub
+        run: docker build . --file Dockerfile --tag "$DOCKER_IMAGE_NAME:latest"
+      - name: Tag image with specific version
+        run: >
+          docker tag "$DOCKER_IMAGE_NAME:latest" "$DOCKER_IMAGE_NAME:$X_APP_VERSION"
+      - name: Docker Login
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USER }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+      - name: Push docker image with latest version
+        run: docker push "$DOCKER_IMAGE_NAME:latest"
+      - name: Push docker image with specific version
+        run: docker push "$DOCKER_IMAGE_NAME:$X_APP_VERSION"
+      - name: Push docker image for deployment
+        run: docker push "$DOCKER_IMAGE_NAME:deploy"
+      - name: Update demo chatbot
+        uses: MindMaster98/docker-service-updater@v0.1.4
+        with:
+          api_key: ${{ secrets.API_KEY }}
+          updater_host: ${{ secrets.UPDATER_HOST }}
+          config_file: "docker_config/service_config.json"
+          setup_path: "docker_config"

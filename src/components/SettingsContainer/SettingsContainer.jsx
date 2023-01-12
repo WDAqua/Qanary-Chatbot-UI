@@ -3,6 +3,8 @@ import "./SettingsContainer.css";
 import { ContentContainer } from "..";
 import { textsHelper } from "../../helpers";
 import { SpringBootHealthCheck } from "@qanary/spring-boot-health-check";
+import { defaultChatbotBackendUrl } from "../../helpers/constants";
+import { supportedServiceNames } from "../../services";
 
 export default class SettingsContainer extends Component {
   texts = textsHelper.getTexts();
@@ -54,17 +56,13 @@ export default class SettingsContainer extends Component {
       <ContentContainer id="chatbotSettings">
         {this.texts.settings.explanation}
         <SpringBootHealthCheck
-          springBootAppUrl={
-            this.props.backendUrl || window._env_?.DEFAULT_CHATBOT_BACKEND_URL
-          }
+          springBootAppUrl={this.props.backendUrl || defaultChatbotBackendUrl}
         />
         <div id="urlSettingsContainer">
           <input
             type="text"
             id="backendUrlInput"
-            defaultValue={
-              this.props.backendUrl || window._env_?.DEFAULT_CHATBOT_BACKEND_URL
-            }
+            defaultValue={this.props.backendUrl || defaultChatbotBackendUrl}
           />
           <input
             type="button"
@@ -90,10 +88,12 @@ export default class SettingsContainer extends Component {
               rel="noreferrer"
               href={`${
                 this.props.backendUrl.replace(/\/$/, "") ||
-                window._env_?.DEFAULT_CHATBOT_BACKEND_URL
+                defaultChatbotBackendUrl
               }/#/applications`}
             >
-              {this.props.backendUrl || this.texts.settings["admin-panel-url"]}
+              {this.texts.settings["admin-panel-url"] +
+                " " +
+                this.props.backendUrl}
             </a>
           </div>
         </div>
@@ -131,6 +131,18 @@ export default class SettingsContainer extends Component {
           >
             {this.texts.settings["no-components"]}
           </div>
+          {this.texts.settings["select-service-type"]}
+          <select
+            onChange={(changeEvent) => {
+              this.props.setBackendType(changeEvent.target.value);
+            }}
+          >
+            {supportedServiceNames.map((name) => (
+              <option key={name} selected={name === this.props.backendType}>
+                {name}
+              </option>
+            ))}
+          </select>
         </div>
       </ContentContainer>
     );
