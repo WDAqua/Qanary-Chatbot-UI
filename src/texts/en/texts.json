@@ -54,7 +54,7 @@
     }
   ],
   "settings": {
-    "explanation": "In this menu, you can configure the backend used by the application. The default is https://webengineering.ins.hs-anhalt.de:43740. You also have to set the components to be used in the correct order. The list of available components will be rendered for any valid backend automatically.",
+    "explanation": "In this menu, you can configure the backend used by the application. The default is http://demos.swe.htwk-leipzig.de:40111. You also have to set the components to be used in the correct order. The list of available components will be rendered for any valid backend automatically.",
     "confirm-url": "Confirm URL",
     "confirm-components": "Confirm components",
     "url-malformed": "Please enter a valid URL with http:// or https:// and the port.",
