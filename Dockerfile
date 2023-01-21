@@ -25,7 +25,7 @@ COPY --from=build-stage /app/build .
 COPY ./docker/nginx/nginx.conf /etc/nginx/conf.d/nginx.conf
 
 COPY ./env.sh .
-COPY .env .
+COPY template.env ./.env
 
 # Add bash
 RUN apk add --no-cache bash
