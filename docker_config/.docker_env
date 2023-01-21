@@ -1,6 +1,0 @@
-QANARY_UI_PORT=40194
-DEFAULT_LANGUAGE="en"
-CHATBOT_FRONTEND_URL="http://demos.swe.htwk-leipzig.de/qanary-chatbot-ui"
-DEFAULT_CHATBOT_BACKEND_URL="http://demos.swe.htwk-leipzig.de:40111/"
-DEFAULT_CHATBOT_COMPONENTS=["NED-DBpediaSpotlight","QueryBuilderSimpleRealNameOfSuperHero","SparqlExecuter","OpenTapiocaNED","BirthDataQueryBuilder","WikidataQueryExecuter"]
-INITIAL_QUESTION_PARAMETER_NAME="question"

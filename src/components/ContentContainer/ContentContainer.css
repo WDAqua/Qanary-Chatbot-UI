@@ -1,25 +1,26 @@
 .contentContainer {
-    position: absolute;
-    background-color: rgba(255, 255, 255, 1);
-    height: 65vh;
-    top: 10vh;
-    width: 80vw;
-    margin-left: 7.5vw;
-    margin-right: 7.5vw;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    font-size: 1rem;
-    box-shadow: 0 2px 4px -1px rgba(0,0,0,.2),0 4px 5px 0 rgba(0,0,0,.14),0 1px 10px 0 rgba(0,0,0,.12);
-    border-radius: 4px;
-    padding: 2vh 3vw;
-    margin-right: 1vw;
-    word-wrap: break-word;
-    z-index: 2;
-    overflow-y: auto;
+  position: absolute;
+  background-color: rgba(255, 255, 255, 1);
+  height: 65vh;
+  top: 10vh;
+  width: 80vw;
+  margin-left: 7.5vw;
+  margin-right: 7.5vw;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  font-size: 1rem;
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14),
+    0 1px 10px 0 rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+  padding: 2vh 3vw;
+  margin-right: 1vw;
+  word-wrap: break-word;
+  z-index: 2;
+  overflow-y: auto;
 }
 
 .contentContainer.hidden {
-    display: none !important;
+  display: none !important;
 }
