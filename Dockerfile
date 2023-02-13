@@ -1,7 +1,6 @@
 # build stage
 FROM node:lts-alpine as build-stage
 
-ARG PUBLIC_URL
 ARG DEFAULT_LANGUAGE
 ARG CHATBOT_FRONTEND_URL
 ARG DEFAULT_CHATBOT_BACKEND_URL
@@ -26,7 +25,7 @@ COPY --from=build-stage /app/build .
 COPY ./docker/nginx/nginx.conf /etc/nginx/conf.d/nginx.conf
 
 COPY ./env.sh .
-COPY .env .
+COPY template.env ./.env
 
 # Add bash
 RUN apk add --no-cache bash

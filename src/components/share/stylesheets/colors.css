@@ -1,29 +1,30 @@
 #root {
-    --bright-teal: #007787;
-    --dark-teal: #174c57;
-    --bright-blue: #80cdec;
+  --bright-teal: #007787;
+  --dark-teal: #174c57;
+  --bright-blue: #80cdec;
 }
 
 .light-gray {
-    background-color: #b2b2b2 !important;
+  background-color: #b2b2b2 !important;
 }
 
 .dark-gray {
-    background-color: #8f8e8e;
+  background-color: #8f8e8e;
 }
 
 .white-text {
-    color: white;
+  color: white;
 }
 
 .black-text {
-    color: rgb(58, 58, 58);
+  color: rgb(58, 58, 58);
 }
 
 .black-text > a {
-    color: rgb(0, 0, 0);
+  color: rgb(0, 0, 0);
 }
 
-.white-text > a {
-    color: rgb(197, 197, 197);
+.white-text > a,
+.white-text > a:visited {
+  color: rgb(197, 197, 197);
 }

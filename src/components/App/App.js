@@ -224,14 +224,15 @@ class App extends Component {
 
   render() {
     const now = new Date(Date.now());
-    const initialMessage =
-      !!this.state.backendUrl && !!this.state.components?.length > 0
-        ? this.texts["default-responses"]["initial-message"][
-            "is-configured"
-          ].replace("{{url}}", this.state.backendUrl)
-        : this.texts["default-responses"]["initial-message"][
-            "is-not-configured"
-          ];
+    const isConfigured =
+      this.state.backendType === "rasa"
+        ? !!this.state.backendUrl
+        : !!this.state.backendUrl && !!this.state.components?.length > 0;
+    const initialMessage = isConfigured
+      ? this.texts["default-responses"]["initial-message"][
+          "is-configured"
+        ].replace("{{url}}", this.state.backendUrl)
+      : this.texts["default-responses"]["initial-message"]["is-not-configured"];
     return (
       <>
         <PageHeader

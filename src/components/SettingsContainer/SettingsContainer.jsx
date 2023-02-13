@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import "./SettingsContainer.css";
 import { ContentContainer } from "..";
 import { textsHelper } from "../../helpers";
-import { SpringBootHealthCheck } from "@qanary/spring-boot-health-check";
 import { defaultChatbotBackendUrl } from "../../helpers/constants";
 import { supportedServiceNames } from "../../services";
+import { SpringBootHealthCheck } from "@qanary/spring-boot-health-check";
 
 export default class SettingsContainer extends Component {
   texts = textsHelper.getTexts();
@@ -46,7 +46,7 @@ export default class SettingsContainer extends Component {
       0,
       componentsCopy.splice(componentIndex, 1)[0]
     );
-
+    
     this.props.setComponents(componentsCopy);
   }
   */
@@ -54,9 +54,26 @@ export default class SettingsContainer extends Component {
   render() {
     return (
       <ContentContainer id="chatbotSettings">
-        {this.texts.settings.explanation}
+        <div>
+          {this.texts.settings.explanation}
+          {this.texts.settings["select-service-type"]}
+        </div>
+        <div>
+          <select
+            onChange={(changeEvent) => {
+              this.props.setBackendType(changeEvent.target.value);
+            }}
+          >
+            {supportedServiceNames.map((name) => (
+              <option key={name} selected={name === this.props.backendType}>
+                {name}
+              </option>
+            ))}
+          </select>
+        </div>
         <SpringBootHealthCheck
           springBootAppUrl={this.props.backendUrl || defaultChatbotBackendUrl}
+          type={this.props.backendType === "rasa" ? "basic" : "actuator"}
         />
         <div id="urlSettingsContainer">
           <input
@@ -82,68 +99,61 @@ export default class SettingsContainer extends Component {
           <div className="errorMessage hidden">
             {this.texts.settings["url-malformed"]}
           </div>
-          <div>
-            <a
-              target="_blank"
-              rel="noreferrer"
-              href={`${
-                this.props.backendUrl.replace(/\/$/, "") ||
-                defaultChatbotBackendUrl
-              }/#/applications`}
-            >
-              {this.texts.settings["admin-panel-url"] +
-                " " +
-                this.props.backendUrl}
-            </a>
-          </div>
         </div>
-        <div id="componentSettingsContainer">
-          <div>{this.texts.settings["components-explanation"]}</div>
-          <input
-            type="text"
-            id="componentsList"
-            defaultValue={this.props.components.join(",")}
-          />
-          <input
-            type="button"
-            value={this.texts.settings["confirm-components"]}
-            onClick={() => {
-              const componentsInput = document.getElementById("componentsList");
-              const errElement = document.querySelector(
-                "#componentSettingsContainer > .errorMessage"
-              );
-              try {
-                this.props.setComponents(
-                  componentsInput.value.replace(/\s/g, "").split(",")
-                );
-              } catch (errorMessage) {
-                console.error(errorMessage);
-                errElement.classList.remove("hidden");
-              }
-              errElement.classList.add("hidden");
-            }}
-          />
-          <div
-            className={
-              "errorMessage" +
-              (this.props.components?.length > 0 ? " hidden" : "")
-            }
-          >
-            {this.texts.settings["no-components"]}
-          </div>
-          {this.texts.settings["select-service-type"]}
-          <select
-            onChange={(changeEvent) => {
-              this.props.setBackendType(changeEvent.target.value);
-            }}
-          >
-            {supportedServiceNames.map((name) => (
-              <option key={name} selected={name === this.props.backendType}>
-                {name}
-              </option>
-            ))}
-          </select>
-        </div>
+        {this.props.backendType === "qanary" ? (
+          <>
+            <div>
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href={`${
+                  this.props.backendUrl.replace(/\/$/, "") ||
+                  defaultChatbotBackendUrl
+                }/#/applications`}
+              >
+                {this.texts.settings["admin-panel-url"] +
+                  " " +
+                  this.props.backendUrl}
+              </a>
+            </div>
+            <div id="componentSettingsContainer">
+              <div>{this.texts.settings["components-explanation"]}</div>
+              <input
+                type="text"
+                id="componentsList"
+                defaultValue={this.props.components.join(",")}
+              />
+              <input
+                type="button"
+                value={this.texts.settings["confirm-components"]}
+                onClick={() => {
+                  const componentsInput =
+                    document.getElementById("componentsList");
+                  const errElement = document.querySelector(
+                    "#componentSettingsContainer > .errorMessage"
+                  );
+                  try {
+                    this.props.setComponents(
+                      componentsInput.value.replace(/\s/g, "").split(",")
+                    );
+                  } catch (errorMessage) {
+                    console.error(errorMessage);
+                    errElement.classList.remove("hidden");
+                  }
+                  errElement.classList.add("hidden");
+                }}
+              />
+              <div
+                className={
+                  "errorMessage" +
+                  (this.props.components?.length > 0 ? " hidden" : "")
+                }
+              >
+                {this.texts.settings["no-components"]}
+              </div>
+            </div>
+          </>
+        ) : null}
       </ContentContainer>
     );
   }
