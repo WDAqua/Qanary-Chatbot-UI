@@ -54,7 +54,7 @@
     }
   ],
   "settings": {
-    "explanation": "In diesem Menü können Sie einstellen, welches Backend verwendet werden soll. Voreingestellt ist https://webengineering.ins.hs-anhalt.de:43740. Sie müssen auch die zu verwendenden Komponenten in der richtigen Reihenfolge angeben. Eine Liste der verfügbaren Komponenten wird ein valides Backend automatisch angezeigt.",
+    "explanation": "In diesem Menü können Sie einstellen, welches Backend verwendet werden soll. Voreingestellt ist http://demos.swe.htwk-leipzig.de:40111. Sie müssen auch die zu verwendenden Komponenten in der richtigen Reihenfolge angeben. Eine Liste der verfügbaren Komponenten wird ein valides Backend automatisch angezeigt.",
     "confirm-url": "URL bestätigen",
     "confirm-components": "Komponenten bestätigen",
     "url-malformed": "Geben Sie bitte eine valide URL mit http:// bzw. https:// und Port an.",

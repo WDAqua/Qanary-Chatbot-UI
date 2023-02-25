@@ -1,6 +1,6 @@
 # Qanary Chatbot UI
 
-This easy-to-use Chatbot UI application provides easy access to a Question Answering (QA) system built using the [Qanary framework](https://github.com/WDAqua/Qanary) (or another system that implements the required JSON-producing RESTful web service interface). You can host your own Chatbot Web UI or just use our [demo installation](https://webengineering.ins.hs-anhalt.de:43712/).
+This easy-to-use Chatbot UI application provides easy access to a Question Answering (QA) system built using the [Qanary framework](https://github.com/WDAqua/Qanary) (or another system that implements the required JSON-producing RESTful web service interface). You can host your own Chatbot Web UI or just use our [demo installation](https://demos.swe.htwk-leipzig.de/qanary-chatbot-ui).
 
 Of course, you can connect also to your own Qanary-driven QA system. The Web UI contains an easy-to-use configuration (see the upper right corner of the screenshot) where you can connect instantly to the/your Qanary service and define on-the-fly the Qanary QA components you would like to use.
 
@@ -53,7 +53,7 @@ Certificates are disabled by by default, but you may add your own due to higher 
 3. In line 9, change `listen 443;` to `listen 443 ssl;`
 4. If it does not yet exist, create a directory called `certs` inside the existing directory `docker`.
 5. Copy your certificate to the folder `docker/certs` and name the files "`MY.DOMAIN`.cert" and "`MY.DOMAIN`.key" respectively. Replace `MY.DOMAIN` with whatever you wish.
-6. In the [`nginx.conf`](docker/nginx/nginx.conf) file, replace "webengineering.ins.hs-anhalt.de" in lines 11 to 12 with the name(s) you chose for your files.
+6. In the [`nginx.conf`](docker/nginx/nginx.conf) file, replace "demos.swe.htwk-leipzig.de" in lines 11 to 12 with the name(s) you chose for your files.
 7. Open the file [`Dockerfile`](Dockerfile) in an editor.
 8. Remove the comment in line 15:
    * Before:
@@ -72,7 +72,7 @@ Certificates are disabled by by default, but you may add your own due to higher 
 
 This is the name of the server which accepts the request. [See here](https://nginx.org/en/docs/http/server_names.html) for further details.
 
-Simply change "webengineering.ins.hs-anhalt.de" in lines 3 and 10 to whatever your domain name is.
+Simply change "demos.swe.htwk-leipzig.de" in lines 3 and 10 to whatever your domain name is.
 
 ### Application Configuration
 
@@ -101,7 +101,7 @@ It offers the following fields:
   * Example (here a demo server we provided for testing your local Chatbot UI deployment):
 
   ```text
-  DEFAULT_CHATBOT_BACKEND_URL="https://webengineering.ins.hs-anhalt.de:43740" 
+  DEFAULT_CHATBOT_BACKEND_URL="http://demos.swe.htwk-leipzig.de:40111" 
   ```
 
 * `DEFAULT_CHATBOT_COMPONENTS`
@@ -117,7 +117,7 @@ It offers the following fields:
   * Example (here the configuration of our demo Chatbot UI):
 
   ```text
-  DEFAULT_CHATBOT_FRONTEND_URL="https://webengineering.ins.hs-anhalt.de:43712/"
+  DEFAULT_CHATBOT_FRONTEND_URL="https://demos.swe.htwk-leipzig.de/qanary-chatbot-ui"
   ```
 
 * `DEFAULT_LANGUAGE`
