@@ -4,10 +4,11 @@
   float: right;
   display: flex;
   flex-direction: row-reverse;
+  margin: 1rem;
 }
 
 .messageContainer.reply {
-    flex-direction: row;
+  flex-direction: row;
 }
 
 .messageContainer.reply .messageDataContainer {
@@ -21,6 +22,7 @@
     0 1px 5px 0 rgba(0, 0, 0, 0.12);
   display: flex;
   flex-direction: column;
+  overflow-x: scroll;
 }
 
 .messageContainer.reply .messageDataContainer:focus {
@@ -39,7 +41,7 @@
   margin-top: 1vh;
   word-wrap: break-word;
   min-width: 80px;
-  max-width: 40vw;
+  /* max-width: 40vw; */
 }
 
 .messageTimeSent {
