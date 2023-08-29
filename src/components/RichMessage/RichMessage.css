@@ -1,25 +1,33 @@
 .richContentContainer {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .richContentContainer .button {
-    min-width: 100px;
-    min-height: 2.1rem;
-    padding: 0 1.1em;
-    margin: 16px;
+  min-width: 100px;
+  min-height: 2.1rem;
+  padding: 0 1.1em;
+  margin: 16px;
 }
 
 .richContentContainer .button:hover {
-    transition: background 0.2s;
-    background-color: #bd818d;
+  transition: background 0.2s;
 }
 
-.buttonsContainer, .diagramContainer {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 2vh;
+.default.theme .richContentContainer .button:hover {
+  background-color: #bd818d;
+}
+
+.itzbund.theme .richContentContainer .button:hover {
+  background-color: rgb(11, 58, 42);
+}
+
+.buttonsContainer,
+.diagramContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2vh;
 }

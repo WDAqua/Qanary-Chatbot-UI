@@ -9,7 +9,11 @@ import {
   defaultChatbotComponents,
   initialQuestionParameter,
 } from "../../helpers/constants";
-import { supportedServiceNames, supportedServices } from "../../services";
+import {
+  supportedServiceNames,
+  supportedServices,
+  supportedThemes,
+} from "../../services";
 
 class App extends Component {
   constructor(props) {
@@ -31,6 +35,7 @@ class App extends Component {
         defaultBackendType in supportedServiceNames
           ? defaultBackendType
           : supportedServiceNames[0],
+      currentTheme: "default",
     };
 
     this.texts = textsHelper.getTexts();
@@ -39,6 +44,7 @@ class App extends Component {
     this.setBackendUrl = this.setBackendUrl.bind(this);
     this.setComponents = this.setComponents.bind(this);
     this.setBackendType = this.setBackendType.bind(this);
+    this.setTheme = this.setTheme.bind(this);
     // TODO: Add back in once we move on from the MVP
     // this.toggleComponent = this.toggleComponent.bind(this);
   }
@@ -150,6 +156,14 @@ class App extends Component {
     );
   }
 
+  setTheme(themeName) {
+    if (!supportedThemes.includes(themeName)) return;
+
+    this.setState({
+      currentTheme: themeName,
+    });
+  }
+
   setComponents(components) {
     // is array and only contains strings, if it has elements
     // TODO: Edit string check back once we move on from the MVP
@@ -234,16 +248,18 @@ class App extends Component {
         ].replace("{{url}}", this.state.backendUrl)
       : this.texts["default-responses"]["initial-message"]["is-not-configured"];
     return (
-      <>
+      <div className={`theme ${this.state.currentTheme}`}>
         <PageHeader
           sendMessage={this.sendMessage}
           // toggleComponent={this.toggleComponent} // TODO: Add back in once we move on from the MVP
           setBackendUrl={this.setBackendUrl}
           setComponents={this.setComponents}
           setBackendType={this.setBackendType}
+          setTheme={this.setTheme}
           components={this.state.components}
           backendUrl={this.state.backendUrl}
           backendType={this.state.backendType}
+          currentTheme={this.state.currentTheme}
         />
         <MessagePanel
           messages={[
@@ -263,7 +279,7 @@ class App extends Component {
           sendMessage={this.sendMessage}
           isSending={this.state.isSending}
         />
-      </>
+      </div>
     );
   }
 }

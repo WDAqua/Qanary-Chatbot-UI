@@ -19,3 +19,9 @@
 #root * {
   font-family: BundesSans, sans-serif;
 }
+
+.theme {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}

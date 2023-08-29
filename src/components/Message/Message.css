@@ -11,26 +11,60 @@
   flex-direction: row;
 }
 
-.messageContainer.reply .messageDataContainer {
+.default.theme .messageContainer.reply .messageDataContainer {
   background-color: var(--bright-teal);
+}
+
+.itzbund.theme .messageContainer.reply .messageDataContainer {
+  background-color: var(--gray-100);
+}
+
+.itzbund.theme .messageContainer:not(.reply) .messageDataContainer,
+.itzbund.theme .messageContainer:not(.reply) .messageDataContainer * {
+  background-color: var(--green);
+  color: var(--light-white);
 }
 
 .messageDataContainer {
   height: fit-content;
   border-radius: 14px;
-  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14),
-    0 1px 5px 0 rgba(0, 0, 0, 0.12);
   display: flex;
   flex-direction: column;
   overflow-x: scroll;
 }
 
+.default.theme .messageDataContainer {
+  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+    0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  color: var(--light-white);
+}
+
+.itzbund.theme .messageDataContainer {
+  background-color: var(--gray-100);
+  box-shadow: 0 1px 1px -1px rgba(0, 0, 0, 0.2);
+  color: var(--light-black);
+  border: none;
+  border-radius: 2px;
+  position: relative;
+}
+
 .messageContainer.reply .messageDataContainer:focus {
-  background-color: var(--dark-teal);
   outline: none;
 }
 
-.messageContainer:not(.reply) .messageDataContainer:focus {
+.default.theme
+  .messageContainer.messageContainer.reply
+  .messageDataContainer:focus {
+  background-color: var(--dark-teal);
+}
+
+.itzbund.theme
+  .messageContainer.messageContainer.reply
+  .messageDataContainer:focus {
+  background-color: var(--gray-100);
+}
+
+.default.theme .messageContainer:not(.reply) .messageDataContainer:focus {
   background-color: rgb(230, 230, 230);
 }
 
@@ -52,11 +86,20 @@
   text-align: right;
 }
 
-.messageContainer.reply .messageTimeSent {
-  color: white;
+.itzbund.theme .messageContainer.reply .messageTimeSent {
+  color: var(--light-black);
   outline: none;
 }
 
-.messageContainer:not(.reply) .messageTimeSent {
+.default .messageContainer.reply .messageTimeSent {
+  color: var(--light-white);
+  outline: none;
+}
+
+.itzbund.theme .messageContainer:not(.reply) .messageTimeSent {
+  color: var(--light-white);
+}
+
+.default.theme .messageContainer:not(.reply) .messageTimeSent {
   color: var(--bright-teal);
 }

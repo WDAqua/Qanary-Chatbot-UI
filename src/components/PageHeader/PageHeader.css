@@ -1,107 +1,140 @@
 #header {
-    position: relative;
-    display: flex;
-    flex-wrap: nowrap;
-    height: 75px;
-    width: 100%;
-    z-index: 1;
-    background-color: var(--dark-teal);
+  position: relative;
+  display: flex;
+  flex-wrap: nowrap;
+  height: 75px;
+  width: 100%;
+  z-index: 1;
 }
 
-#header > *{
-    flex-grow: 1;
-    flex-shrink: 2;
+.default.theme #header {
+  background-color: var(--dark-teal);
+}
+
+.itzbund.theme #header {
+  background-color: var(--white);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 10px 17px 0px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0px 10px 17px 0px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0px 10px 17px 0px rgba(0, 0, 0, 0.1);
+}
+
+.itzbund.theme #header * {
+  color: var(--light-green);
+  font-weight: bold;
+}
+
+.default.theme #header * {
+  color: var(--light-white);
+}
+
+#header > * {
+  flex-grow: 1;
+  flex-shrink: 2;
 }
 
 .questionsToggle {
-    position: relative;
-    min-width: 80px;
-    height: 100%;
+  position: relative;
+  min-width: 80px;
+  height: 100%;
 }
 
 .pageTitle {
-    position: relative;
-    flex-grow: 15 !important;
-    height: 100%;
+  position: relative;
+  flex-grow: 15 !important;
+  height: 100%;
 }
 .pageTitle > a {
-    font-size: x-large;
-    width: 100%;
-    text-align: center;
-    text-decoration: none;
+  font-size: x-large;
+  width: 100%;
+  text-align: center;
+  text-decoration: none;
 }
 
 @media screen and (max-width: 339px) {
-    .clickableIcon {
-        width: 80px !important;
-    }
+  .clickableIcon {
+    width: 80px !important;
+  }
 }
 
 @media screen and (max-width: 319px) {
-    .questionsToggle, .pageTitle > a {
-        min-width: 60px;
-        font-size: small;
-    }
+  .questionsToggle,
+  .pageTitle > a {
+    min-width: 60px;
+    font-size: small;
+  }
 
-    .clickableIcon {
-        width: 70px !important;
-    }
+  .clickableIcon {
+    width: 70px !important;
+  }
 }
 
 @media screen and (max-width: 269px) {
-    .questionsToggle, .pageTitle > a {
-        min-width: 50px;
-        font-size: x-small;
-    }
+  .questionsToggle,
+  .pageTitle > a {
+    min-width: 50px;
+    font-size: x-small;
+  }
 
-    .clickableIcon {
-        width: 60px !important;
-    }
+  .clickableIcon {
+    width: 60px !important;
+  }
 }
 
 @media screen and (max-width: 229px) {
-    .questionsToggle, .pageTitle > a {
-        min-width: 40px;
-        font-size: xx-small;
-    }
+  .questionsToggle,
+  .pageTitle > a {
+    min-width: 40px;
+    font-size: xx-small;
+  }
 
-    .clickableIcon {
-        width: 50px !important;
-    }
+  .clickableIcon {
+    width: 50px !important;
+  }
 }
 
-.questionsToggle:hover {
-    background-color: var(--bright-teal);
-    cursor: pointer;
+.default.theme .questionsToggle:hover {
+  background-color: var(--bright-teal);
+  cursor: pointer;
 }
 
-.questionsToggle:focus {
-    outline: none;
-    background-color: var(--bright-teal);
-    text-decoration: underline 1px #000 solid;
+.itzbund.theme .questionsToggle:hover * {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.default.theme .questionsToggle:focus {
+  outline: none;
+  background-color: var(--bright-teal);
+  text-decoration: underline 1px #000 solid;
+}
+
+.itzbund.theme .questionsToggle:focus {
+  outline: none;
+  text-decoration: underline;
 }
 
 .exampleQuestion {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    word-break: normal;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  word-break: normal;
 }
 
 .exampleQuestion div:not(.button) {
-    width: 80%;
+  width: 80%;
 }
 
 #imprint.contentContainer {
-    display: initial;
+  display: initial;
 }
 
 .exampleQuestion {
-    padding-bottom: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 
 .questionSectionTitle {
-    font-size: x-large;
-    padding-bottom: 1rem;
+  font-size: x-large;
+  padding-bottom: 1rem;
 }
