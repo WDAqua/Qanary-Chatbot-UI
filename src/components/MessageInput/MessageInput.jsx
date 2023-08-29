@@ -4,7 +4,7 @@ import "./MessageInput.css";
 import { textsHelper } from "../../helpers";
 
 /**
- * 
+ *
  * @property {function} sendMessage The callback to be called using the message input's text
  * @property {boolean} isSending Value determining if loading bar is displayed
  */
@@ -27,7 +27,7 @@ export default class MessageInput extends Component {
     this.listenerId = textsHelper.addListener(() => {
       this.texts = textsHelper.getTexts();
       this.forceUpdate();
-    })
+    });
   }
 
   componentWillUnmount() {
@@ -42,7 +42,8 @@ export default class MessageInput extends Component {
   }
 
   inputTextChange(changeEvent) {
-    if (changeEvent.target.value !== "\n") this.setState({ query: changeEvent.target.value });
+    if (changeEvent.target.value !== "\n")
+      this.setState({ query: changeEvent.target.value });
   }
 
   inputKeyPress(keyPressEvent) {
@@ -77,7 +78,7 @@ export default class MessageInput extends Component {
                 height: "40px",
                 marginRight: "10px",
               }}
-              className={"light-gray black-text vertical-center right-side"}
+              className={"vertical-center right-side"}
             />
           </div>
         </div>

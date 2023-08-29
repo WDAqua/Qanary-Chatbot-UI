@@ -3,7 +3,7 @@ import "./SettingsContainer.css";
 import { ContentContainer } from "..";
 import { textsHelper } from "../../helpers";
 import { defaultChatbotBackendUrl } from "../../helpers/constants";
-import { supportedServiceNames } from "../../services";
+import { supportedServiceNames, supportedThemes } from "../../services";
 import { SpringBootHealthCheck } from "@qanary/spring-boot-health-check";
 
 export default class SettingsContainer extends Component {
@@ -59,6 +59,7 @@ export default class SettingsContainer extends Component {
           {this.texts.settings["select-service-type"]}
         </div>
         <div>
+          Select backend type:{" "}
           <select
             onChange={(changeEvent) => {
               this.props.setBackendType(changeEvent.target.value);
@@ -66,6 +67,20 @@ export default class SettingsContainer extends Component {
           >
             {supportedServiceNames.map((name) => (
               <option key={name} selected={name === this.props.backendType}>
+                {name}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div>
+          Select design theme:{" "}
+          <select
+            onChange={(changeEvent) => {
+              this.props.setTheme(changeEvent.target.value);
+            }}
+          >
+            {supportedThemes.map((name) => (
+              <option key={name} selected={name === this.props.currentTheme}>
                 {name}
               </option>
             ))}

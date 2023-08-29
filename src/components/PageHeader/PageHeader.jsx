@@ -7,7 +7,9 @@ import {
 } from "..";
 import { textsHelper } from "../../helpers";
 import flag_icon from "../share/imgs/flag_icon.webp";
+import settings_icon_black from "../share/imgs/settings_icon_black.svg";
 import settings_icon_white from "../share/imgs/settings_icon_white.svg";
+import info_icon_black from "../share/imgs/info_icon_black.svg";
 import info_icon_white from "../share/imgs/info_icon_white.svg";
 import "./PageHeader.css";
 import { chatbotFrontendUrl } from "../../helpers/constants";
@@ -63,7 +65,11 @@ export default class PageHeader extends Component {
         <div tabIndex="-1" id="header">
           <ClickableIcon
             onClick={() => toggleContainer("imprint")}
-            icon={info_icon_white}
+            icon={
+              this.props.currentTheme === "default"
+                ? info_icon_white
+                : info_icon_black
+            }
             alt={this.texts["page-header"].icons["info-alt"]}
             style={{
               position: "relative",
@@ -111,7 +117,11 @@ export default class PageHeader extends Component {
           <ClickableIcon
             onClick={() => toggleContainer("chatbotSettings")}
             alt={this.texts["page-header"].icons["change-language-alt"]}
-            icon={settings_icon_white}
+            icon={
+              this.props.currentTheme === "default"
+                ? settings_icon_white
+                : settings_icon_black
+            }
             style={{
               position: "relative",
               maxWidth: "100px",
@@ -126,9 +136,11 @@ export default class PageHeader extends Component {
           components={this.props.components}
           backendUrl={this.props.backendUrl}
           backendType={this.props.backendType}
+          currentTheme={this.props.currentTheme}
           setComponents={this.props.setComponents}
           setBackendUrl={this.props.setBackendUrl}
           setBackendType={this.props.setBackendType}
+          setTheme={this.props.setTheme}
           // toggleComponent={this.props.toggleComponent} // TODO: Add back in once we move on from the MVP
         />
       </>

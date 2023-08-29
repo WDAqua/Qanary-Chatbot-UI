@@ -9,3 +9,5 @@ export const supportedServices = {
 export const supportedServiceNames = Object.keys(supportedServices).filter(
   (name) => Object.prototype.hasOwnProperty.call(supportedServices, name)
 );
+
+export const supportedThemes = ["default", "itzbund"];
