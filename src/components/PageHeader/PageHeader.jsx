@@ -62,6 +62,7 @@ export default class PageHeader extends Component {
   render() {
     return (
       <>
+        <div id="headerContainer">
         <div tabIndex="-1" id="header">
           <ClickableIcon
             onClick={() => toggleContainer("imprint")}
@@ -137,12 +138,15 @@ export default class PageHeader extends Component {
           backendUrl={this.props.backendUrl}
           backendType={this.props.backendType}
           currentTheme={this.props.currentTheme}
+          iconUrl={this.props.iconUrl}
           setComponents={this.props.setComponents}
           setBackendUrl={this.props.setBackendUrl}
           setBackendType={this.props.setBackendType}
           setTheme={this.props.setTheme}
+          setIconUrl={this.props.setIconUrl}
           // toggleComponent={this.props.toggleComponent} // TODO: Add back in once we move on from the MVP
         />
+        </div>
       </>
     );
   }

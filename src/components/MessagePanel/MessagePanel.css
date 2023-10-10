@@ -9,6 +9,11 @@
     margin-top: 2vh;
 }
 
+.itzbund.theme #messagePanel {
+  max-width: 50%; 
+  margin: 0 auto;
+}
+
 /*
 #messagePanel::before {
     content: 'Covid-19 Chatbot';

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./SettingsContainer.css";
 import { ContentContainer } from "..";
 import { textsHelper } from "../../helpers";
-import { defaultChatbotBackendUrl } from "../../helpers/constants";
+import { defaultChatbotBackendUrl, defaultChatbotIconUrl } from "../../helpers/constants";
 import { supportedServiceNames, supportedThemes } from "../../services";
 import { SpringBootHealthCheck } from "@qanary/spring-boot-health-check";
 
@@ -54,6 +54,48 @@ export default class SettingsContainer extends Component {
   render() {
     return (
       <ContentContainer id="chatbotSettings">
+        <h2>{this.texts.settings.ui.headline}</h2>
+        <div>
+          Select design theme:{" "}
+          <select
+            onChange={(changeEvent) => {
+              this.props.setTheme(changeEvent.target.value);
+            }}
+          >
+            {supportedThemes.map((name) => (
+              <option key={name} selected={name === this.props.currentTheme}>
+                {name}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div id="iconUrlSettingsContainer">
+          <span>{this.texts.settings.ui.iconUrlLabel}</span>
+          <input
+            type="text"
+            id="iconUrlInput"
+            defaultValue={this.props.iconUrl || defaultChatbotIconUrl}
+          />
+          <input
+            type="button"
+            value={this.texts.settings["confirm-url"]}
+            onClick={() => {
+              const urlInput = document.getElementById("iconUrlInput");
+              const errElement = document.querySelector(
+                "#iconUrlSettingsContainer > .errorMessage"
+              );
+              this.props.setIconUrl(urlInput.value).catch((errorMessage) => {
+                console.error(errorMessage);
+                errElement.classList.remove("hidden");
+              });
+              errElement.classList.add("hidden");
+            }}
+          />
+          <div className="errorMessage hidden">
+            {this.texts.settings["url-malformed"]}
+          </div>
+        </div>
+        <h2>{this.texts.settings.functional.headline}</h2>
         <div>
           {this.texts.settings.explanation}
           {this.texts.settings["select-service-type"]}
@@ -72,25 +114,12 @@ export default class SettingsContainer extends Component {
             ))}
           </select>
         </div>
-        <div>
-          Select design theme:{" "}
-          <select
-            onChange={(changeEvent) => {
-              this.props.setTheme(changeEvent.target.value);
-            }}
-          >
-            {supportedThemes.map((name) => (
-              <option key={name} selected={name === this.props.currentTheme}>
-                {name}
-              </option>
-            ))}
-          </select>
-        </div>
         <SpringBootHealthCheck
           springBootAppUrl={this.props.backendUrl || defaultChatbotBackendUrl}
           type={this.props.backendType === "rasa" ? "basic" : "actuator"}
         />
         <div id="urlSettingsContainer">
+          <span>{this.texts.settings.functional.backendUrlLabel}</span>
           <input
             type="text"
             id="backendUrlInput"

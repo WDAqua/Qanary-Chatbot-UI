@@ -19,32 +19,59 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      messages: [],
-      components:
+    this.texts = textsHelper.getTexts();
+    const iconUrl = localStorage.getItem("iconUrl") ?? "";
+    const backendType = 
+        defaultBackendType in supportedServiceNames
+          ? defaultBackendType
+          : supportedServiceNames[0];
+    const now = new Date(Date.now());
+    const backendUrl = localStorage.getItem("backendUrl") ?? "";
+    const components = 
         JSON.parse(localStorage.getItem("components")) ??
-        defaultChatbotComponents,
+        defaultChatbotComponents;
+    const isConfigured =
+      backendType === "rasa"
+        ? !!backendUrl
+        : !!backendUrl && !!components?.length > 0;
+    const initialMessage = isConfigured
+      ? this.texts["default-responses"]["initial-message"][
+          "is-configured"
+        ].replace("{{url}}", backendUrl)
+      : this.texts["default-responses"]["initial-message"]["is-not-configured"];
+
+    this.state = {
+      messages: [
+        {
+          text: initialMessage,
+          followUpNeeded: false,
+          loadedSuccessfully: false, // This is to prevent the source of data bit from showing up
+          visualization: {},
+          time: now.getHours() + ":" + ("0" + now.getMinutes()).slice(-2),
+          isReply: true,
+          icon: iconUrl || robot_icon,
+        },
+      ],
+      components,
       /* // TODO: Add back in once we move on from the MVP
       .map((componentName) => ({
         name: componentName,
         activated: false,
       }))*/
-      backendUrl: localStorage.getItem("backendUrl") ?? "",
+      backendUrl,
       isSending: false,
-      backendType:
-        defaultBackendType in supportedServiceNames
-          ? defaultBackendType
-          : supportedServiceNames[0],
+      backendType,
       currentTheme: "default",
+      iconUrl,
     };
 
-    this.texts = textsHelper.getTexts();
 
     this.sendMessage = this.sendMessage.bind(this);
     this.setBackendUrl = this.setBackendUrl.bind(this);
     this.setComponents = this.setComponents.bind(this);
     this.setBackendType = this.setBackendType.bind(this);
     this.setTheme = this.setTheme.bind(this);
+    this.setIconUrl = this.setIconUrl.bind(this);
     // TODO: Add back in once we move on from the MVP
     // this.toggleComponent = this.toggleComponent.bind(this);
   }
@@ -120,7 +147,7 @@ class App extends Component {
         visualization: reply.visualization,
         time: now.getHours() + ":" + ("0" + now.getMinutes()).slice(-2),
         isReply: true,
-        icon: robot_icon,
+        icon: this.state.iconUrl || robot_icon,
       };
 
       if (typeof reply.answer === "object") {
@@ -161,6 +188,19 @@ class App extends Component {
 
     this.setState({
       currentTheme: themeName,
+    });
+  }
+
+  setIconUrl(iconUrl) {
+    const messagesCopy = this.state.messages.map((message) => {
+      if (message.isReply) message.icon = iconUrl || robot_icon;
+      return message;
+    });
+
+    localStorage.setItem("iconUrl", iconUrl);
+    this.setState({
+      iconUrl,
+      messages: messagesCopy,
     });
   }
 
@@ -237,16 +277,6 @@ class App extends Component {
   }
 
   render() {
-    const now = new Date(Date.now());
-    const isConfigured =
-      this.state.backendType === "rasa"
-        ? !!this.state.backendUrl
-        : !!this.state.backendUrl && !!this.state.components?.length > 0;
-    const initialMessage = isConfigured
-      ? this.texts["default-responses"]["initial-message"][
-          "is-configured"
-        ].replace("{{url}}", this.state.backendUrl)
-      : this.texts["default-responses"]["initial-message"]["is-not-configured"];
     return (
       <div className={`theme ${this.state.currentTheme}`}>
         <PageHeader
@@ -256,22 +286,15 @@ class App extends Component {
           setComponents={this.setComponents}
           setBackendType={this.setBackendType}
           setTheme={this.setTheme}
+          setIconUrl={this.setIconUrl}
           components={this.state.components}
           backendUrl={this.state.backendUrl}
           backendType={this.state.backendType}
           currentTheme={this.state.currentTheme}
+          iconUrl={this.state.iconUrl}
         />
         <MessagePanel
           messages={[
-            {
-              text: initialMessage,
-              followUpNeeded: false,
-              loadedSuccessfully: false, // This is to prevent the source of data bit from showing up
-              visualization: {},
-              time: now.getHours() + ":" + ("0" + now.getMinutes()).slice(-2),
-              isReply: true,
-              icon: robot_icon,
-            },
             ...this.state.messages,
           ]}
         />
