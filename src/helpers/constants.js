@@ -10,6 +10,9 @@ export const chatbotFrontendUrl =
 export const defaultChatbotBackendUrl =
   window._env_?.DEFAULT_CHATBOT_BACKEND_URL ?? "http://localhost:8000";
 
+export const defaultChatbotIconUrl =
+  window._env_?.DEFAULT_CHATBOT_ICON_URL ?? "";
+
 export const defaultLanguage = window._env_?.DEFAULT_LANGUAGE ?? "de";
 
 export const defaultRasaBackendUrl =
