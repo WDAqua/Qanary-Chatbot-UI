@@ -20,3 +20,6 @@ export const defaultRasaBackendUrl =
 
 export const defaultBackendType =
   window._env_?.DEFAULT_BACKEND_TYPE ?? "qanary";
+
+export const defaultTheme =
+  window._env_?.DEFAULT_THEME ?? "default";

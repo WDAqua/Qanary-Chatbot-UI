@@ -8,6 +8,7 @@ import {
   defaultBackendType,
   defaultChatbotComponents,
   initialQuestionParameter,
+  defaultTheme,
 } from "../../helpers/constants";
 import {
   supportedServiceNames,
@@ -61,7 +62,7 @@ class App extends Component {
       backendUrl,
       isSending: false,
       backendType,
-      currentTheme: "default",
+      currentTheme: localStorage.getItem("currentTheme") ?? defaultTheme,
       iconUrl,
     };
 
@@ -186,6 +187,7 @@ class App extends Component {
   setTheme(themeName) {
     if (!supportedThemes.includes(themeName)) return;
 
+    localStorage.setItem("currentTheme", themeName);
     this.setState({
       currentTheme: themeName,
     });
