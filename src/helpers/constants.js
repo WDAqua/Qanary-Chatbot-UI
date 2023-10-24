@@ -23,3 +23,15 @@ export const defaultBackendType =
 
 export const defaultTheme =
   window._env_?.DEFAULT_THEME ?? "default";
+
+export const initialMessageTextEn =
+  window._env_?.INITIAL_MESSAGE_TEXT_EN;
+
+export const initialMessageTextDe =
+  window._env_?.INITIAL_MESSAGE_TEXT_DE;
+
+export const pageTitleEn =
+  window._env_?.PAGE_TITLE_EN
+
+export const pageTitleDe =
+  window._env_?.PAGE_TITLE_DE
