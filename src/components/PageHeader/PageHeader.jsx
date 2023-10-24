@@ -12,7 +12,7 @@ import settings_icon_white from "../share/imgs/settings_icon_white.svg";
 import info_icon_black from "../share/imgs/info_icon_black.svg";
 import info_icon_white from "../share/imgs/info_icon_white.svg";
 import "./PageHeader.css";
-import { chatbotFrontendUrl } from "../../helpers/constants";
+import { chatbotFrontendUrl, pageTitleDe, pageTitleEn } from "../../helpers/constants";
 
 function toggleContainer(containerId) {
   const container = document.getElementById(containerId);
@@ -86,7 +86,7 @@ export default class PageHeader extends Component {
               target="_self"
               className="center white-text"
             >
-              {this.texts["page-header"].title}
+              {(textsHelper.getCurrentLanguage() === "en" ? pageTitleEn : pageTitleDe) ?? this.texts["page-header"].title}
             </a>
           </div>
           <div

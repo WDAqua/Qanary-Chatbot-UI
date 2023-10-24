@@ -9,12 +9,15 @@ import {
   defaultChatbotComponents,
   initialQuestionParameter,
   defaultTheme,
+  initialMessageTextEn,
+  initialMessageTextDe,
 } from "../../helpers/constants";
 import {
   supportedServiceNames,
   supportedServices,
   supportedThemes,
 } from "../../services";
+import { getCurrentLanguage } from "../../helpers/getTexts";
 
 class App extends Component {
   constructor(props) {
@@ -35,11 +38,21 @@ class App extends Component {
       backendType === "rasa"
         ? !!backendUrl
         : !!backendUrl && !!components?.length > 0;
-    const initialMessage = isConfigured
-      ? this.texts["default-responses"]["initial-message"][
+    const getInitialMessage = () => {
+      const currentLanguage = getCurrentLanguage()
+      if (initialMessageTextEn && currentLanguage === "en") {
+        return initialMessageTextEn.replace("{{url}}", backendUrl);
+      } else if (initialMessageTextDe && currentLanguage === "de") {
+        return initialMessageTextDe.replace("{{url}}", backendUrl);
+      } else if (isConfigured) {
+        return this.texts["default-responses"]["initial-message"][
           "is-configured"
-        ].replace("{{url}}", backendUrl)
-      : this.texts["default-responses"]["initial-message"]["is-not-configured"];
+        ].replace("{{url}}", backendUrl);
+      } else {
+        return this.texts["default-responses"]["initial-message"]["is-not-configured"];
+      }
+    }
+    const initialMessage = getInitialMessage();
 
     this.state = {
       messages: [
