@@ -1,6 +1,6 @@
 {
   "name": "qanary-ui",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "private": true,
   "dependencies": {
     "@qanary/spring-boot-health-check": "1.2.1",
